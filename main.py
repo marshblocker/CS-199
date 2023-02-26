@@ -2,23 +2,31 @@ from sklearn.svm import OneClassSVM
 from sklearn.model_selection import KFold, cross_validate
 import pandas as pd
 import numpy as np
+import os
 
 K = 10
 NU = 0.01
 FLOAT_RANGE = 10
 
-def get_data(path: str) -> np.ndarray:
-    df = pd.read_csv(path)
-    
-    # Remove observations with trace rainfall values (< 0.1 mm)
-    df = df[df.RAINFALL != -1]
+print('NU = {}'.format(NU))
 
-    # Remove observations with missing values
-    df = df[~df.isin([-999]).any(axis=1)]
+TMAX_DEFAULT = 32
+TMIN_DEFAULT = 24
+TMEAN_DEFAULT = 28
+RH_DEFAULT = 75
+
+metro_manila = ['NAIA','Port Area','Sangley Point']
+
+def get_data(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path)
 
     df.sort_values(by=['YEAR', 'MONTH', 'DAY'])
-    df = df[['RAINFALL', 'TMAX', 'TMIN', 'TMEAN', 'RH', 'WIND_SPEED']]
-    df = df.to_numpy()
+    df = df[['YEAR', 'MONTH', 'DAY', 'TMAX', 'TMIN', 'TMEAN', 'RH']]
+
+    df.loc[df['TMAX'] == -999, 'TMAX'] = TMAX_DEFAULT
+    df.loc[df['TMIN'] == -999, 'TMIN'] = TMIN_DEFAULT
+    df.loc[df['TMEAN'] == -999, 'TMEAN'] = TMEAN_DEFAULT
+    df.loc[df['RH'] == -999, 'RH'] = RH_DEFAULT
 
     return df
 
@@ -31,56 +39,90 @@ def test(X, y, clf) -> float:
     prediction = clf.predict(X)
     for i in range(len(prediction)):
         # true positive
-        if prediction[i] == -1 and y[i] == -1:
+        if prediction[i] == 1 and y[i] == 1:
             tp += 1
         # true negative
-        elif prediction[i] == 1 and y[i] == 1:
+        elif prediction[i] == -1 and y[i] == -1:
             tn += 1
         # false positive
-        elif prediction[i] == -1 and y[i] == 1:
+        elif prediction[i] == 1 and y[i] == -1:
             fp += 1
         # false negative
-        elif prediction[i] == 1 and y[i] == -1:
+        elif prediction[i] == -1 and y[i] == 1:
             fn += 1
 
     f_score = tp / (tp + 0.5*(fp + fn))
-
+    # print(tp, tn, fp, fn)
     return f_score
 
 def main():
-    df = get_data('PAGASA/Science Garden.csv')
-    X_train, X_test = df[:len(df)-3000], df[len(df)-3000:]
+    directory = 'PAGASA/'
+    stations = {}
+    for filename in os.listdir(directory):
+        if filename.endswith('.csv'):
+            df = get_data(directory + filename)
+            df = {
+                year: df_year.reset_index()
+                for year, df_year in df.groupby('YEAR')
+            }
+            stations[filename.rstrip('.csv')] = df
 
-    row = X_train.shape[0]
-    y_train = np.full((row, 1), 1)
+    year = 2011
+    month = 1
 
-    row = X_test.shape[0]
-    y_test = np.full((row, 1), 1)
+    for i in range(1, 12):
+        month = i
 
-    model = OneClassSVM(nu=NU)
-    kf = KFold(n_splits=K, shuffle=True)
+        X_train = [stations[station_name][year] for station_name in metro_manila]
+        X_train = [df[df['MONTH'] == month] for df in X_train]
+        X_train = [df[['TMAX', 'TMIN', 'TMEAN', 'RH']].to_numpy() for df in X_train]
+        X_train = np.concatenate((X_train))
+        
+        y_train = np.full((len(X_train), 1), 1)
 
-    cv_res = cross_validate(
-        estimator=model,
-        X=X_train,
-        y=y_train,
-        cv=kf,
-        scoring='f1',
-        n_jobs=-1,
-        verbose=1,
-        return_train_score=False,
-        return_estimator=True
-    )
+        model = OneClassSVM(nu=NU)
+        kf = KFold(n_splits=K, shuffle=True)
 
-    print('test_score:')
-    print(cv_res['test_score'])
+        cv_res = cross_validate(
+            estimator=model,
+            X=X_train,
+            y=y_train,
+            cv=kf,
+            scoring='f1',
+            n_jobs=-1,
+            verbose=0,
+            return_train_score=False,
+            return_estimator=True
+        )
 
-    estimators = cv_res['estimator']
+        # print('test_score:')
+        # print(cv_res['test_score'])
 
-    print('F-scores:')
-    for clf in estimators:
-        f_score = test(X_test, y_test, clf)
-        print(f_score)
+        estimators = cv_res['estimator']
+
+        X_test_clean = stations['NAIA'][year+1]
+        X_test_clean = X_test_clean[X_test_clean['MONTH'] == month]
+        X_test_clean = X_test_clean[['TMAX', 'TMIN', 'TMEAN', 'RH']].to_numpy()
+
+        y_test_clean = np.full((len(X_test_clean), 1), 1)
+
+        X_test_mal = stations['Baguio'][year]
+        X_test_mal = X_test_mal[X_test_mal['MONTH'] == month]
+        X_test_mal = X_test_mal[['TMAX', 'TMIN', 'TMEAN', 'RH']].to_numpy()
+
+        y_test_mal = np.full((len(X_test_mal), 1), -1)
+
+        X_test = np.concatenate((X_test_clean, X_test_mal))
+        y_test = np.concatenate((y_test_clean, y_test_mal))
+
+        # print(X_test_clean.shape, X_test_mal.shape, y_test_clean.shape, y_test_mal.shape, X_test.shape, y_test.shape)
+
+        ave_f_score = round(sum(map(
+            lambda clf: test(X_test, y_test, clf),
+            estimators
+        )) / len(estimators), 3)
+
+        print('Average F-score:', ave_f_score)
 
 
 if __name__ == '__main__':
