@@ -8,6 +8,7 @@ K = 10
 NU = 0.06
 
 metro_manila = ['NAIA','Port Area','Sangley Point', 'Science Garden']
+central_luzon = ['Clark','Cabanatuan','Cubi Point','Iba']
 
 def get_data(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
@@ -94,7 +95,7 @@ def main():
 
         estimators = cv_res['estimator']
 
-        X_test_clean = stations['NAIA'][year+1]
+        X_test_clean = stations['Cubi Point'][year+1]
         X_test_clean = X_test_clean[X_test_clean['MONTH'] == month]
         X_test_clean = X_test_clean[['TMAX', 'TMIN', 'TMEAN', 'RH']].to_numpy()
 
