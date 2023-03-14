@@ -1,52 +1,32 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 import os
-import socket
-import json
-import time
 import pandas as pd
 
 GATEWAY_RCVR_ADDR = ("127.0.0.1", 5001)
 
-class Sensor:
+class SocketlessSensor:
     PAGASA_PATH = os.path.join(os.path.dirname(__file__), '..\\PAGASA')
 
-    def __init__(self, id: str, station: str) -> None:
-        self.id = id
+    def __init__(self, sensor_id: str, station: str) -> None:
+        self.id = sensor_id
         self.station = station
         self.data = self._get_data()
-        self.sock: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     def transmit_data_entry(
-            self, 
-            date: datetime, 
-            gateway_addr: tuple[str, int]) -> None:
-        data = self.data.query(
+            self,
+            date: datetime) -> dict[str, (str | pd.Series | datetime) ]:
+        data_entry: pd.Series = self.data.query(
             f'YEAR == {date.year} and MONTH == {date.month} and DAY == {date.day}'
-        )
-        data = str(data.iloc[0].to_json())
-        data = {
+        ).iloc[0]
+        
+        message = {
             'sender': self.id,
-            'type': 'SENSOR_DATA',
-            'date': date.strftime("%m/%d/%Y"),
-            'data': data
+            'data': data_entry,
+            'date_sent': date
         }
 
-        data_encoded = json.dumps(data).encode('utf-8')
+        return message
 
-        bytes_sent = self.sock.sendto(data_encoded, gateway_addr)
-        print('{}: Sent SENSOR_DATA ({} bytes) to address {}'.format(self.id, bytes_sent, gateway_addr))
-
-    def register(self, gateway_addr: tuple[str, int]) -> None:
-        data = {
-            'sender': self.id,
-            'type': 'REGISTER',
-            'data': {}
-        }
-
-        data_encoded = json.dumps(data).encode('utf-8')
-
-        bytes_sent = self.sock.sendto(data_encoded, gateway_addr)        
-        print('Sent REGISTER ({} bytes) to address {}'.format(bytes_sent, gateway_addr))
 
     def _get_data(self) -> pd.DataFrame:
         df = pd.read_csv(os.path.join(self.PAGASA_PATH, self.station + '.csv'))
@@ -85,19 +65,3 @@ class Sensor:
         df.loc[df['WIND_SPEED'] == -999, 'WIND_SPEED'] = windspeed_mean
 
         return df
-    
-def main():
-    date = datetime(2011, 1, 1)
-
-    s1 = Sensor('sensor1', 'Baguio')
-    s2 = Sensor('sensor2', 'Sangley Point')
-
-    for i in range(100):
-        s1.transmit_data_entry(date + timedelta(i), GATEWAY_RCVR_ADDR)
-
-    for i in range(100):
-        s2.transmit_data_entry(date + timedelta(i), GATEWAY_RCVR_ADDR)
-
-
-if __name__ == '__main__':
-    main()
