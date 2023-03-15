@@ -38,6 +38,7 @@ class SocketlessGateway:
             # TODO: Can we manage to use a ProcessPoolExecutor? An error was
             # encountered wherein the arguments passed to the executor.map
             # iterable must be pickled, but this class instance cannot be pickled.
+            # Related link: https://stackoverflow.com/questions/8804830/python-multiprocessing-picklingerror-cant-pickle-type-function
             res = list(map(self._process_data_entry, messages))
             print(self.date, res)
 
