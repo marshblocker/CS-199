@@ -1,0 +1,140 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "sensorId",
+				"type": "string"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "date",
+						"type": "string"
+					},
+					{
+						"internalType": "int256",
+						"name": "temp_max",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "temp_min",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "temp_mean",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "relative_humidity",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "wind_speed",
+						"type": "int256"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct SensorDataStorage.SensorData",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "storedSensorData",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_date",
+				"type": "string"
+			},
+			{
+				"internalType": "int256",
+				"name": "_temp_max",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_temp_min",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_temp_mean",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_relative_humidity",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_wind_speed",
+				"type": "int256"
+			},
+			{
+				"internalType": "string",
+				"name": "_sensorId",
+				"type": "string"
+			}
+		],
+		"name": "storeSensorData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "sensorData",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "date",
+				"type": "string"
+			},
+			{
+				"internalType": "int256",
+				"name": "temp_max",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "temp_min",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "temp_mean",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "relative_humidity",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "wind_speed",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

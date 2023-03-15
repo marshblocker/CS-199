@@ -6,6 +6,7 @@ GATEWAY_RCVR_ADDR = ("127.0.0.1", 5001)
 
 class SocketlessSensor:
     PAGASA_PATH = os.path.join(os.path.dirname(__file__), '..\\PAGASA')
+    PRECISION = 100       # This is needed since Ethereum does not have float type.
 
     def __init__(self, sensor_id: str, station: str) -> None:
         self.id = sensor_id
@@ -17,7 +18,7 @@ class SocketlessSensor:
             date: datetime) -> dict[str, (str | pd.Series | datetime) ]:
         data_entry: pd.Series = self.data.query(
             f'YEAR == {date.year} and MONTH == {date.month} and DAY == {date.day}'
-        ).iloc[0]
+        ).squeeze().astype(int)
         
         message = {
             'sender': self.id,
@@ -63,5 +64,12 @@ class SocketlessSensor:
         df.loc[df['TMEAN'] == -999, 'TMEAN'] = tmean_mean
         df.loc[df['RH'] == -999, 'RH'] = rh_mean
         df.loc[df['WIND_SPEED'] == -999, 'WIND_SPEED'] = windspeed_mean
+
+        # We multiply by self.PRECISION to be able to store float number in Ethereum.
+        df['TMAX'] *= self.PRECISION
+        df['TMIN'] *= self.PRECISION
+        df['TMEAN'] *= self.PRECISION
+        df['RH'] *= self.PRECISION
+        df['WIND_SPEED'] *= self.PRECISION
 
         return df

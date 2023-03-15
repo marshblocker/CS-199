@@ -1,1 +1,3 @@
 *.png
+geth/geth
+geth/keystore
