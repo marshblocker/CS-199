@@ -1,5 +1,5 @@
 import socket
-from sensor import Sensor
+from sensor import SocketlessSensor
 
 # Notes:
 
@@ -22,7 +22,7 @@ from sensor import Sensor
 # by doing this (assuming that the variable my_srp is an instance of the class SensorRetentionPolicy):
 # my_srp.message_from_gateway = "legit spike"
 
-class SRP_sensor(Sensor):
+class SRP_sensor(SocketlessSensor):
     def __init__(self,id,station):
         super().__init__(id,station)
         self.__consecutive_clean = 0
@@ -72,12 +72,12 @@ class SensorRetentionPolicy:
     def status(self,new_status):
         self.__status = new_status
 
-    def add_clean_sensor(self,SENSOR: Sensor):
+    def add_clean_sensor(self,SENSOR: SocketlessSensor):
         temp_sensor = SRP_sensor(SENSOR.id,SENSOR.station)
         self.__clean_sensors[SENSOR.id] = temp_sensor
         temp_sensor.isMalicious = False
 
-    def add_malicious_sensor(self,SENSOR: Sensor):
+    def add_malicious_sensor(self,SENSOR: SocketlessSensor):
         temp_sensor = SRP_sensor(SENSOR.id,SENSOR.station)
         self.__malicious_sensors[SENSOR.id] = temp_sensor
         temp_sensor.isMalicious = True
@@ -118,7 +118,7 @@ class SensorRetentionPolicy:
         else:
             for id in self.__malicious_sensors:
                 self.__malicious_sensors[id].trust_points -= 1
-            to_remove = filter(lambda x: x.trust_points == 0, self.__malicious_sensors)
+            to_remove = list(filter(lambda x: x.trust_points == 0, self.__malicious_sensors))
             # tells gateway to remove the sensors in the list called to_remove
             self.__message_to_gateway = ("remove_from_cluster",to_remove)
             return ("remove_from_cluster",to_remove)
