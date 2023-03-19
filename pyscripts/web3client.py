@@ -3,6 +3,7 @@ import os
 
 from web3 import Web3
 from web3.middleware.geth_poa import geth_poa_middleware
+from datetime import datetime
 
 
 class Web3Client:
@@ -17,24 +18,37 @@ class Web3Client:
             abi=contract_abi
         )
 
-    def store_data_to_blockchain(self, data) -> None:
-        date, temp_max, temp_min, temp_mean, rel_humidity, wind_speed, sensorId = data
+    def store_data_to_blockchain(self, sensor_ids, date, data) -> None:
+        for i in range(len(data)):
+            data[i] = list(map(lambda x: int(x), data[i]))
 
         tx_hash = self.contract \
             .functions \
-            .storeSensorData(
-                date, 
-                int(temp_max), 
-                int(temp_min), 
-                int(temp_mean), 
-                int(rel_humidity), 
-                int(wind_speed), 
-                sensorId
-            ) \
+            .storeSensorData(sensor_ids, data, date) \
             .transact()
         
         tx_receipt = self.web3.eth.wait_for_transaction_receipt(tx_hash)
-        print("Sent data: {}, block number: {}".format(data, tx_receipt['blockNumber']))
+        print("Date: {}, Sent data: {}, block number: {}".format(date, data, tx_receipt['blockNumber']))
+
+    def read_data_from_blockchain(self, month: int, year: int):
+        event_filter = self.contract \
+            .events \
+            .storedSensorData \
+            .createFilter(
+                fromBlock=1,
+                toBlock='latest'
+            )
+        
+        target_data = []
+        for event in event_filter.get_all_entries():
+            sensor_id = event.args.sensorId
+            date = datetime.strptime(event.args.date, "%m/%d/%Y")
+            data = event.args.data
+
+            if date.month == month and date.year == year:
+                target_data.append((sensor_id, data))
+
+        return target_data
 
     def _get_contract_ABI(self):
         file_path = os.path.join(
