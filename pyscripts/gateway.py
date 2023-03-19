@@ -40,10 +40,18 @@ class SocketlessGateway:
             messages = [
                 sensor.transmit_data_entry(self.date) for sensor in self.sensors
             ]
-
+   
             if self.date.year != self.start_date.year:
                 classification_res = self._classify_data(messages)
                 print(classification_res)
+                
+            # We need initial results of classifier for all the messages
+            # This is in relation to our pseudocode where we check if the length of the malicious array
+            # is already equal to the length of the clean array
+            if self.srp != None:
+                initial_classifier_results: dict[str, bool] = dict(zip([message['sender'] for message in messages],list(map(self._classify_data_entry,messages))))
+                self.srp.initial_classification_results = initial_classifier_results
+                self.srp.store_initial_results()
 
             self._store_data_to_blockchain(messages)
 
@@ -68,7 +76,39 @@ class SocketlessGateway:
 
         return classification_res
     
-    def _evaluate_sensor_by_SRP(self) -> bool:
+    def _evaluate_sensor_by_SRP(self,classification: bool,message: dict[str, str | pd.Series | datetime]) -> bool:
+        # self.srp.store_to_array(classification,message["sender"])
+        # Is _classify_data_entry going to return True if the data is invalid?
+        if classification == False:
+            self.srp.successful_send(message['sender'])
+            return True     
+        before_manual_investigation = self.srp.no_manual_investigation()
+        if before_manual_investigation == "START_MANUAL_INVESTIGATION":
+            manual_investigation_result = self._manual_investigation()
+            if manual_investigation_result == True:
+                # drop cached data
+                # restart model training
+                # gather 1 yr worth of clean data
+                pass
+            else:
+                # remove malicious sensors from the cluster
+                for sensor in self.sensors:
+                    if self.srp.initial_classification_results[sensor.id] == False:
+                        # remove from cluster
+                    else:
+                        # store cached data of this sensor into the blockchain
+                        pass
+        else:
+            for sensor in before_manual_investigation:
+                # remove this sensor because these are the ones whose trust points are already 0
+                pass
+        return True
+    
+    def _manual_investigation(self) -> bool:
+        # cache received data
+
+        # True for legitimate outlier event
+        # Otherwise, False
         return True
     
     def _store_data_to_blockchain(self, messages) -> bool:
