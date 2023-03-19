@@ -57,6 +57,7 @@ class SensorRetentionPolicy:
         self.__clean_sensors = dict()
         self.__message_to_gateway = ""
         self.__message_from_gateway = ""
+        self.__initial_classification_results: dict[str,bool] = dict()
     
     @property
     def K(self):
@@ -67,6 +68,23 @@ class SensorRetentionPolicy:
     @property
     def status(self):
         return self.__status
+    @property
+    def message_to_gateway(self):
+        return self.__message_to_gateway
+    @property
+    def message_from_gateway(self):
+        return self.__message_from_gateway
+    @property
+    def initial_classification_results(self):
+        return self.__initial_classification_results
+
+    @initial_classification_results.setter
+    def initial_classification_results(self,new_results):
+        self.__initial_classification_results = new_results
+
+    @message_from_gateway.setter
+    def message_from_gateway(self,new_message):
+        self.__message_from_gateway = new_message
 
     @status.setter
     def status(self,new_status):
@@ -100,21 +118,16 @@ class SensorRetentionPolicy:
         else:
             self.add_malicious_sensor(sensorID)
 
-    def proceed_to_investigation(self):
+    def store_initial_results(self):
+        for sensorID in self.__initial_classification_results:
+            self.store_to_array(self.__initial_classification_results[sensorID],sensorID)
+
+    def no_manual_investigation(self):
         if len(self.__malicious_sensors >= self.__theta):
             # announce manual investigation
             # tell gateway to cache upcoming sensor data
             self.__message_to_gateway = "START_MANUAL_INVESTIGATION"
-            self.__message_from_gateway = None # the value of this should be changed sa gateway.py
-            if self.__message_from_gateway == "legit spike":
-                # tell gateway to drop cached sensor data and restart model
-                self.__message_to_gateway = "restart model"
-                return "restart model"
-            elif self.__message_from_gateway == "legit malicious":
-                # tell gateway to remove malicious sensors from the cluster
-                # and store cached data of clean sensors
-                self.__message_to_gateway = ("remove then store",self.__malicious_sensors,self.__clean_sensors)
-                return ("remove then store",self.__malicious_sensors,self.__clean_sensors)
+            return self.__message_to_gateway
         else:
             for id in self.__malicious_sensors:
                 self.__malicious_sensors[id].trust_points -= 1
@@ -122,3 +135,10 @@ class SensorRetentionPolicy:
             # tells gateway to remove the sensors in the list called to_remove
             self.__message_to_gateway = ("remove_from_cluster",to_remove)
             return ("remove_from_cluster",to_remove)
+    def legit_invalid_sensors(self):
+        for id in self.__malicious_sensors:
+            self.__malicious_sensors[id].trust_points -= 1
+        to_remove = list(filter(lambda x: x.trust_points == 0, self.__malicious_sensors))
+        # tells gateway to remove the sensors in the list called to_remove
+        self.__message_to_gateway = ("remove_from_cluster",to_remove)
+        return ("remove_from_cluster",to_remove)
