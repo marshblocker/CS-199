@@ -9,12 +9,13 @@
 				"type": "string"
 			},
 			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "date",
+				"type": "string"
+			},
+			{
 				"components": [
-					{
-						"internalType": "string",
-						"name": "date",
-						"type": "string"
-					},
 					{
 						"internalType": "int256",
 						"name": "temp_max",
@@ -53,38 +54,45 @@
 	{
 		"inputs": [
 			{
+				"internalType": "string[]",
+				"name": "_sensorIds",
+				"type": "string[]"
+			},
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "temp_max",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "temp_min",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "temp_mean",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "relative_humidity",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "wind_speed",
+						"type": "int256"
+					}
+				],
+				"internalType": "struct SensorDataStorage.SensorData[]",
+				"name": "_sensorData",
+				"type": "tuple[]"
+			},
+			{
 				"internalType": "string",
 				"name": "_date",
-				"type": "string"
-			},
-			{
-				"internalType": "int256",
-				"name": "_temp_max",
-				"type": "int256"
-			},
-			{
-				"internalType": "int256",
-				"name": "_temp_min",
-				"type": "int256"
-			},
-			{
-				"internalType": "int256",
-				"name": "_temp_mean",
-				"type": "int256"
-			},
-			{
-				"internalType": "int256",
-				"name": "_relative_humidity",
-				"type": "int256"
-			},
-			{
-				"internalType": "int256",
-				"name": "_wind_speed",
-				"type": "int256"
-			},
-			{
-				"internalType": "string",
-				"name": "_sensorId",
 				"type": "string"
 			}
 		],
@@ -103,11 +111,6 @@
 		],
 		"name": "sensorData",
 		"outputs": [
-			{
-				"internalType": "string",
-				"name": "date",
-				"type": "string"
-			},
 			{
 				"internalType": "int256",
 				"name": "temp_max",

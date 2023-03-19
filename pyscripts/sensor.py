@@ -15,7 +15,7 @@ class SocketlessSensor:
 
     def transmit_data_entry(
             self,
-            date: datetime) -> dict[str, (str | pd.Series | datetime) ]:
+            date: datetime):
         data_entry: pd.Series = self.data.query(
             f'YEAR == {date.year} and MONTH == {date.month} and DAY == {date.day}'
         ).squeeze().astype(int)
@@ -64,12 +64,5 @@ class SocketlessSensor:
         df.loc[df['TMEAN'] == -999, 'TMEAN'] = tmean_mean
         df.loc[df['RH'] == -999, 'RH'] = rh_mean
         df.loc[df['WIND_SPEED'] == -999, 'WIND_SPEED'] = windspeed_mean
-
-        # We multiply by self.PRECISION to be able to store float number in Ethereum.
-        df['TMAX'] *= self.PRECISION
-        df['TMIN'] *= self.PRECISION
-        df['TMEAN'] *= self.PRECISION
-        df['RH'] *= self.PRECISION
-        df['WIND_SPEED'] *= self.PRECISION
 
         return df

@@ -2,18 +2,23 @@ from datetime import datetime, timedelta
 from typing import Optional
 import time
 import concurrent.futures
+import numpy as np
 import pandas as pd
 
 from srp import SensorRetentionPolicy
 from sensor import SocketlessSensor
 from web3client import Web3Client
+from classifier import Classifier
         
 
 class SocketlessGateway:
+    PRECISION = 100.0       # This is needed since Ethereum does not have float type.
+
     def __init__(
             self,
             gateway_id: str,
             srp: Optional[SensorRetentionPolicy],
+            classifier: Classifier,
             sensors: list[SocketlessSensor],
             web3: Web3Client,
             start_date: datetime,
@@ -21,9 +26,10 @@ class SocketlessGateway:
             send_interval: int) -> None:
         self.id = gateway_id
         self.srp = srp
-        self.models = []
+        self.classifier = classifier
         self.web3 = web3
         self.sensors = sensors
+        self.banned_sensors: list[str] = []
         self.start_date = start_date
         self.end_date = end_date
         self.date = start_date
@@ -34,6 +40,11 @@ class SocketlessGateway:
             messages = [
                 sensor.transmit_data_entry(self.date) for sensor in self.sensors
             ]
+   
+            if self.date.year != self.start_date.year:
+                classification_res = self._classify_data(messages)
+                print(classification_res)
+                
             # We need initial results of classifier for all the messages
             # This is in relation to our pseudocode where we check if the length of the malicious array
             # is already equal to the length of the clean array
@@ -41,38 +52,29 @@ class SocketlessGateway:
                 initial_classifier_results: dict[str, bool] = dict(zip([message['sender'] for message in messages],list(map(self._classify_data_entry,messages))))
                 self.srp.initial_classification_results = initial_classifier_results
                 self.srp.store_initial_results()
-            # TODO: Can we manage to use a ProcessPoolExecutor? An error was
-            # encountered wherein the arguments passed to the executor.map
-            # iterable must be pickled, but this class instance cannot be pickled.
-            res = list(map(self._process_data_entry, messages))
-        
-            # with concurrent.futures.ProcessPoolExecutor() as executor:
-            #     res = list(executor.map(self._process_data_entry, messages))
-            #     print(self.date, res)
+
+            self._store_data_to_blockchain(messages)
 
             self.date += timedelta(days=1)
-            time.sleep(self.send_interval)
 
-    def _manual_investigation(self) -> bool:
-        # cache received data
+            if self.date.day == 1 and self.date.month != 1:
+                self._train_classifier()
 
-        # True for legitimate outlier event
-        # Otherwise, False
-        return True
+    def _classify_data(self, messages) -> dict[str, tuple[int, int]]:
+        sensor_ids = [messages[i]['sender'] for i in range(len(messages))]
 
-    def _process_data_entry(
-            self, 
-            message: dict[str, str | pd.Series | datetime]) -> bool:
-        res = self._classify_data_entry(message)
-        res = self._evaluate_sensor_by_SRP(res)
-        res = self._store_data_entry_to_blockchain(message)
+        data = [messages[i]['data'] for i in range(len(messages))]
+        data = pd.DataFrame(data)
+        data = data[['TMAX', 'TMIN', 'TMEAN', 'RH', 'WIND_SPEED']].to_numpy()
 
-        return res
-    
-    def _classify_data_entry(
-            self, 
-            message: dict[str, str | pd.Series | datetime]) -> bool:
-        return True
+        label = np.ones(data.shape[0])
+        
+        res = self.classifier.classify(data, self.date.month)
+        res = [(res[i], label[i]) for i in range(len(res))]
+
+        classification_res = dict(zip(sensor_ids, res))
+
+        return classification_res
     
     def _evaluate_sensor_by_SRP(self,classification: bool,message: dict[str, str | pd.Series | datetime]) -> bool:
         # self.srp.store_to_array(classification,message["sender"])
@@ -102,27 +104,54 @@ class SocketlessGateway:
                 pass
         return True
     
-    def _store_data_entry_to_blockchain(
-            self, 
-            message: dict[str, str | pd.Series | datetime]) -> bool:
-        date = message['date_sent']
-        sensor_id = message['sender']
-        data = message['data']
+    def _manual_investigation(self) -> bool:
+        # cache received data
 
-        assert type(date) is datetime
-        assert type(sensor_id) is str
-        assert type(data) is pd.Series
-
-        date_stringified = date.strftime("%m/%d/%Y")
-
-        tmax = data['TMAX']
-        tmin = data['TMIN']
-        tmean = data['TMEAN']
-        rh = data['RH']
-        wind_speed = data['WIND_SPEED']
-
-        data_to_store = (date_stringified, tmax, tmin, tmean, rh, wind_speed, sensor_id)
-
-        self.web3.store_data_to_blockchain(data_to_store)
-        
+        # True for legitimate outlier event
+        # Otherwise, False
         return True
+    
+    def _store_data_to_blockchain(self, messages) -> bool:
+        sensor_ids = [messages[i]['sender'] for i in range(len(messages))]
+        date = messages[0]['date_sent'].strftime("%m/%d/%Y")
+
+        data = []
+        for i in range(len(messages)):
+            data_i = messages[i]['data']
+
+            tmax = data_i['TMAX']
+            tmin = data_i['TMIN']
+            tmean = data_i['TMEAN']
+            rh = data_i['RH']
+            wind_speed = data_i['WIND_SPEED']
+
+            # We multiply by self.PRECISION to be able to store float number in Ethereum.
+            tmax = int(tmax * self.PRECISION)
+            tmin = int(tmin * self.PRECISION)
+            tmean = int(tmean * self.PRECISION)
+            rh = int(rh * self.PRECISION)
+            wind_speed = int(wind_speed * self.PRECISION)
+
+            data.append((tmax, tmin, tmean, rh, wind_speed))
+
+        self.web3.store_data_to_blockchain(sensor_ids, date, data)    
+        return True
+    
+    def _train_classifier(self) -> None:
+        previous_month = self.date.month - 1
+        training_data = self.web3.read_data_from_blockchain(self.date.month-1, self.date.year)
+        # Remove all data entries from banned sensors and get only the data part.
+        training_data = list(
+            map(
+                lambda x: x[1],
+                filter(
+                    lambda x: x[0] not in self.banned_sensors, 
+                    training_data
+                )
+            )
+        )
+        training_data = np.array(training_data, dtype=float)
+        training_data /= self.PRECISION
+
+        self.classifier.train(training_data, previous_month)
+        print(self.classifier.models)
