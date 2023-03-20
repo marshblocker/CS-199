@@ -29,8 +29,11 @@ class Classifier:
         )
         print(cv_res['test_score'])
 
-        model = cv_res['estimator'][0]
-        self.models[month-1] = model
+        test_scores = list(cv_res['test_score'])
+        max_score_indx = test_scores.index(max(test_scores))
+        models = list(cv_res['estimator'])
+        best_model = models[max_score_indx]
+        self.models[month-1] = best_model
 
     def classify(self, data: np.ndarray, month: int) -> np.ndarray:
         model = self.models[month-1]

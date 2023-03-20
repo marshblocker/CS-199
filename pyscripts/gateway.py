@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta
 from typing import Optional
-import time
-import concurrent.futures
 import numpy as np
 import pandas as pd
 
@@ -34,31 +32,82 @@ class SocketlessGateway:
         self.end_date = end_date
         self.date = start_date
         self.send_interval = send_interval # in seconds.
+        self.first_batch_training_end_date = \
+            self._compute_first_batch_training_end_date()
+        
+        print('Training first batch of OCC models from {} to {}'.format(
+            self.start_date, self.first_batch_training_end_date
+        ))
 
     def run(self) -> None:
-        while self.date <= self.end_date:
+        while self.date <= self.end_date or len(self.sensors):
             messages = [
                 sensor.transmit_data_entry(self.date) for sensor in self.sensors
             ]
    
-            if self.date.year != self.start_date.year:
+            classification_res = {}
+            if self.date > self.first_batch_training_end_date:
                 classification_res = self._classify_data(messages)
-                print(classification_res)
-                
-            # We need initial results of classifier for all the messages
-            # This is in relation to our pseudocode where we check if the length of the malicious array
-            # is already equal to the length of the clean array
-            if self.srp != None:
-                initial_classifier_results: dict[str, bool] = dict(zip([message['sender'] for message in messages],list(map(self._classify_data_entry,messages))))
-                self.srp.initial_classification_results = initial_classifier_results
-                self.srp.store_initial_results()
+
+                if self.srp != None:
+                    removed_sensors, message_back = \
+                        self._evaluate_sensors(classification_res)
+                    
+                    print('Message by SRP: {}, removed sensors: {}'.format(message_back, removed_sensors))
+                    
+                    if message_back in ['Updated trust points', 'Hacked sensors']:
+                        self.banned_sensors += removed_sensors
+                        self.sensors = list(filter(
+                            lambda s: s.id not in removed_sensors, 
+                            self.sensors
+                        ))                        
+                    elif message_back == 'Retrain classifier from scratch':
+                        # Remove all trained models, update start_date and date to the
+                        # first day of the next month and first_batch_training_end_date
+                        # a year after that.
+                        self.classifier.models = [None for _ in range(12)]
+                        
+                        curr_month = self.date.month
+                        curr_year = self.date.year
+                        updated_curr_month = curr_month + 1 if curr_month != 12 else 1
+                        updated_curr_year = curr_year if curr_month != 12 else curr_year + 1
+                        self.start_date = datetime(updated_curr_year, updated_curr_month, 1)
+                        self.date = self.start_date
+                        self.first_batch_training_end_date = self._compute_first_batch_training_end_date()
+
+                        print('Retraining the models from {} to {}'.format(
+                            self.date, self.first_batch_training_end_date
+                        ))
+
+                        continue
+                else:
+                    malicious_sensors = []
+                    for sensor in classification_res:
+                        if classification_res[sensor][0] == -1:
+                            malicious_sensors.append(sensor)
+
+                    self.banned_sensors += malicious_sensors
+                    self.sensors = list(filter(
+                        lambda s: s.id not in malicious_sensors, 
+                        self.sensors
+                    ))     
+
+                    print("Removed sensors: {}".format(malicious_sensors))
+
+            messages = list(filter(
+                lambda x: x['sender'] not in self.banned_sensors, 
+                messages
+            ))
 
             self._store_data_to_blockchain(messages)
 
             self.date += timedelta(days=1)
 
-            if self.date.day == 1 and self.date.month != 1:
+            if self.date.day == 1 and self.date != self.start_date:
                 self._train_classifier()
+
+        if not len(self.sensors):
+            print('Ending program since there are no sensors left in the cluster.')
 
     def _classify_data(self, messages) -> dict[str, tuple[int, int]]:
         sensor_ids = [messages[i]['sender'] for i in range(len(messages))]
@@ -75,41 +124,6 @@ class SocketlessGateway:
         classification_res = dict(zip(sensor_ids, res))
 
         return classification_res
-    
-    def _evaluate_sensor_by_SRP(self,classification: bool,message: dict[str, str | pd.Series | datetime]) -> bool:
-        # self.srp.store_to_array(classification,message["sender"])
-        # Is _classify_data_entry going to return True if the data is invalid?
-        if classification == False:
-            self.srp.successful_send(message['sender'])
-            return True     
-        before_manual_investigation = self.srp.no_manual_investigation()
-        if before_manual_investigation == "START_MANUAL_INVESTIGATION":
-            manual_investigation_result = self._manual_investigation()
-            if manual_investigation_result == True:
-                # drop cached data
-                # restart model training
-                # gather 1 yr worth of clean data
-                pass
-            else:
-                # remove malicious sensors from the cluster
-                for sensor in self.sensors:
-                    if self.srp.initial_classification_results[sensor.id] == False:
-                        # remove from cluster
-                    else:
-                        # store cached data of this sensor into the blockchain
-                        pass
-        else:
-            for sensor in before_manual_investigation:
-                # remove this sensor because these are the ones whose trust points are already 0
-                pass
-        return True
-    
-    def _manual_investigation(self) -> bool:
-        # cache received data
-
-        # True for legitimate outlier event
-        # Otherwise, False
-        return True
     
     def _store_data_to_blockchain(self, messages) -> bool:
         sensor_ids = [messages[i]['sender'] for i in range(len(messages))]
@@ -138,8 +152,10 @@ class SocketlessGateway:
         return True
     
     def _train_classifier(self) -> None:
-        previous_month = self.date.month - 1
-        training_data = self.web3.read_data_from_blockchain(self.date.month-1, self.date.year)
+        previous_month = 12 if self.date.month == 1 else self.date.month - 1
+        year = self.date.year - 1 if self.date.month == 1 else self.date.year
+        training_data = self.web3.read_data_from_blockchain(previous_month, year)
+        print('training_data: {}'.format(training_data))
         # Remove all data entries from banned sensors and get only the data part.
         training_data = list(
             map(
@@ -155,3 +171,25 @@ class SocketlessGateway:
 
         self.classifier.train(training_data, previous_month)
         print(self.classifier.models)
+
+    def _evaluate_sensors(self, classification_res):
+        assert self.srp is not None
+
+        class_res = {}
+        for sensor_id in classification_res:
+            class_res[sensor_id] = True \
+                if classification_res[sensor_id][0] == -1 else False
+
+        return self.srp.evaluate_sensors(class_res, self.date)
+    
+    def _compute_first_batch_training_end_date(self) -> datetime:
+        # This returns the first day of the month a year after the start of
+        # first batch training.
+        date_after = self.start_date + timedelta(days=365)
+        month = date_after.month
+        year = date_after.year
+        end_date = datetime(year, month, 1) - timedelta(days=1)
+
+        return end_date
+
+        
