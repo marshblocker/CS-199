@@ -1,0 +1,14 @@
+geth --datadir geth `
+     --nat extip:192.168.5.220 `
+     --networkid 123 `
+     --netrestrict 192.168.5.220/24 `
+     --port 30303 `
+     --authrpc.port 8551 `
+     --ipcpath node1.ipc `
+     --http `
+     --http.port 8545 `
+     --http.api personal,eth,net,web3,admin,txpool `
+     --allow-insecure-unlock `
+     --mine `
+     --miner.gasprice 0 `
+     --unlock 4F661cE4e184d4D04D6d0911243A6cB6689651AE
