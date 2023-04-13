@@ -1,12 +1,14 @@
-from datetime import datetime
 import os
+from datetime import datetime
+
 import pandas as pd
 
-GATEWAY_RCVR_ADDR = ("127.0.0.1", 5001)
 
 class Sensor:
-    PAGASA_PATH = os.path.join(os.path.dirname(__file__), '..\\PAGASA')
-    PRECISION = 100       # This is needed since Ethereum does not have float type.
+    PAGASA_PATH = os.path.join(os.path.dirname(
+        __file__), '..', '..', '..', 'PAGASA')
+    # This is needed since Ethereum does not have float type.
+    PRECISION = 100
 
     def __init__(self, sensor_id: str, station: str) -> None:
         self.id = sensor_id
@@ -19,7 +21,7 @@ class Sensor:
         data_entry: pd.Series = self.data.query(
             f'YEAR == {date.year} and MONTH == {date.month} and DAY == {date.day}'
         ).squeeze().astype(int)
-        
+
         message = {
             'sender': self.id,
             'data': data_entry,
@@ -27,7 +29,6 @@ class Sensor:
         }
 
         return message
-
 
     def _get_data(self) -> pd.DataFrame:
         df = pd.read_csv(os.path.join(self.PAGASA_PATH, self.station + '.csv'))
@@ -37,7 +38,8 @@ class Sensor:
         df.sort_values(by=['YEAR', 'MONTH', 'DAY'])
 
         # Discard RAINFALL and WIND_DIRECTION feature of the dataset.
-        df = df[['YEAR', 'MONTH', 'DAY', 'TMAX', 'TMIN', 'TMEAN', 'RH', 'WIND_SPEED']]
+        df = df[['YEAR', 'MONTH', 'DAY', 'TMAX',
+                 'TMIN', 'TMEAN', 'RH', 'WIND_SPEED']]
 
         max_invalid_entries = 90
 

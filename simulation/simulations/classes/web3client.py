@@ -1,9 +1,9 @@
 import json
 import os
+from datetime import datetime
 
 from web3 import Web3
 from web3.middleware.geth_poa import geth_poa_middleware
-from datetime import datetime
 
 
 class Web3Client:
@@ -26,9 +26,10 @@ class Web3Client:
             .functions \
             .storeSensorData(sensor_ids, data, date) \
             .transact()
-        
+
         tx_receipt = self.web3.eth.wait_for_transaction_receipt(tx_hash)
-        print("Date: {}, Sent data: {}, block number: {}".format(date, data, tx_receipt['blockNumber']))
+        print("Date: {}, Sent data: {}, block number: {}".format(
+            date, data, tx_receipt['blockNumber']))
 
     def read_data_from_blockchain(self, month: int, year: int):
         event_filter = self.contract \
@@ -38,7 +39,7 @@ class Web3Client:
                 fromBlock=1,
                 toBlock='latest'
             )
-        
+
         target_data = []
         for event in event_filter.get_all_entries():
             sensor_id = event.args.sensorId
@@ -52,7 +53,7 @@ class Web3Client:
 
     def _get_contract_ABI(self):
         file_path = os.path.join(
-            os.path.abspath(os.path.dirname(__file__)), 
+            os.path.abspath(os.path.dirname(__file__)),
             'contract-abi/SensorDataStorage.json'
         )
 
@@ -61,7 +62,8 @@ class Web3Client:
             return device_manager_contract_ABI
 
     def _init_web3(self, web3_http_port):
-        w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:{}'.format(web3_http_port)))
+        w3 = Web3(Web3.HTTPProvider(
+            'http://127.0.0.1:{}'.format(web3_http_port)))
         assert w3.isConnected(), "w3 is not connected"
 
         # See https://web3py.readthedocs.io/en/stable/middleware.html#proof-of-authority

@@ -1,13 +1,13 @@
-from sklearn.svm import OneClassSVM
-from sklearn.model_selection import KFold, cross_validate
-
 import numpy as np
+from sklearn.model_selection import KFold, cross_validate
+from sklearn.svm import OneClassSVM
+
 
 class Classifier:
     def __init__(self):
         self.models: list[OneClassSVM | None] = [None for _ in range(12)]
         self.nu = 0.06
-        self.K = 10 # number of folds in K-cross validation
+        self.K = 10  # number of folds in K-cross validation
 
     def train(self, data: np.ndarray, month: int):
         X_train = data

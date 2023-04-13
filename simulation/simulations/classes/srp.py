@@ -42,25 +42,27 @@ class SensorRetentionPolicy:
             return self._do_manual_investigation()
         else:
             return self._update_trust_points(classification_res)
-        
+
     def _do_manual_investigation(self):
         removed_sensors = []
         print('Commence manual investigation...')
-        investigation_res = '' 
-        
+        investigation_res = ''
+
         while True:
-            investigation_res = input("Result of manual investigation ('s' for legitimate spike/dip in sensor readings and 'h' for hacking of sensors): ")
+            investigation_res = input(
+                "Result of manual investigation ('s' for legitimate spike/dip in sensor readings and 'h' for hacking of sensors): ")
             if investigation_res.lower() in ['s', 'h']:
                 investigation_res = investigation_res.lower()
                 break
 
-        if investigation_res  == 's':
+        if investigation_res == 's':
             message_back = 'Retrain classifier from scratch'
             return (removed_sensors, message_back)
         elif investigation_res == 'h':
             invalid_input = True
             while invalid_input:
-                hacked_sensors = input('List the ids of all the hacked sensors (format: <sensor_id_1>,<sensorid2>,...): ')
+                hacked_sensors = input(
+                    'List the ids of all the hacked sensors (format: <sensor_id_1>,<sensorid2>,...): ')
                 hacked_sensors = hacked_sensors.split(',')
 
                 sensors = list(self.sensors_stats.keys())
@@ -73,8 +75,9 @@ class SensorRetentionPolicy:
                         self.unregister_sensor(sensor_id)
                         removed_sensors.append(sensor_id)
 
-                        print("{}: '{}' is removed from sensors since it was hacked!".format(self.curr_date, sensor_id))
-                    
+                        print("{}: '{}' is removed from sensors since it was hacked!".format(
+                            self.curr_date, sensor_id))
+
                     for sensor_id in self.sensors_stats:
                         self._is_not_malicious_action(sensor_id)
 
@@ -85,14 +88,14 @@ class SensorRetentionPolicy:
     def _update_trust_points(self, classification_res):
         removed_sensors = []
         for sensor_id, is_malicious in classification_res.items():
-                if is_malicious:
-                    self._is_malicious_action(sensor_id, removed_sensors)
-                else:
-                    self._is_not_malicious_action(sensor_id)
+            if is_malicious:
+                self._is_malicious_action(sensor_id, removed_sensors)
+            else:
+                self._is_not_malicious_action(sensor_id)
 
         message_back = 'Updated trust points'
         return (removed_sensors, message_back)
-    
+
     def _is_malicious_action(self, sensor_id, removed_sensors):
         self.sensors_stats[sensor_id]['consecutive_clean'] = 0
         self.sensors_stats[sensor_id]['trust_points'] -= 1
@@ -103,14 +106,15 @@ class SensorRetentionPolicy:
             self.K -= 1
             self.theta = self.K
 
-            print("{}: '{}' is removed from the cluster since its trust points have reached 0!".format(self.curr_date, sensor_id))
-    
+            print("{}: '{}' is removed from the cluster since its trust points have reached 0!".format(
+                self.curr_date, sensor_id))
+
     def _is_not_malicious_action(self, sensor_id):
         self.sensors_stats[sensor_id]['consecutive_clean'] += 1
-                    
+
         if self.sensors_stats[sensor_id]['consecutive_clean'] == self.m:
             self.sensors_stats[sensor_id]['consecutive_clean'] = 0
             self.sensors_stats[sensor_id]['trust_points'] = min(
-                self.sensors_stats[sensor_id]['trust_points'] + 1, 
+                self.sensors_stats[sensor_id]['trust_points'] + 1,
                 self.max_trust_points
             )
