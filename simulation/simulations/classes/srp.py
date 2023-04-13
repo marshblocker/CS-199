@@ -1,14 +1,16 @@
 from datetime import datetime
 
+MAX_TRUST_POINTS = 30
+M = 5
 
 class SensorRetentionPolicy:
-    def __init__(self, m: int, initial_trust_points: int, max_trust_points: int):
+    def __init__(self, initial_trust_points: int):
         self.K = 0      # number of sensors in the cluster
         self.theta = self.K      # threshold for manual investigation, dependent on K
-        self.m = m      # number of consecutive clean data entries to increment a sensor's trust points
+        self.m = M      # number of consecutive clean data entries to increment a sensor's trust points
         self.sensors_stats = {}
         self.initial_trust_points = initial_trust_points
-        self.max_trust_points = max_trust_points
+        self.max_trust_points = MAX_TRUST_POINTS
 
         # TODO: Implement this.
         # number of times theta condition must be met during the last 10 evaluations
