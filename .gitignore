@@ -5,3 +5,4 @@ simulation/geth/geth
 simulation/geth/keystore
 simulation/geth/account.txt
 simulation/geth/genesis.json
+simulation/simulations/**/__pycache__
