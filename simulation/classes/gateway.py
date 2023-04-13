@@ -4,12 +4,12 @@ import numpy as np
 import pandas as pd
 
 from srp import SensorRetentionPolicy
-from sensor import SocketlessSensor
+from sensor import Sensor
 from web3client import Web3Client
 from classifier import Classifier
         
 
-class SocketlessGateway:
+class Gateway:
     PRECISION = 100.0       # This is needed since Ethereum does not have float type.
 
     def __init__(
@@ -17,7 +17,7 @@ class SocketlessGateway:
             gateway_id: str,
             srp: Optional[SensorRetentionPolicy],
             classifier: Classifier,
-            sensors: list[SocketlessSensor],
+            sensors: list[Sensor],
             web3: Web3Client,
             start_date: datetime,
             end_date: datetime,

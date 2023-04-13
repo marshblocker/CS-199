@@ -4,7 +4,7 @@ import pandas as pd
 
 GATEWAY_RCVR_ADDR = ("127.0.0.1", 5001)
 
-class SocketlessSensor:
+class Sensor:
     PAGASA_PATH = os.path.join(os.path.dirname(__file__), '..\\PAGASA')
     PRECISION = 100       # This is needed since Ethereum does not have float type.
 
