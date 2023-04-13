@@ -1,14 +1,12 @@
 current_dir=${PWD##*/}
 
-if [ $current_dir != "simulation" ]; then
+if [ "$current_dir" != "simulation" ]; then
      echo "Error: Current directory must be simulation before running this script."
      exit 1
 fi
 
 ip_addr=192.168.5.220
 http_port=8545
-
-# Pre-simulation stage #########################################################
 
 echo "------------------------------PRE-SIMULATION------------------------------"
 
