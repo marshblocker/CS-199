@@ -41,7 +41,37 @@ class Gateway:
         ))
 
     def run(self) -> None:
-        while self.date <= self.end_date or len(self.sensors):
+        # Algorithm:
+        #   - While end date is not reached and there are still sensors left:
+        #       - Get data entry for this day
+        #       - If the first batch training period is done:
+        #           - Classify data entries
+        #           - If the MNDP have an SRP:
+        #               - Evaluate the data entries classification by the SRP
+        #               - If the SRP's evaluation is either 'Updated trust points' or 'Hacked sensors':
+        #                   - Put banned sensors to list of banned sensors
+        #                   - Remove the banned sensors in the list of sensors
+        #               - Else if the SRP's evaluation is 'Legitimate data shift':
+        #                   - Remove all trained models
+        #                   - Change start date and current date to the first day of the next month
+        #                   - Change first batch training end date to be 1 year after start date.
+        #                   - Continue
+        #           - Else:
+        #               - Put all sensors that are classified malicious to list of banned sensors
+        #               - Remove the banned sensors in the list of sensors
+        # 
+        #       - Remove data entries that are from banned sensors
+        #       - Store data entries in the blockchain
+        #       - Increment current date by 1
+        #       - If its the first day of the month and it is not the start date:
+        #           - Train classifier from previous month data
+        # 
+        #   - If there are no sensors left:
+        #       - Say that the program ends due to having no sensors left
+        #   - Else:
+        #       - Say that the program ends due to reaching end date
+        #   END PROGRAM
+        while self.date <= self.end_date and len(self.sensors):
             messages = [
                 sensor.transmit_data_entry(self.date) for sensor in self.sensors
             ]
