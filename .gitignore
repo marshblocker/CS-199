@@ -1,3 +1,6 @@
 *.png
 geth/geth
 geth/keystore
+simulation/geth/geth
+simulation/geth/keystore
+simulation/geth/account.txt
