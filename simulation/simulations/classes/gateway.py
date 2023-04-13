@@ -21,8 +21,7 @@ class Gateway:
             sensors: list[Sensor],
             web3: Web3Client,
             start_date: datetime,
-            end_date: datetime,
-            send_interval: int) -> None:
+            end_date: datetime) -> None:
         self.id = gateway_id
         self.srp = srp
         self.classifier = classifier
@@ -32,7 +31,6 @@ class Gateway:
         self.start_date = start_date
         self.end_date = end_date
         self.date = start_date
-        self.send_interval = send_interval  # in seconds.
         self.first_batch_training_end_date = \
             self._compute_first_batch_training_end_date()
 
