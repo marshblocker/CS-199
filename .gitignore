@@ -4,3 +4,4 @@ geth/keystore
 simulation/geth/geth
 simulation/geth/keystore
 simulation/geth/account.txt
+simulation/geth/genesis.json
