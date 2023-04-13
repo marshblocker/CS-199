@@ -1,7 +1,7 @@
 current_dir=${PWD##*/}
 
 if [ "$current_dir" != "simulation" ]; then
-     echo "Error: Current directory must be simulation before running this script."
+     echo "Error: Current directory must be simulation before running this script!"
      exit 1
 fi
 
@@ -49,6 +49,22 @@ echo "[PRE-SIMULATION] Finished deploying contract into the blockchain."
 
 echo "------------------------------SIMULATION----------------------------------"
 
+sys_type="$1"
+
+if [ "$sys_type" == "with-srp" ]; then
+     itp="$2"
+     echo "[Simulation] Running test suite for $sys_type-itp-$itp system variation..."
+     python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp > "./simulations/logs/$sys_type-$itp.txt"
+elif [ "$sys_type" == "without-srp" ]; then
+     echo "[Simulation] Running test suite for $sys_type system variation..."
+     python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address > "./simulations/logs/$sys_type.txt"
+elif [ "$sys_type" == "without-mndp" ]; then
+     echo "[Simulation] Running test suite for $sys_type system variation..."
+     python3.10 ./simulations/run-test-suite.py $sys_type > "./simulations/logs/$sys_type.txt"
+else
+     echo "Error: Invalid system type!"
+     exit 1
+fi
 
 echo "-----------------------------POST-SIMULATION------------------------------"
 
