@@ -61,15 +61,20 @@ def run_without_mndp(test_suite):
     pass
 
 
-def get_gateway(http_port: int, contract_addr: str, itp: int | None, test_suite):
+def get_gateway(http_port: int, contract_addr: str, itp: int | None):
+    sensor1 = Sensor('Port Area Sensor', 'Port Area')
+    sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
+    sensor3 = Sensor('Science Garden Sensor', 'Science Garden')
+    sensors = [sensor1, sensor2, sensor3]
+
     classifier = Classifier()
-    sensors = [
-        Sensor('Port Area Sensor', 'Port Area'),
-        Sensor('Sangley Point Sensor', 'Sangley Point'),
-        Sensor('Science Garden Sensor', 'Science Garden')
-    ]
     web3 = Web3Client(http_port, contract_addr)
     srp = None if itp is None else SensorRetentionPolicy(itp)
+
+    if type(srp) is SensorRetentionPolicy:
+        srp.register_sensor(sensor1.id)
+        srp.register_sensor(sensor2.id)
+        srp.register_sensor(sensor3.id)
 
     gateway = Gateway('Metro Manila Cluster', srp, classifier,
                       sensors, web3, START_DATE, END_DATE)
