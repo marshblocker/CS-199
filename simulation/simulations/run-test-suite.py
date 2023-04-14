@@ -1,4 +1,4 @@
-# Run test suite for system without SRP.
+# Run test suite
 
 import json
 import os
@@ -8,13 +8,13 @@ from sys import argv
 from classes.classifier import Classifier
 from classes.gateway import Gateway
 from classes.sensor import Sensor
-from classes.web3client import Web3Client
 from classes.srp import SensorRetentionPolicy
+from classes.web3client import Web3Client
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 TEST_CASES = 100
 START_DATE = datetime(2011, 1, 1)
-END_DATE = datetime(2021, 12, 31)
+END_DATE = datetime(2013, 12, 31)
 
 
 def main():
@@ -26,38 +26,48 @@ def main():
             contract_addr = argv[3]
             itp = int(argv[4])
 
-            run_with_srp(http_port, contract_addr, itp, test_suite)
-        
+            i = str(argv[5])
+            test_case = test_suite[i]
+
+            run_with_srp(http_port, contract_addr, itp, test_case)
+
         case 'without-srp':
             http_port = int(argv[2])
             contract_addr = argv[3]
 
-            run_without_srp(http_port, contract_addr, test_suite)
+            i = str(argv[4])
+            test_case = test_suite[i]
+
+            run_without_srp(http_port, contract_addr, test_case)
 
         case 'without-mndp':
-            run_without_mndp(test_suite)
+            i = str(argv[2])
+            test_case = test_suite[i]
+
+            run_without_mndp(test_case)
+
 
 def get_test_suite():
     test_suite_path = os.path.join(DIR_PATH, '..', 'test-suite.json')
     with open(test_suite_path, 'r') as f:
         return json.loads(f.read())
-    
-
-def run_with_srp(http_port: int, contract_addr: str, itp: int, test_suite):
-    for i in range(1, TEST_CASES + 1):
-        test_case = test_suite[str(i)]
-        gateway = get_gateway(http_port, contract_addr, itp, test_suite)
-        gateway.run()
 
 
-def run_without_srp(http_port: int, contract_addr: str, test_suite):
-    for i in range(1, TEST_CASES + 1):
-        test_case = test_suite[str(i)]
-        gateway = get_gateway(http_port, contract_addr, None, test_suite)
-        gateway.run()
+def get_malicious_data():
+    pass
 
 
-def run_without_mndp(test_suite):
+def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case):
+    gateway = get_gateway(http_port, contract_addr, itp)
+    gateway.run(test_case)
+
+
+def run_without_srp(http_port: int, contract_addr: str, test_case):
+    gateway = get_gateway(http_port, contract_addr, None)
+    gateway.run(test_case)
+
+
+def run_without_mndp(test_case):
     pass
 
 
