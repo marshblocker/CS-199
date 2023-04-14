@@ -44,7 +44,7 @@ class Gateway:
             self.inject_malicious_data(messages, test_case)
 
             if self.date > self.first_batch_training_end_date:
-                classification_result = self.classify_data(messages)
+                classification_result = self.classify_data(messages, test_case)
                 print('classification result: {}'.format(classification_result))
 
                 if self.srp is not None:
@@ -113,15 +113,18 @@ class Gateway:
                         break
 
     # Get data_entries in messages and classify them. Returns { id: (result, label), ... }
-    def classify_data(self, messages):
+    def classify_data(self, messages, test_case):
         sensor_ids = [message['sender'] for message in messages]
 
         data_entries = [message['data'] for message in messages]
         data_entries = pd.DataFrame(data_entries)
         data_entries = data_entries[['TMAX', 'TMIN',
                                      'TMEAN', 'RH', 'WIND_SPEED']].to_numpy()
-
+        
         label = np.full(data_entries.shape[0], 1)
+        for i, sensor_id in enumerate(sensor_ids):
+            if self.sensor_is_malicious_today(sensor_id, test_case):
+                label[i] = -1
 
         classification_result = self.classifier.classify(
             data_entries, self.date.month)
