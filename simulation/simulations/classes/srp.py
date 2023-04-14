@@ -99,7 +99,7 @@ class SensorRetentionPolicy:
             result = classification_result[sensor_id][0]
             label = classification_result[sensor_id][1]
             if result and label:
-                hacked_sensors[sensor_id]
+                hacked_sensors.append(sensor_id)
 
         return hacked_sensors
 

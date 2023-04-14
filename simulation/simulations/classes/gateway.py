@@ -86,7 +86,7 @@ class Gateway:
 
     def sensor_is_malicious_today(self, sensor_id, test_case):
         if test_case[sensor_id]['atk_date'] != 'None':
-            atk_drtn = int(test_case[sensor_id['atk_drtn']])
+            atk_drtn = int(test_case[sensor_id]['atk_drtn'])
             atk_date_start = datetime.strptime(
                 test_case[sensor_id]['atk_date'], '%b %d, %Y')
             atk_date_end = atk_date_start + timedelta(days=atk_drtn-1)

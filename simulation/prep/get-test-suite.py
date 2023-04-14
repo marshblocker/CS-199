@@ -21,15 +21,15 @@ with open(SRC, 'r') as f_src:
         
         res = res.groupdict()
         test_cases[res['test_case']] = {
-            'port_area': {
+            'Port Area Sensor': {
                 'atk_date': res['port_atk_date'],
                 'atk_drtn': res['port_atk_drtn']
             },
-            'sangley_point': {
+            'Sangley Point Sensor': {
                 'atk_date': res['sley_atk_date'],
                 'atk_drtn': res['sley_atk_drtn']
             },
-            'science_garden': {
+            'Science Garden Sensor': {
                 'atk_date': res['scig_atk_date'],
                 'atk_drtn': res['scig_atk_drtn']
             }
