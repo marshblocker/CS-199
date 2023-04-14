@@ -56,15 +56,15 @@ do
      if [ "$sys_type" == "with-srp" ]; then
           itp="$4"
           echo "[Test Case $i] Running test suite for $sys_type-itp-$itp system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $i > "./simulations/logs/$sys_type-$itp.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $i > "./simulations/logs/$sys_type-$itp-logs.txt"
 
      elif [ "$sys_type" == "without-srp" ]; then
           echo "[Test Case $i] Running test suite for $sys_type system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $i > "./simulations/logs/$sys_type.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $i > "./simulations/logs/$sys_type-logs.txt"
 
      elif [ "$sys_type" == "without-mndp" ]; then
           echo "[Test Case $i] Running test suite for $sys_type system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $i > "./simulations/logs/$sys_type.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $i > "./simulations/logs/$sys_type-logs.txt"
 
      else
           echo "Error: Invalid system type!"
