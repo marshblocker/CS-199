@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from calendar import monthrange
 from typing import Optional
 
 import numpy as np
@@ -201,9 +202,9 @@ class Gateway:
     def compute_first_batch_training_end_date(self) -> datetime:
         # This returns the first day of the month a year after the start of
         # first batch training.
-        date_after = self.start_date + timedelta(days=365)
-        month = date_after.month
-        year = date_after.year
-        end_date = datetime(year, month, 1) - timedelta(days=1)
+        year = self.date.year if self.date.month == 1 else self.date.year + 1
+        month = 12 if self.date.month == 1 else self.date.month - 1
+        day = monthrange(year, month)[1]
+        end_date = datetime(year, month, day)
 
         return end_date
