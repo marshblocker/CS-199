@@ -14,7 +14,7 @@ from classes.web3client import Web3Client
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 TEST_CASES = 100
 START_DATE = datetime(2011, 1, 1)
-END_DATE = datetime(2013, 12, 31)
+END_DATE = datetime(2021, 12, 31)
 
 
 def main():

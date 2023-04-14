@@ -1,6 +1,6 @@
-# Usage: ./run.sh <ip_addr> <http_port> <sys_type> [<pid>]
+# Usage: ./run.sh <ip_addr> <http_port> <sys_type> [<itp>]
 # 
-# Note: only include pid when sys_type == 'with-srp'
+# Note: only include itp when sys_type == 'with-srp'
 
 current_dir=${PWD##*/}
 
@@ -12,7 +12,7 @@ fi
 ip_addr="$1"
 http_port="$2"
 
-for i in {1..100}
+for i in {32..32}
 do
      rm -rf ./geth/keystore ./geth/geth ./geth/genesis.json &&
      echo "[Test Case $i] Finished removing geth artifacts."
@@ -55,15 +55,16 @@ do
 
      if [ "$sys_type" == "with-srp" ]; then
           itp="$4"
-          echo "[Test Case $i] Running test suite for $sys_type-itp-$itp system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $i > "./simulations/logs/$sys_type-$itp-logs.txt"
+          echo "[Test Case $i] Running test suite for '$sys_type-itp-$itp' system variation..."
+          # python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $i > "./simulations/logs/$sys_type-$itp-logs.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $i
 
      elif [ "$sys_type" == "without-srp" ]; then
-          echo "[Test Case $i] Running test suite for $sys_type system variation..."
+          echo "[Test Case $i] Running test suite for '$sys_type' system variation..."
           python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $i > "./simulations/logs/$sys_type-logs.txt"
 
      elif [ "$sys_type" == "without-mndp" ]; then
-          echo "[Test Case $i] Running test suite for $sys_type system variation..."
+          echo "[Test Case $i] Running test suite for '$sys_type' system variation..."
           python3.10 ./simulations/run-test-suite.py $sys_type $i > "./simulations/logs/$sys_type-logs.txt"
 
      else

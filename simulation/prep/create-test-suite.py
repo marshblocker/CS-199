@@ -2,7 +2,6 @@
 
 from datetime import datetime, timedelta
 from random import randint, sample
-import pprint
 
 START_DATE = datetime(2012, 1, 1)
 END_DATE = datetime(2021, 12, 31)
