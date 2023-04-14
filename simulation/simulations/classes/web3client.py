@@ -14,9 +14,7 @@ class Web3Client:
         contract_abi = self._get_contract_ABI()
         self.web3 = self._init_web3(web3_http_port)
         self.contract = self.web3.eth.contract(
-            address=contract_addr,
-            abi=contract_abi
-        )
+            address=contract_addr, abi=contract_abi)
 
     def store_data_to_blockchain(self, sensor_ids, date, data) -> None:
         for i in range(len(data)):
@@ -53,8 +51,8 @@ class Web3Client:
 
     def _get_contract_ABI(self):
         file_path = os.path.join(
-            os.path.abspath(os.path.dirname(__file__)),
-            'contract-abi/SensorDataStorage.json'
+            os.path.dirname(os.path.realpath(__file__)),
+            '..', '..', 'geth', 'contracts', 'SensorDataStorageABI.json'
         )
 
         with open(file_path, "r") as f:
