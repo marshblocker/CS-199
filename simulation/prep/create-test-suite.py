@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from random import randint, sample
 import pprint
 
-START_DATE = datetime(2011, 1, 1)
+START_DATE = datetime(2012, 1, 1)
 END_DATE = datetime(2021, 12, 31)
 TOTAL_DAYS = (END_DATE - START_DATE).days + 1
 

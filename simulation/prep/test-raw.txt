@@ -8,93 +8,93 @@
 8 & None & None & None & None & None & None
 9 & None & None & None & None & None & None
 10 & None & None & None & None & None & None
-11 & Oct 05, 2019 & 20 & None & None & None & None
-12 & Oct 19, 2012 & 2614 & None & None & None & None
-13 & None & None & Nov 04, 2015 & 392 & None & None
-14 & None & None & None & None & Jul 20, 2014 & 183
-15 & May 31, 2019 & 239 & None & None & None & None
-16 & Mar 22, 2015 & 925 & None & None & None & None
-17 & None & None & May 26, 2011 & 3062 & None & None
-18 & None & None & None & None & Feb 18, 2021 & 217
-19 & May 03, 2011 & 2082 & None & None & None & None
-20 & None & None & Mar 13, 2021 & 233 & None & None
-21 & None & None & Mar 28, 2019 & 845 & None & None
-22 & None & None & None & None & Apr 14, 2011 & 903
-23 & None & None & Jun 11, 2020 & 211 & None & None
-24 & Sep 05, 2015 & 1277 & None & None & None & None
-25 & Jun 03, 2018 & 490 & None & None & None & None
-26 & None & None & Aug 01, 2015 & 1165 & None & None
-27 & None & None & Jan 27, 2019 & 1032 & None & None
-28 & Mar 08, 2013 & 1882 & None & None & None & None
-29 & May 27, 2012 & 3221 & None & None & None & None
-30 & None & None & None & None & Apr 26, 2016 & 1044
-31 & None & None & None & None & Jun 03, 2018 & 1004
-32 & Mar 06, 2013 & 1913 & None & None & None & None
-33 & Sep 01, 2016 & 1350 & None & None & None & None
-34 & None & None & Nov 17, 2011 & 415 & None & None
-35 & None & None & Sep 05, 2020 & 321 & None & None
-36 & None & None & None & None & Jun 13, 2021 & 74
-37 & None & None & Feb 27, 2012 & 2379 & None & None
-38 & None & None & None & None & May 07, 2019 & 21
-39 & None & None & Nov 05, 2021 & 51 & None & None
-40 & None & None & Dec 18, 2011 & 1477 & None & None
-41 & Aug 15, 2015 & 558 & Jan 13, 2020 & 513 & None & None
-42 & Aug 15, 2011 & 726 & Nov 07, 2018 & 608 & None & None
-43 & Feb 02, 2021 & 247 & None & None & Jan 19, 2018 & 66
-44 & May 23, 2020 & 338 & None & None & Aug 08, 2020 & 165
-45 & Sep 10, 2021 & 105 & None & None & Jun 23, 2019 & 200
-46 & None & None & Jan 01, 2014 & 2020 & Jun 03, 2018 & 389
-47 & Apr 15, 2018 & 1234 & None & None & Oct 16, 2012 & 2996
-48 & May 23, 2017 & 800 & None & None & Dec 23, 2014 & 41
-49 & Jun 23, 2019 & 554 & None & None & Dec 31, 2014 & 2386
-50 & May 28, 2013 & 1189 & None & None & Feb 18, 2021 & 36
-51 & None & None & Jun 18, 2013 & 137 & Dec 30, 2016 & 1033
-52 & Aug 27, 2016 & 826 & Nov 07, 2017 & 1350 & None & None
-53 & Apr 13, 2015 & 2358 & Jan 23, 2016 & 696 & None & None
-54 & Sep 21, 2017 & 740 & None & None & May 02, 2012 & 2348
-55 & Sep 29, 2013 & 1674 & Mar 22, 2015 & 2475 & None & None
-56 & Jan 29, 2013 & 916 & Jun 27, 2019 & 855 & None & None
-57 & None & None & Dec 14, 2015 & 55 & Jan 15, 2014 & 400
-58 & Dec 12, 2018 & 533 & May 26, 2019 & 620 & None & None
-59 & Oct 15, 2012 & 2756 & Sep 04, 2014 & 660 & None & None
-60 & Jul 23, 2018 & 884 & None & None & Jul 15, 2017 & 8
-61 & Sep 08, 2015 & 1925 & None & None & May 16, 2021 & 172
-62 & Jun 03, 2013 & 1531 & None & None & Oct 08, 2014 & 2462
-63 & Jun 13, 2015 & 2228 & Nov 07, 2020 & 131 & None & None
-64 & None & None & Sep 16, 2014 & 320 & Jan 17, 2016 & 2113
-65 & Dec 07, 2019 & 284 & None & None & Mar 20, 2019 & 863
-66 & Nov 18, 2019 & 687 & Feb 08, 2017 & 270 & None & None
-67 & None & None & Sep 11, 2017 & 154 & Sep 14, 2015 & 1651
-68 & Nov 18, 2012 & 2767 & None & None & Dec 10, 2019 & 705
-69 & None & None & Apr 13, 2021 & 214 & Jun 05, 2020 & 382
-70 & Nov 01, 2019 & 168 & None & None & Oct 05, 2013 & 2894
-71 & Nov 15, 2013 & 1874 & May 10, 2015 & 1269 & Sep 22, 2017 & 69
-72 & Aug 28, 2011 & 802 & May 11, 2011 & 1610 & Aug 28, 2017 & 1332
-73 & Sep 21, 2017 & 28 & May 11, 2021 & 86 & Mar 14, 2017 & 1502
-74 & Dec 10, 2012 & 699 & Apr 11, 2016 & 197 & Oct 20, 2021 & 60
-75 & Aug 04, 2013 & 1196 & Dec 13, 2016 & 1623 & Nov 04, 2021 & 12
-76 & Feb 07, 2016 & 2105 & Dec 31, 2014 & 784 & Dec 31, 2020 & 309
-77 & Jul 24, 2018 & 454 & Feb 27, 2016 & 1564 & Jan 25, 2016 & 1987
-78 & Nov 20, 2019 & 371 & Aug 23, 2019 & 25 & Mar 10, 2011 & 1255
-79 & Jun 03, 2015 & 731 & Mar 05, 2016 & 1838 & Feb 07, 2011 & 6
-80 & Nov 02, 2012 & 273 & Jun 04, 2018 & 820 & Feb 25, 2021 & 298
-81 & May 25, 2013 & 148 & Nov 03, 2013 & 2480 & Jul 05, 2018 & 825
-82 & Dec 01, 2012 & 1202 & Jun 21, 2020 & 467 & Dec 19, 2011 & 2684
-83 & Oct 15, 2011 & 1008 & Apr 23, 2014 & 1190 & Nov 25, 2020 & 277
-84 & May 11, 2021 & 73 & May 12, 2015 & 863 & Dec 25, 2016 & 596
-85 & Nov 13, 2014 & 785 & Nov 20, 2015 & 1098 & Aug 01, 2018 & 195
-86 & Dec 25, 2012 & 695 & Sep 26, 2016 & 1710 & May 20, 2019 & 872
-87 & Jan 28, 2019 & 703 & Dec 04, 2020 & 91 & Mar 23, 2011 & 3381
-88 & Aug 27, 2014 & 2440 & May 27, 2013 & 2268 & Jan 15, 2019 & 713
-89 & Jan 24, 2013 & 199 & Jan 26, 2019 & 769 & May 07, 2018 & 93
-90 & Jun 20, 2018 & 411 & Sep 13, 2017 & 952 & Sep 15, 2019 & 531
-91 & Feb 11, 2021 & 119 & Dec 10, 2013 & 2781 & Feb 27, 2020 & 592
-92 & Oct 29, 2018 & 91 & May 23, 2012 & 1034 & Mar 13, 2018 & 380
-93 & Oct 27, 2011 & 1991 & Jun 18, 2019 & 60 & Aug 31, 2012 & 624
-94 & Sep 30, 2017 & 1458 & Dec 03, 2015 & 2206 & Aug 28, 2011 & 202
-95 & May 24, 2011 & 2781 & Mar 11, 2014 & 1344 & Oct 21, 2019 & 460
-96 & Jul 03, 2011 & 530 & Jan 30, 2013 & 2429 & Sep 14, 2018 & 1071
-97 & Dec 05, 2015 & 87 & Aug 27, 2015 & 617 & Dec 10, 2015 & 368
-98 & Aug 30, 2020 & 123 & Sep 19, 2011 & 180 & Dec 25, 2012 & 2813
-99 & Nov 02, 2015 & 536 & Jan 21, 2011 & 2307 & Jan 23, 2011 & 3760
-100 & Jan 11, 2014 & 2196 & Aug 05, 2018 & 879 & Jan 18, 2020 & 65
+11 & Sep 25, 2016 & 1202 & None & None & None & None
+12 & None & None & Sep 21, 2016 & 1545 & None & None
+13 & None & None & None & None & Oct 28, 2018 & 353
+14 & Jan 12, 2013 & 2432 & None & None & None & None
+15 & None & None & Jun 02, 2013 & 2139 & None & None
+16 & None & None & Dec 14, 2019 & 76 & None & None
+17 & None & None & None & None & May 25, 2012 & 3108
+18 & None & None & None & None & Oct 20, 2017 & 1155
+19 & Jul 13, 2014 & 1794 & None & None & None & None
+20 & None & None & None & None & Jan 22, 2017 & 1265
+21 & None & None & Feb 03, 2020 & 565 & None & None
+22 & None & None & Jul 08, 2020 & 184 & None & None
+23 & Nov 16, 2021 & 42 & None & None & None & None
+24 & None & None & Aug 14, 2016 & 1049 & None & None
+25 & None & None & None & None & Nov 20, 2019 & 104
+26 & Jul 09, 2020 & 346 & None & None & None & None
+27 & None & None & Feb 13, 2013 & 1764 & None & None
+28 & None & None & None & None & Aug 02, 2012 & 1917
+29 & None & None & None & None & Mar 01, 2019 & 881
+30 & None & None & None & None & Mar 28, 2019 & 109
+31 & Nov 23, 2019 & 90 & None & None & None & None
+32 & None & None & Jan 31, 2012 & 395 & None & None
+33 & None & None & Jan 31, 2013 & 258 & None & None
+34 & None & None & Sep 02, 2017 & 1057 & None & None
+35 & May 27, 2019 & 711 & None & None & None & None
+36 & None & None & Jul 03, 2014 & 732 & None & None
+37 & None & None & Nov 29, 2013 & 718 & None & None
+38 & Feb 01, 2016 & 403 & None & None & None & None
+39 & Feb 16, 2017 & 1287 & None & None & None & None
+40 & None & None & None & None & Dec 26, 2019 & 140
+41 & Jan 30, 2019 & 669 & Apr 26, 2020 & 55 & None & None
+42 & None & None & Feb 01, 2021 & 201 & Jul 05, 2018 & 175
+43 & Feb 01, 2020 & 121 & None & None & Aug 25, 2018 & 633
+44 & Feb 22, 2012 & 2993 & None & None & Sep 26, 2018 & 906
+45 & None & None & May 21, 2021 & 65 & Sep 18, 2012 & 3292
+46 & Aug 03, 2018 & 852 & None & None & Jan 14, 2017 & 1771
+47 & None & None & Aug 26, 2014 & 530 & Feb 06, 2015 & 2092
+48 & Apr 08, 2016 & 343 & None & None & Sep 06, 2018 & 1136
+49 & Nov 06, 2013 & 2934 & None & None & Dec 19, 2017 & 800
+50 & None & None & Oct 23, 2020 & 276 & Mar 23, 2017 & 1178
+51 & Aug 16, 2015 & 653 & Dec 06, 2015 & 745 & None & None
+52 & Jun 15, 2015 & 45 & None & None & Nov 06, 2017 & 1040
+53 & Jun 10, 2019 & 153 & None & None & Nov 04, 2017 & 551
+54 & Jul 21, 2014 & 2388 & Apr 22, 2018 & 257 & None & None
+55 & Mar 07, 2016 & 1527 & Jul 02, 2012 & 3425 & None & None
+56 & Nov 20, 2014 & 2371 & Jul 07, 2013 & 553 & None & None
+57 & Dec 14, 2016 & 132 & Feb 19, 2016 & 1669 & None & None
+58 & Oct 21, 2019 & 112 & None & None & May 17, 2018 & 99
+59 & Jan 12, 2012 & 1019 & None & None & Jan 19, 2019 & 189
+60 & Oct 07, 2017 & 802 & None & None & Mar 02, 2017 & 539
+61 & None & None & Dec 09, 2012 & 2259 & Jun 12, 2015 & 2331
+62 & None & None & Jan 24, 2019 & 862 & Jun 12, 2014 & 1673
+63 & Sep 15, 2017 & 570 & None & None & Nov 21, 2019 & 33
+64 & Oct 01, 2021 & 90 & Mar 21, 2021 & 234 & None & None
+65 & Jul 19, 2020 & 209 & Aug 25, 2013 & 2276 & None & None
+66 & Aug 24, 2020 & 459 & Sep 07, 2016 & 1829 & None & None
+67 & Jan 31, 2013 & 1939 & Mar 21, 2014 & 572 & None & None
+68 & None & None & Jul 31, 2013 & 2464 & Aug 14, 2016 & 537
+69 & None & None & Feb 27, 2019 & 174 & Aug 31, 2019 & 101
+70 & Feb 27, 2012 & 2612 & None & None & Apr 20, 2019 & 596
+71 & Jun 06, 2015 & 1123 & Jul 20, 2015 & 803 & Jul 15, 2015 & 367
+72 & Jun 19, 2017 & 534 & Oct 26, 2018 & 192 & Jul 16, 2016 & 346
+73 & Nov 09, 2019 & 159 & Oct 19, 2012 & 2597 & Dec 04, 2014 & 1534
+74 & Jan 19, 2020 & 466 & Feb 18, 2017 & 14 & Jul 16, 2017 & 1487
+75 & Nov 26, 2017 & 1419 & Aug 19, 2014 & 1097 & Jan 26, 2021 & 28
+76 & Jun 25, 2014 & 560 & Jun 26, 2020 & 23 & Sep 21, 2021 & 47
+77 & Jun 15, 2012 & 2555 & Aug 22, 2013 & 3019 & Jan 14, 2015 & 2515
+78 & Jun 08, 2012 & 875 & Dec 13, 2013 & 764 & Apr 10, 2017 & 1601
+79 & Mar 06, 2013 & 3012 & Sep 08, 2014 & 53 & Jul 04, 2016 & 824
+80 & Oct 12, 2018 & 321 & Sep 26, 2018 & 748 & Sep 20, 2015 & 1759
+81 & Mar 17, 2019 & 226 & Jun 02, 2021 & 68 & Dec 15, 2016 & 978
+82 & Dec 24, 2019 & 420 & Nov 18, 2018 & 29 & Sep 15, 2014 & 2132
+83 & Aug 27, 2012 & 3344 & Jan 06, 2016 & 1561 & Jun 12, 2016 & 1411
+84 & Oct 09, 2016 & 518 & Jan 07, 2019 & 1029 & Dec 26, 2015 & 1157
+85 & Jul 29, 2019 & 740 & Feb 20, 2021 & 163 & Jul 07, 2017 & 107
+86 & Dec 21, 2012 & 2121 & Mar 23, 2019 & 663 & Dec 25, 2012 & 2072
+87 & Aug 02, 2020 & 254 & Mar 02, 2018 & 701 & Mar 22, 2014 & 2462
+88 & Jul 31, 2017 & 1407 & Aug 24, 2021 & 49 & Sep 16, 2021 & 37
+89 & Aug 16, 2014 & 2603 & Nov 15, 2017 & 192 & Nov 27, 2018 & 223
+90 & Jul 10, 2015 & 2023 & Sep 02, 2020 & 206 & Feb 10, 2017 & 98
+91 & Mar 25, 2017 & 448 & Mar 22, 2021 & 246 & May 29, 2015 & 423
+92 & Jun 11, 2014 & 1260 & Mar 07, 2012 & 683 & Apr 01, 2014 & 1605
+93 & Dec 26, 2015 & 431 & Jul 13, 2020 & 304 & May 12, 2017 & 1232
+94 & May 03, 2012 & 2708 & Oct 16, 2017 & 82 & Aug 14, 2018 & 1021
+95 & Sep 01, 2015 & 930 & Apr 08, 2021 & 66 & Feb 22, 2021 & 69
+96 & Jun 09, 2017 & 670 & Jun 02, 2013 & 1823 & Jun 25, 2018 & 935
+97 & Nov 14, 2015 & 859 & Aug 30, 2013 & 2956 & Feb 15, 2020 & 8
+98 & Jan 05, 2015 & 1420 & May 10, 2021 & 88 & Jan 14, 2016 & 1715
+99 & Dec 08, 2019 & 731 & Feb 17, 2019 & 831 & Jun 22, 2015 & 1835
+100 & May 24, 2021 & 164 & Oct 25, 2020 & 231 & Mar 24, 2012 & 2950
