@@ -34,6 +34,7 @@ class Gateway:
         self.date = start_date
         self.first_batch_training_end_date = \
             self.compute_first_batch_training_end_date()
+        self.is_retraining = False
 
     def run(self, test_case) -> None:
         while self.date <= self.end_date and len(self.sensors):
@@ -41,9 +42,13 @@ class Gateway:
             messages = [sensor.transmit_data_entry(
                 self.date) for sensor in self.sensors]
 
-            self.inject_malicious_data(messages, test_case)
+            # Only inject malicious data when the sensors are not retraining
+            if not self.is_retraining:
+                self.inject_malicious_data(messages, test_case)
 
             if self.date > self.first_batch_training_end_date:
+                self.is_retraining = False
+
                 classification_result = self.classify_data(messages, test_case)
                 print('classification result: {}'.format(classification_result))
 
@@ -60,6 +65,7 @@ class Gateway:
                                 newly_banned_sensors)
                         case SRPEvalResult.LegitimateReadingShift:
                             self.restart_classifier_training()
+                            self.is_retraining = True
                             continue
                         case _:
                             pass
@@ -122,9 +128,12 @@ class Gateway:
                                      'TMEAN', 'RH', 'WIND_SPEED']].to_numpy()
         
         label = np.full(data_entries.shape[0], 1)
-        for i, sensor_id in enumerate(sensor_ids):
-            if self.sensor_is_malicious_today(sensor_id, test_case):
-                label[i] = -1
+
+        # Only update items in label to -1 when the sensors are not retraining
+        if not self.is_retraining:
+            for i, sensor_id in enumerate(sensor_ids):
+                if self.sensor_is_malicious_today(sensor_id, test_case):
+                    label[i] = -1
 
         classification_result = self.classifier.classify(
             data_entries, self.date.month)
