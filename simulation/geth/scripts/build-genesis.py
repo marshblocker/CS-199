@@ -33,7 +33,7 @@ def get_init_genesis():
         "istanbulBlock": 0,
         "berlinBlock": 0,
         "clique": {
-            "period": 5,
+            "period": 0,
             "epoch": 30000
         }
         },
