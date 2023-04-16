@@ -13,8 +13,12 @@ class Classifier:
         X_train = data
         y_train = np.ones(X_train.shape[0])
 
+        K = self.K
+        if len(X_train) < self.K:
+            K = len(X_train)
+
         model = OneClassSVM(nu=self.nu)
-        kf = KFold(n_splits=self.K, shuffle=True)
+        kf = KFold(n_splits=K, shuffle=True)
 
         cv_res = cross_validate(
             estimator=model,
