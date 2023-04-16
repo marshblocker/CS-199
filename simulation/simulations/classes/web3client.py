@@ -22,7 +22,7 @@ class Web3Client:
 
         tx_hash = self.contract \
             .functions \
-            .storeSensorData(sensor_ids, data, date) \
+            .storeSensorData(sensor_ids, data, date.year, date.month, date.day) \
             .transact()
 
         tx_receipt = self.web3.eth.wait_for_transaction_receipt(tx_hash)
@@ -30,22 +30,25 @@ class Web3Client:
             date, data, tx_receipt['blockNumber']))
 
     def read_data_from_blockchain(self, month: int, year: int):
+        latest_block = self.web3.eth.get_block_number()
         event_filter = self.contract \
             .events \
             .storedSensorData \
             .createFilter(
-                fromBlock=1,
-                toBlock='latest'
+                fromBlock=max(0, latest_block - 50),
+                toBlock='latest',
+                argument_filters={
+                    'year': year,
+                    'month': month
+                }
             )
 
         target_data = []
         for event in event_filter.get_all_entries():
             sensor_id = event.args.sensorId
-            date = datetime.strptime(event.args.date, "%m/%d/%Y")
             data = event.args.data
 
-            if date.month == month and date.year == year:
-                target_data.append((sensor_id, data))
+            target_data.append((sensor_id, data))
 
         return target_data
 
