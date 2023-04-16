@@ -13,15 +13,17 @@ contract SensorDataStorage {
 
     mapping (string => SensorData) public sensorData;
 
-    event storedSensorData(string sensorId, string date, SensorData data);
+    event storedSensorData(string sensorId, SensorData data, int year, int month, int day);
 
     function storeSensorData(
             string[] memory _sensorIds, 
             SensorData[] memory _sensorData, 
-            string memory _date) public {
+            int _year,
+            int _month,
+            int _day) public {
         for (uint i = 0; i < _sensorData.length; i++) {
             sensorData[_sensorIds[i]] = _sensorData[i];
-            emit storedSensorData(_sensorIds[i], _date, _sensorData[i]);
+            emit storedSensorData(_sensorIds[i], _sensorData[i], _year, _month, _day);
         }
     }
 }

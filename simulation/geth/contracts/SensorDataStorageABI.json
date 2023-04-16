@@ -9,12 +9,6 @@
 				"type": "string"
 			},
 			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "date",
-				"type": "string"
-			},
-			{
 				"components": [
 					{
 						"internalType": "int256",
@@ -46,6 +40,24 @@
 				"internalType": "struct SensorDataStorage.SensorData",
 				"name": "data",
 				"type": "tuple"
+			},
+			{
+				"indexed": false,
+				"internalType": "int256",
+				"name": "year",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"internalType": "int256",
+				"name": "month",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"internalType": "int256",
+				"name": "day",
+				"type": "int256"
 			}
 		],
 		"name": "storedSensorData",
@@ -130,9 +142,19 @@
 				"type": "tuple[]"
 			},
 			{
-				"internalType": "string",
-				"name": "_date",
-				"type": "string"
+				"internalType": "int256",
+				"name": "_year",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_month",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_day",
+				"type": "int256"
 			}
 		],
 		"name": "storeSensorData",
