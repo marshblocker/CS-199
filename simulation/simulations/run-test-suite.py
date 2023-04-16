@@ -2,7 +2,8 @@
 
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
+from time import time
 from sys import argv
 
 from classes.classifier import Classifier
@@ -18,6 +19,7 @@ END_DATE = datetime(2021, 12, 31)
 
 
 def main():
+    start_time = time()
     test_suite = get_test_suite()
 
     match argv[1]:
@@ -29,7 +31,7 @@ def main():
             i = str(argv[5])
             test_case = test_suite[i]
 
-            run_with_srp(http_port, contract_addr, itp, test_case)
+            run_with_srp(http_port, contract_addr, itp, test_case, i)
 
         case 'without-srp':
             http_port = int(argv[2])
@@ -38,13 +40,16 @@ def main():
             i = str(argv[4])
             test_case = test_suite[i]
 
-            run_without_srp(http_port, contract_addr, test_case)
+            run_without_srp(http_port, contract_addr, test_case, i)
 
         case 'without-mndp':
             i = str(argv[2])
             test_case = test_suite[i]
 
-            run_without_mndp(test_case)
+            run_without_mndp(test_case, i)
+
+    print('program ends after {}.'.format(
+        timedelta(seconds=time() - start_time)))
 
 
 def get_test_suite():
@@ -57,21 +62,21 @@ def get_malicious_data():
     pass
 
 
-def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case):
-    gateway = get_gateway(http_port, contract_addr, itp)
+def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case, i: str):
+    gateway = get_gateway(http_port, contract_addr, itp, i)
     gateway.run(test_case)
 
 
-def run_without_srp(http_port: int, contract_addr: str, test_case):
-    gateway = get_gateway(http_port, contract_addr, None)
+def run_without_srp(http_port: int, contract_addr: str, test_case, i: str):
+    gateway = get_gateway(http_port, contract_addr, None, i)
     gateway.run(test_case)
 
 
-def run_without_mndp(test_case):
+def run_without_mndp(test_case, i: str):
     pass
 
 
-def get_gateway(http_port: int, contract_addr: str, itp: int | None):
+def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str):
     sensor1 = Sensor('Port Area Sensor', 'Port Area')
     sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
     sensor3 = Sensor('Science Garden Sensor', 'Science Garden')
@@ -87,7 +92,7 @@ def get_gateway(http_port: int, contract_addr: str, itp: int | None):
         srp.register_sensor(sensor3.id)
 
     gateway = Gateway('Metro Manila Cluster', srp, classifier,
-                      sensors, web3, START_DATE, END_DATE)
+                      sensors, web3, START_DATE, END_DATE, i)
 
     return gateway
 

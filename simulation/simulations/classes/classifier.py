@@ -47,3 +47,11 @@ class Classifier:
         assert type(model) is OneClassSVM
 
         return model.predict(data)
+    
+    def is_complete_models(self):
+        total_models = 0
+        for i in range(len(self.models)):
+            if self.models[i] != None:
+                total_models += 1
+        
+        return total_models == 12
