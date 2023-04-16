@@ -48,8 +48,6 @@ class Gateway:
                 self.date) for sensor in self.sensors]
             start_time = time_ns()
 
-            print('messages: {}'.format(messages))
-
             # Only inject malicious data when the sensors are not retraining
             if not self.is_retraining:
                 self.inject_malicious_data(messages, test_case)
