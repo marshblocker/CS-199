@@ -54,11 +54,15 @@ class SensorRetentionPolicy:
             classif_result[sensor_id][0] = classif_result[sensor_id][0] == -1
             classif_result[sensor_id][1] = classif_result[sensor_id][1] == -1
 
+        print('classif_result: {}'.format(classif_result))
+
         self.curr_date = curr_date
         malicious_amount = sum(
             [res[0] for res in list(classif_result.values())])
 
-        if self.K > 1 and malicious_amount >= self.theta:
+        print('K: {}, malicious_amount: {}, theta: {}'.format(
+            self.K, malicious_amount, self.theta))
+        if malicious_amount >= self.theta:
             result = self._do_manual_investigation(classif_result)
             print('sensor stats: {}'.format(self.sensors_stats))
             return result
@@ -120,8 +124,6 @@ class SensorRetentionPolicy:
         if not self.sensors_stats[sensor_id]['trust_points']:
             self.unregister_sensor(sensor_id)
             removed_sensors.append(sensor_id)
-            self.K -= 1
-            self.theta = self.K
 
     def _is_not_malicious_action(self, sensor_id):
         self.sensors_stats[sensor_id]['consecutive_clean'] += 1
