@@ -1,6 +1,7 @@
-from datetime import datetime, timedelta
 from calendar import monthrange
+from datetime import datetime, timedelta
 from typing import Optional
+from time import time_ns
 
 import numpy as np
 import pandas as pd
@@ -8,6 +9,7 @@ from classes.classifier import Classifier
 from classes.sensor import Sensor
 from classes.srp import SensorRetentionPolicy, SRPEvalResult
 from classes.web3client import Web3Client
+from pympler import asizeof
 
 
 class Gateway:
@@ -22,7 +24,8 @@ class Gateway:
             sensors: list[Sensor],
             web3: Web3Client,
             start_date: datetime,
-            end_date: datetime) -> None:
+            end_date: datetime,
+            i: str) -> None:
         self.id = gateway_id
         self.srp = srp
         self.classifier = classifier
@@ -35,6 +38,7 @@ class Gateway:
         self.first_batch_training_end_date = \
             self.compute_first_batch_training_end_date()
         self.is_retraining = False
+        self.i = i      # Test case number
 
     def run(self, test_case) -> None:
         retraining_event_counter = 0
@@ -44,15 +48,17 @@ class Gateway:
                 self.date) for sensor in self.sensors]
             start_time = time_ns()
 
+            print('messages: {}'.format(messages))
+
             # Only inject malicious data when the sensors are not retraining
             if not self.is_retraining:
                 self.inject_malicious_data(messages, test_case)
 
+            classification_result = []
             if self.date > self.first_batch_training_end_date:
                 self.is_retraining = False
 
                 classification_result = self.classify_data(messages, test_case)
-                print('classification result: {}'.format(classification_result))
 
                 if self.srp is not None:
                     newly_banned_sensors, evaluation_result = self.srp.evaluate_sensors(
@@ -81,14 +87,27 @@ class Gateway:
             messages = [
                 message for message in messages if message['sender'] not in self.banned_sensors]
 
-            sensor_ids, data_entries, date = self.extract_from_messages(
-                messages)
-            self.store_data_to_blockchain(sensor_ids, data_entries, date)
+            # Remove messages from classified malicious sensors
+            if len(classification_result):
+                classified_malicious_sensors = []
+                for sensor_id in classification_result:
+                    if classification_result[sensor_id][0] == -1:
+                        classified_malicious_sensors.append(sensor_id)
+
+                messages = [
+                    message for message in messages if message['sender'] not in classified_malicious_sensors
+                ]
+
+            if len(messages):
+                sensor_ids, data_entries, date = self.extract_from_messages(
+                    messages)
+                self.store_data_to_blockchain(sensor_ids, data_entries, date)
 
             print('[{}] processing time (nanoseconds): {}'.format(
                 self.i, time_ns() - start_time))
+
             self.date += timedelta(days=1)
-            if self.date.day == 1 and self.date != self.start_date:
+            if self.date.day == 1 and self.date != self.start_date and len(self.sensors):
                 self.train_new_classifier()
 
         if self.date > self.end_date:
@@ -133,9 +152,10 @@ class Gateway:
 
         data_entries = [message['data'] for message in messages]
         data_entries = pd.DataFrame(data_entries)
+
         data_entries = data_entries[['TMAX', 'TMIN',
                                      'TMEAN', 'RH', 'WIND_SPEED']].to_numpy()
-        
+
         label = np.full(data_entries.shape[0], 1)
 
         # Only update items in label to -1 when the sensors are not retraining
@@ -194,7 +214,7 @@ class Gateway:
     def extract_from_messages(self, messages):
         sensor_ids = [messages[i]['sender'] for i in range(len(messages))]
         data_entries = [messages[i]['data'] for i in range(len(messages))]
-        date = messages[0]['date_sent'].strftime("%m/%d/%Y")
+        date = messages[0]['date_sent']
 
         return sensor_ids, data_entries, date
 
