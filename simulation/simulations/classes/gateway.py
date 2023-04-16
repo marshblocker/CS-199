@@ -37,6 +37,7 @@ class Gateway:
         self.is_retraining = False
 
     def run(self, test_case) -> None:
+        retraining_event_counter = 0
         while self.date <= self.end_date and len(self.sensors):
             print('')
             messages = [sensor.transmit_data_entry(
@@ -67,6 +68,7 @@ class Gateway:
                             self.remove_newly_banned_sensors(
                                 newly_banned_sensors)
                         case SRPEvalResult.LegitimateReadingShift:
+                            retraining_event_counter += 1
                             self.restart_classifier_training()
                             self.is_retraining = True
                             continue
@@ -94,6 +96,8 @@ class Gateway:
 
         if not len(self.sensors):
             print('Ending program since there are no sensors left in the cluster.')
+
+        print('Number of retraining: {}'.format(retraining_event_counter))
 
     def sensor_is_malicious_today(self, sensor_id, test_case):
         if test_case[sensor_id]['atk_date'] != 'None':
@@ -247,3 +251,26 @@ class Gateway:
         end_date = datetime(year, month, day)
 
         return end_date
+
+    def log_detection_time(self, newly_banned_sensors, test_case):
+        for sensor in newly_banned_sensors:
+            attack_descrip = test_case[sensor]
+
+            if attack_descrip['atk_date'] == 'None':
+                continue
+
+            attack_date = datetime.strptime(
+                attack_descrip['atk_date'], '%b %d, %Y')
+            if self.date > attack_date:
+                if attack_date <= self.first_batch_training_end_date:
+                    # When an attack is scheduled during a retraining,
+                    # detection time becomes: date of detection - date of end of retraining
+                    # since we suppress the attacked sensor from sending malicious
+                    # data during the retraining, hence the MNDP can only detect
+                    # malicious data after the retraining.
+                    detection_time = (
+                        self.date - self.first_batch_training_end_date).days
+                else:
+                    detection_time = (self.date - attack_date).days
+                print('[{}] detection time (days): {}'.format(
+                    self.i, detection_time))
