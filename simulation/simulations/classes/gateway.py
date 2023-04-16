@@ -41,6 +41,7 @@ class Gateway:
             print('')
             messages = [sensor.transmit_data_entry(
                 self.date) for sensor in self.sensors]
+            start_time = time_ns()
 
             # Only inject malicious data when the sensors are not retraining
             if not self.is_retraining:
@@ -58,6 +59,8 @@ class Gateway:
                     print('newly banned sensors: {}'.format(
                         newly_banned_sensors))
                     print('evaluation result: {}'.format(evaluation_result))
+
+                    self.log_detection_time(newly_banned_sensors, test_case)
 
                     match evaluation_result:
                         case SRPEvalResult.Normal | SRPEvalResult.HackedSensors:
@@ -80,6 +83,8 @@ class Gateway:
                 messages)
             self.store_data_to_blockchain(sensor_ids, data_entries, date)
 
+            print('[{}] processing time (nanoseconds): {}'.format(
+                self.i, time_ns() - start_time))
             self.date += timedelta(days=1)
             if self.date.day == 1 and self.date != self.start_date:
                 self.train_new_classifier()
@@ -137,7 +142,18 @@ class Gateway:
 
         classification_result = self.classifier.classify(
             data_entries, self.date.month)
-        classification_result = zip(classification_result, label)
+        classification_result = list(zip(classification_result, label))
+
+        for res, label in classification_result:
+            if res == 1 and label == 1:
+                print('[{}] tp'.format(self.i))
+            elif res == -1 and label == -1:
+                print('[{}] tn'.format(self.i))
+            elif res == 1 and label == -1:
+                print('[{}] fp'.format(self.i))
+            elif res == -1 and label == 1:
+                print('[{}] fn'.format(self.i))
+
         classification_result = dict(zip(sensor_ids, classification_result))
 
         return classification_result
@@ -197,8 +213,12 @@ class Gateway:
     def train_new_classifier(self):
         previous_month = 12 if self.date.month == 1 else self.date.month - 1
         year = self.date.year - 1 if self.date.month == 1 else self.date.year
+
+        read_data_start_time = time_ns()
         training_data = self.web3.read_data_from_blockchain(
             previous_month, year)
+        print('Time it takes to read data from blockchain (nanoseconds): {}'.format(
+            timedelta(seconds=time_ns() - read_data_start_time)))
 
         # Remove all data entries from banned sensors and get only the data part.
         training_data = [
@@ -209,7 +229,14 @@ class Gateway:
         training_data = np.array(training_data, dtype=float)
         training_data /= self.PRECISION
 
+        train_start_time = time_ns()
         self.classifier.train(training_data, previous_month)
+        print('Time it takes to train classifier (nanoseconds): {}'.format(
+            timedelta(seconds=time_ns() - train_start_time)))
+
+        if self.classifier.is_complete_models():
+            print('[{}] models memory size (bytes): {}'.format(
+                self.i, asizeof.asizeof(self.classifier.models)))
 
     def compute_first_batch_training_end_date(self) -> datetime:
         # This returns the first day of the month a year after the start of
