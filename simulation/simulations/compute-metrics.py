@@ -63,16 +63,30 @@ def main():
                 test_fscore = tp / (tp + 0.5*(fp + fn))
                 system_fscore_ave += test_fscore
 
-    system_mem_size_ave = round(system_mem_size_ave / mem_counter, 2)
-    system_processing_time_ave = round(system_processing_time_ave / processing_counter, 2)
-    system_detection_time_ave = round(system_detection_time_ave / detection_counter, 2)
-    system_fscore_ave = round(system_fscore_ave / fscore_counter, 2)
-
     print('{} metrics result:'.format(argv[1]))
-    print('average memory consumption: {} bytes'.format(system_mem_size_ave))
-    print('average processing time: {} seconds'.format(system_processing_time_ave / 1e+9))
-    print('average detection time: {} days'.format(system_detection_time_ave))
-    print('average f-score: {}'.format(system_fscore_ave))
+
+    if system_mem_size_ave:
+        system_mem_size_ave = round(system_mem_size_ave / mem_counter, 2)
+    print_metric_result('average memory consumption', system_mem_size_ave, 'bytes')
+
+    if system_processing_time_ave:
+        system_processing_time_ave = round(system_processing_time_ave / processing_counter, 2)
+        system_processing_time_ave = system_processing_time_ave / 1e+9
+    print_metric_result('average processing time', system_processing_time_ave, 'seconds')
+
+    if system_detection_time_ave:
+        system_detection_time_ave = round(system_detection_time_ave / detection_counter, 2)
+    print_metric_result('average detection time', system_detection_time_ave, 'days')
+
+    if system_fscore_ave:
+        system_fscore_ave = round(system_fscore_ave / fscore_counter, 2)
+    print_metric_result('average f-score', system_fscore_ave)
+
+def print_metric_result(metric_name, result, units=''):
+    if result == 0.0:
+        print('No computed result for {} metric.'.format(metric_name))
+    else:
+        print('{}: {} {}'.format(metric_name, result, units))
 
 if __name__ == '__main__':
     main()
