@@ -81,5 +81,7 @@ do
 
      echo "[$x] Test done!"
      python3.10 ./simulations/utils/ring.py
+
+     x=$((x + 1))
 done
 
