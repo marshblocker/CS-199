@@ -1,0 +1,1218 @@
+
+Date: 2011-01-01 00:00:00, Sent data: [[2800, 2300, 2600, 7300, 200], [2800, 2400, 2600, 7700, 400], [2800, 2000, 2400, 7900, 200]], block number: 2
+[9] processing time (nanoseconds): 46836200
+
+Date: 2011-01-02 00:00:00, Sent data: [[2900, 2300, 2600, 7400, 300], [2800, 2500, 2600, 7600, 400], [2800, 2000, 2400, 8100, 100]], block number: 3
+[9] processing time (nanoseconds): 49541500
+
+Date: 2011-01-03 00:00:00, Sent data: [[2900, 2300, 2600, 6800, 200], [2900, 2400, 2600, 7500, 500], [3000, 2000, 2500, 7400, 100]], block number: 4
+[9] processing time (nanoseconds): 48568000
+
+Date: 2011-01-04 00:00:00, Sent data: [[3000, 2200, 2600, 6400, 300], [2900, 2300, 2600, 7100, 400], [3000, 1800, 2400, 7100, 100]], block number: 5
+[9] processing time (nanoseconds): 49650100
+
+Date: 2011-01-05 00:00:00, Sent data: [[3100, 2500, 2800, 6700, 300], [3000, 2500, 2700, 7200, 400], [3000, 2100, 2600, 7700, 100]], block number: 6
+[9] processing time (nanoseconds): 45584800
+
+Date: 2011-01-06 00:00:00, Sent data: [[3000, 2400, 2700, 7000, 300], [3000, 2400, 2700, 7300, 300], [3100, 2000, 2600, 7900, 100]], block number: 7
+[9] processing time (nanoseconds): 41359900
+
+Date: 2011-01-07 00:00:00, Sent data: [[3100, 2400, 2800, 6500, 300], [3100, 2400, 2800, 7100, 300], [3100, 2000, 2500, 7300, 100]], block number: 8
+[9] processing time (nanoseconds): 48707200
+
+Date: 2011-01-08 00:00:00, Sent data: [[3000, 2500, 2700, 6700, 300], [3100, 2400, 2700, 6900, 300], [3100, 2100, 2600, 7700, 100]], block number: 9
+[9] processing time (nanoseconds): 47966300
+
+Date: 2011-01-09 00:00:00, Sent data: [[2800, 2300, 2500, 8300, 200], [2800, 2500, 2600, 8300, 300], [2800, 2200, 2500, 9100, 100]], block number: 10
+[9] processing time (nanoseconds): 50189600
+
+Date: 2011-01-10 00:00:00, Sent data: [[2900, 2400, 2600, 7400, 300], [2900, 2500, 2700, 8100, 300], [2800, 2100, 2500, 8700, 100]], block number: 11
+[9] processing time (nanoseconds): 55242600
+
+Date: 2011-01-11 00:00:00, Sent data: [[2900, 2400, 2600, 7300, 300], [2900, 2500, 2700, 7800, 300], [2800, 2100, 2500, 8400, 100]], block number: 12
+[9] processing time (nanoseconds): 40199800
+
+Date: 2011-01-12 00:00:00, Sent data: [[2900, 2500, 2700, 7600, 300], [3000, 2500, 2700, 7900, 200], [2900, 2300, 2600, 8600, 100]], block number: 13
+[9] processing time (nanoseconds): 47425100
+
+Date: 2011-01-13 00:00:00, Sent data: [[3000, 2400, 2700, 7300, 300], [3100, 2400, 2800, 7700, 200], [3100, 2100, 2600, 7800, 100]], block number: 14
+[9] processing time (nanoseconds): 48514200
+
+Date: 2011-01-14 00:00:00, Sent data: [[3100, 2500, 2800, 8500, 300], [3000, 2500, 2800, 7800, 200], [3000, 2300, 2700, 8000, 100]], block number: 15
+[9] processing time (nanoseconds): 49049600
+
+Date: 2011-01-15 00:00:00, Sent data: [[3000, 2500, 2700, 8100, 300], [3200, 2500, 2800, 8100, 300], [3300, 2200, 2700, 8400, 200]], block number: 16
+[9] processing time (nanoseconds): 51724500
+
+Date: 2011-01-16 00:00:00, Sent data: [[2800, 2300, 2600, 7200, 300], [2800, 2400, 2600, 7400, 300], [2800, 2100, 2500, 7200, 200]], block number: 17
+[9] processing time (nanoseconds): 40273300
+
+Date: 2011-01-17 00:00:00, Sent data: [[2700, 2300, 2500, 6600, 300], [2700, 2400, 2500, 6700, 400], [2700, 2100, 2400, 7000, 100]], block number: 18
+[9] processing time (nanoseconds): 47758500
+
+Date: 2011-01-18 00:00:00, Sent data: [[2900, 2400, 2700, 6900, 300], [3000, 2500, 2700, 7100, 300], [3000, 2100, 2500, 4400, 100]], block number: 19
+[9] processing time (nanoseconds): 51246100
+
+Date: 2011-01-19 00:00:00, Sent data: [[2800, 2400, 2600, 8100, 200], [2900, 2400, 2600, 8400, 200], [2900, 2100, 2500, 8700, 200]], block number: 20
+[9] processing time (nanoseconds): 49945600
+
+Date: 2011-01-20 00:00:00, Sent data: [[2900, 2300, 2600, 8300, 300], [3100, 2500, 2800, 8200, 200], [3100, 2200, 2600, 9000, 100]], block number: 21
+[9] processing time (nanoseconds): 43835600
+
+Date: 2011-01-21 00:00:00, Sent data: [[3100, 2400, 2700, 8000, 300], [3200, 2500, 2800, 8000, 300], [3200, 2300, 2800, 8900, 100]], block number: 22
+[9] processing time (nanoseconds): 47290900
+
+Date: 2011-01-22 00:00:00, Sent data: [[3000, 2600, 2800, 8100, 300], [3100, 2600, 2800, 8300, 300], [3000, 2400, 2700, 8800, 100]], block number: 23
+[9] processing time (nanoseconds): 46356200
+
+Date: 2011-01-23 00:00:00, Sent data: [[3100, 2500, 2800, 7400, 200], [2900, 2600, 2700, 8300, 200], [3000, 2300, 2700, 8200, 100]], block number: 24
+[9] processing time (nanoseconds): 48944600
+
+Date: 2011-01-24 00:00:00, Sent data: [[3100, 2400, 2700, 8400, 200], [3100, 2500, 2800, 8500, 300], [2900, 2200, 2600, 9500, 200]], block number: 25
+[9] processing time (nanoseconds): 49319700
+
+Date: 2011-01-25 00:00:00, Sent data: [[2900, 2500, 2700, 7100, 300], [2900, 2500, 2700, 7200, 400], [2900, 2100, 2500, 7900, 100]], block number: 26
+[9] processing time (nanoseconds): 40658900
+
+Date: 2011-01-26 00:00:00, Sent data: [[3000, 2500, 2700, 6900, 200], [2900, 2500, 2700, 7200, 500], [3000, 2100, 2500, 7800, 100]], block number: 27
+[9] processing time (nanoseconds): 47088400
+
+Date: 2011-01-27 00:00:00, Sent data: [[3000, 2200, 2600, 6500, 300], [3000, 2400, 2700, 7500, 400], [3000, 2000, 2500, 7800, 100]], block number: 28
+[9] processing time (nanoseconds): 48660900
+
+Date: 2011-01-28 00:00:00, Sent data: [[3000, 2400, 2700, 7000, 300], [3000, 2300, 2600, 7800, 300], [3000, 2100, 2600, 7400, 100]], block number: 29
+[9] processing time (nanoseconds): 49429200
+
+Date: 2011-01-29 00:00:00, Sent data: [[3000, 2400, 2700, 6800, 300], [3000, 2300, 2700, 7100, 300], [3100, 2000, 2500, 7600, 200]], block number: 30
+[9] processing time (nanoseconds): 48583700
+
+Date: 2011-01-30 00:00:00, Sent data: [[3100, 2200, 2700, 6100, 300], [3000, 2300, 2600, 6900, 300], [3100, 2200, 2600, 7100, 100]], block number: 31
+[9] processing time (nanoseconds): 40770700
+
+Date: 2011-01-31 00:00:00, Sent data: [[2800, 2300, 2500, 7200, 300], [2700, 2400, 2500, 7700, 400], [2800, 2000, 2400, 7500, 100]], block number: 32
+[9] processing time (nanoseconds): 43615600
+Time it takes to read data from blockchain (nanoseconds): 1495 days, 20:51:40
+cv_res test_score: [1.         0.94736842 0.94736842 1.         0.875      1.
+ 1.         1.         0.94117647 0.875     ]
+models: [OneClassSVM(nu=0.06), None, None, None, None, None, None, None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 45143 days, 9:56:40
+
+Date: 2011-02-01 00:00:00, Sent data: [[2900, 2200, 2500, 6900, 300], [2800, 2300, 2500, 7600, 400], [2900, 1900, 2400, 7100, 200]], block number: 33
+[9] processing time (nanoseconds): 56578400
+
+Date: 2011-02-02 00:00:00, Sent data: [[2800, 2300, 2500, 6200, 200], [2900, 2300, 2600, 6300, 400], [2800, 1900, 2400, 7400, 100]], block number: 34
+[9] processing time (nanoseconds): 48228900
+
+Date: 2011-02-03 00:00:00, Sent data: [[2800, 2200, 2500, 6700, 300], [2800, 2400, 2600, 6900, 300], [2900, 2200, 2600, 7000, 100]], block number: 35
+[9] processing time (nanoseconds): 54909300
+
+Date: 2011-02-04 00:00:00, Sent data: [[2900, 2400, 2700, 7100, 400], [2900, 2400, 2700, 7600, 400], [2900, 2300, 2600, 7400, 200]], block number: 36
+[9] processing time (nanoseconds): 43532600
+
+Date: 2011-02-05 00:00:00, Sent data: [[2900, 2500, 2700, 7500, 300], [2900, 2500, 2700, 7600, 300], [3100, 2400, 2700, 7500, 200]], block number: 37
+[9] processing time (nanoseconds): 47522500
+
+Date: 2011-02-06 00:00:00, Sent data: [[2900, 2500, 2700, 7300, 200], [2900, 2500, 2700, 7800, 300], [3100, 2300, 2700, 7600, 100]], block number: 38
+[9] processing time (nanoseconds): 51039500
+
+Date: 2011-02-07 00:00:00, Sent data: [[2900, 2400, 2700, 8000, 300], [3000, 2400, 2700, 8100, 400], [2900, 2300, 2600, 8300, 100]], block number: 39
+[9] processing time (nanoseconds): 49876800
+
+Date: 2011-02-08 00:00:00, Sent data: [[3000, 2600, 2800, 7700, 300], [3100, 2500, 2800, 8000, 200], [3200, 2300, 2700, 7600, 100]], block number: 40
+[9] processing time (nanoseconds): 44819200
+
+Date: 2011-02-09 00:00:00, Sent data: [[3200, 2600, 2900, 7700, 300], [3100, 2500, 2800, 8400, 300], [3300, 2300, 2800, 8200, 100]], block number: 41
+[9] processing time (nanoseconds): 48281700
+
+Date: 2011-02-10 00:00:00, Sent data: [[3200, 2600, 2900, 7400, 300], [3300, 2600, 3000, 7700, 400], [3300, 2300, 2800, 7300, 100]], block number: 42
+[9] processing time (nanoseconds): 48959100
+
+Date: 2011-02-11 00:00:00, Sent data: [[3300, 2600, 2900, 7000, 300], [3300, 2600, 2900, 7800, 300], [3300, 2500, 2900, 7500, 200]], block number: 43
+[9] processing time (nanoseconds): 50060800
+
+Date: 2011-02-12 00:00:00, Sent data: [[3000, 2400, 2700, 6800, 300], [3100, 2500, 2800, 7100, 500], [3100, 2200, 2600, 6900, 200]], block number: 44
+[9] processing time (nanoseconds): 42054300
+
+Date: 2011-02-13 00:00:00, Sent data: [[2800, 2400, 2600, 7200, 300], [3000, 2400, 2700, 7300, 400], [2900, 2000, 2500, 7400, 100]], block number: 45
+[9] processing time (nanoseconds): 44372300
+
+Date: 2011-02-14 00:00:00, Sent data: [[3000, 2400, 2700, 7300, 200], [3100, 2500, 2800, 7700, 300], [3100, 2200, 2700, 7600, 100]], block number: 46
+[9] processing time (nanoseconds): 46361800
+
+Date: 2011-02-15 00:00:00, Sent data: [[3100, 2400, 2700, 7000, 300], [2900, 2500, 2700, 7800, 400], [3000, 2100, 2600, 7700, 100]], block number: 47
+[9] processing time (nanoseconds): 48889600
+
+Date: 2011-02-16 00:00:00, Sent data: [[2900, 2500, 2700, 6800, 200], [3000, 2500, 2700, 7300, 400], [3000, 2100, 2600, 7700, 0]], block number: 48
+[9] processing time (nanoseconds): 50680700
+
+Date: 2011-02-17 00:00:00, Sent data: [[3000, 2500, 2700, 6800, 300], [3200, 2500, 2800, 7700, 300], [3200, 2100, 2600, 7400, 100]], block number: 49
+[9] processing time (nanoseconds): 49442000
+
+Date: 2011-02-18 00:00:00, Sent data: [[3100, 2500, 2800, 7100, 300], [3200, 2500, 2800, 7500, 300], [3100, 2100, 2600, 7300, 100]], block number: 50
+[9] processing time (nanoseconds): 41618900
+
+Date: 2011-02-19 00:00:00, Sent data: [[3100, 2400, 2700, 6900, 300], [3300, 2400, 2800, 6600, 500], [3300, 1900, 2600, 6700, 200]], block number: 51
+[9] processing time (nanoseconds): 43712200
+
+Date: 2011-02-20 00:00:00, Sent data: [[3000, 2400, 2700, 6400, 300], [3200, 2500, 2800, 6700, 400], [3200, 2000, 2600, 6800, 100]], block number: 52
+[9] processing time (nanoseconds): 41361800
+
+Date: 2011-02-21 00:00:00, Sent data: [[3100, 2400, 2700, 6800, 300], [3100, 2500, 2800, 7300, 400], [3200, 2100, 2700, 7500, 100]], block number: 53
+[9] processing time (nanoseconds): 50250200
+
+Date: 2011-02-22 00:00:00, Sent data: [[3000, 2400, 2700, 6800, 300], [3200, 2500, 2800, 7300, 500], [3100, 2000, 2600, 6800, 100]], block number: 54
+[9] processing time (nanoseconds): 49713500
+
+Date: 2011-02-23 00:00:00, Sent data: [[2900, 2400, 2600, 7300, 200], [3000, 2200, 2600, 7600, 400], [3000, 1900, 2400, 7200, 100]], block number: 55
+[9] processing time (nanoseconds): 40886600
+
+Date: 2011-02-24 00:00:00, Sent data: [[2900, 2200, 2600, 6600, 300], [3000, 2400, 2700, 7200, 300], [3100, 1900, 2500, 7200, 100]], block number: 56
+[9] processing time (nanoseconds): 42815500
+
+Date: 2011-02-25 00:00:00, Sent data: [[3000, 2400, 2700, 6500, 300], [3100, 2500, 2800, 6800, 400], [3200, 2100, 2600, 8300, 100]], block number: 57
+[9] processing time (nanoseconds): 47028500
+
+Date: 2011-02-26 00:00:00, Sent data: [[3000, 2300, 2600, 6600, 300], [3300, 2400, 2800, 6200, 400], [3200, 2000, 2600, 6400, 100]], block number: 58
+[9] processing time (nanoseconds): 49158400
+
+Date: 2011-02-27 00:00:00, Sent data: [[3000, 2400, 2700, 6900, 300], [3100, 2600, 2800, 7300, 300], [3100, 2300, 2700, 7300, 100]], block number: 59
+[9] processing time (nanoseconds): 48621900
+
+Date: 2011-02-28 00:00:00, Sent data: [[3100, 2500, 2800, 7100, 200], [3000, 2500, 2800, 7900, 400], [3100, 2200, 2700, 7700, 100]], block number: 60
+[9] processing time (nanoseconds): 48837200
+Time it takes to read data from blockchain (nanoseconds): 1727 days, 18:05:00
+cv_res test_score: [0.94117647 0.875      1.         1.         0.93333333 0.93333333
+ 0.93333333 1.         1.         1.        ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None, None, None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 723 days, 9:10:00
+
+Date: 2011-03-01 00:00:00, Sent data: [[3100, 2300, 2700, 7500, 300], [3200, 2600, 2900, 7900, 300], [3200, 2300, 2700, 7800, 100]], block number: 61
+[9] processing time (nanoseconds): 40592400
+
+Date: 2011-03-02 00:00:00, Sent data: [[2900, 2300, 2600, 8400, 200], [2800, 2400, 2600, 8700, 300], [3000, 2200, 2600, 8600, 100]], block number: 62
+[9] processing time (nanoseconds): 42151200
+
+Date: 2011-03-03 00:00:00, Sent data: [[2900, 2500, 2700, 6800, 200], [3000, 2500, 2700, 7600, 300], [3000, 2200, 2600, 7700, 100]], block number: 63
+[9] processing time (nanoseconds): 47172300
+
+Date: 2011-03-04 00:00:00, Sent data: [[3000, 2500, 2800, 7500, 300], [3100, 2500, 2800, 7700, 400], [3000, 2300, 2700, 7900, 100]], block number: 64
+[9] processing time (nanoseconds): 47127900
+
+Date: 2011-03-05 00:00:00, Sent data: [[2700, 2300, 2500, 8700, 200], [2700, 2300, 2500, 9300, 200], [2700, 2300, 2500, 8800, 100]], block number: 65
+[9] processing time (nanoseconds): 52731300
+
+Date: 2011-03-06 00:00:00, Sent data: [[3100, 2500, 2800, 7600, 300], [3200, 2500, 2800, 8100, 400], [3100, 2200, 2700, 8600, 100]], block number: 66
+[9] processing time (nanoseconds): 49993300
+
+Date: 2011-03-07 00:00:00, Sent data: [[3200, 2500, 2800, 8800, 300], [3200, 2500, 2900, 7800, 200], [3200, 2300, 2700, 8200, 100]], block number: 67
+[9] processing time (nanoseconds): 57696400
+
+Date: 2011-03-08 00:00:00, Sent data: [[3000, 2500, 2700, 7400, 300], [2900, 2500, 2700, 8200, 300], [3100, 2300, 2700, 7300, 100]], block number: 68
+[9] processing time (nanoseconds): 55553700
+
+Date: 2011-03-09 00:00:00, Sent data: [[2900, 2500, 2700, 7000, 400], [3000, 2500, 2800, 7300, 300], [3100, 2200, 2700, 7600, 100]], block number: 69
+[9] processing time (nanoseconds): 51888700
+
+Date: 2011-03-10 00:00:00, Sent data: [[3000, 2300, 2700, 7000, 200], [2900, 2500, 2700, 7700, 400], [3100, 2200, 2700, 7400, 100]], block number: 70
+[9] processing time (nanoseconds): 61981700
+
+Date: 2011-03-11 00:00:00, Sent data: [[3000, 2400, 2700, 6600, 300], [3100, 2500, 2800, 7000, 600], [3100, 2000, 2500, 6800, 100]], block number: 71
+[9] processing time (nanoseconds): 49845300
+
+Date: 2011-03-12 00:00:00, Sent data: [[3100, 2400, 2800, 6500, 300], [3300, 2500, 2900, 6800, 500], [3200, 2100, 2600, 6800, 200]], block number: 72
+[9] processing time (nanoseconds): 51160900
+
+Date: 2011-03-13 00:00:00, Sent data: [[3100, 2500, 2800, 7000, 300], [3200, 2600, 2900, 7100, 400], [3000, 2300, 2600, 7200, 100]], block number: 73
+[9] processing time (nanoseconds): 47202400
+
+Date: 2011-03-14 00:00:00, Sent data: [[3100, 2500, 2800, 7100, 300], [3000, 2600, 2800, 7600, 300], [3100, 2300, 2700, 7100, 100]], block number: 74
+[9] processing time (nanoseconds): 48311100
+
+Date: 2011-03-15 00:00:00, Sent data: [[3200, 2500, 2800, 6600, 400], [3000, 2500, 2800, 7400, 500], [3100, 2200, 2700, 6900, 100]], block number: 75
+[9] processing time (nanoseconds): 61443600
+
+Date: 2011-03-16 00:00:00, Sent data: [[3100, 2600, 2800, 6600, 300], [3000, 2500, 2800, 6400, 600], [3100, 2200, 2600, 6900, 100]], block number: 76
+[9] processing time (nanoseconds): 50453000
+
+Date: 2011-03-17 00:00:00, Sent data: [[3200, 2500, 2800, 6400, 300], [3000, 2500, 2800, 6800, 700], [3200, 2400, 2800, 6800, 200]], block number: 77
+[9] processing time (nanoseconds): 61916300
+
+Date: 2011-03-18 00:00:00, Sent data: [[3100, 2500, 2800, 6800, 300], [3000, 2400, 2700, 7400, 400], [3100, 2200, 2600, 6800, 200]], block number: 78
+[9] processing time (nanoseconds): 60634700
+
+Date: 2011-03-19 00:00:00, Sent data: [[3200, 2600, 2900, 6900, 300], [3200, 2500, 2900, 7000, 500], [3300, 2300, 2800, 6900, 100]], block number: 79
+[9] processing time (nanoseconds): 53940500
+
+Date: 2011-03-20 00:00:00, Sent data: [[3200, 2600, 2900, 7000, 300], [3100, 2600, 2800, 7300, 400], [3100, 2400, 2800, 6800, 100]], block number: 80
+[9] processing time (nanoseconds): 47840300
+
+Date: 2011-03-21 00:00:00, Sent data: [[3200, 2600, 2900, 7000, 300], [3300, 2600, 3000, 7800, 400], [3300, 2300, 2800, 7400, 100]], block number: 81
+[9] processing time (nanoseconds): 53909900
+
+Date: 2011-03-22 00:00:00, Sent data: [[3300, 2600, 2900, 6900, 300], [3400, 2600, 3000, 7100, 400], [3300, 2300, 2800, 7100, 100]], block number: 82
+[9] processing time (nanoseconds): 47038500
+
+Date: 2011-03-23 00:00:00, Sent data: [[3300, 2600, 2900, 6200, 300], [3300, 2600, 2900, 6500, 500], [3300, 2500, 2900, 6200, 100]], block number: 83
+[9] processing time (nanoseconds): 53411000
+
+Date: 2011-03-24 00:00:00, Sent data: [[3100, 2600, 2900, 6800, 300], [3100, 2600, 2800, 7200, 400], [3200, 2200, 2700, 7100, 100]], block number: 84
+[9] processing time (nanoseconds): 62660200
+
+Date: 2011-03-25 00:00:00, Sent data: [[3100, 2500, 2800, 6300, 300], [3200, 2500, 2900, 6500, 500], [3200, 2300, 2800, 6300, 200]], block number: 85
+[9] processing time (nanoseconds): 66013300
+
+Date: 2011-03-26 00:00:00, Sent data: [[3200, 2500, 2900, 6200, 300], [3200, 2600, 2900, 6200, 400], [3200, 2300, 2700, 6200, 200]], block number: 86
+[9] processing time (nanoseconds): 58600400
+
+Date: 2011-03-27 00:00:00, Sent data: [[3000, 2500, 2800, 6600, 300], [3200, 2600, 2900, 7000, 300], [3200, 2400, 2800, 6500, 100]], block number: 87
+[9] processing time (nanoseconds): 52198100
+
+Date: 2011-03-28 00:00:00, Sent data: [[3000, 2500, 2800, 6800, 400], [3000, 2500, 2800, 7500, 300], [3100, 2500, 2800, 7200, 100]], block number: 88
+[9] processing time (nanoseconds): 47175700
+
+Date: 2011-03-29 00:00:00, Sent data: [[3100, 2600, 2900, 6900, 300], [3200, 2500, 2900, 7500, 300], [3200, 2400, 2800, 7100, 100]], block number: 89
+[9] processing time (nanoseconds): 55084000
+
+Date: 2011-03-30 00:00:00, Sent data: [[3100, 2600, 2800, 6700, 200], [3100, 2500, 2800, 7300, 400], [3200, 2300, 2700, 7000, 100]], block number: 90
+[9] processing time (nanoseconds): 50042800
+
+Date: 2011-03-31 00:00:00, Sent data: [[3000, 2400, 2700, 7400, 300], [3000, 2500, 2700, 7000, 500], [3200, 2100, 2700, 6800, 100]], block number: 91
+[9] processing time (nanoseconds): 60398400
+Time it takes to read data from blockchain (nanoseconds): 2385 days, 12:01:40
+cv_res test_score: [1.         1.         0.94736842 1.         0.94117647 0.94117647
+ 1.         0.94117647 0.94117647 0.94117647]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None, None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 709 days, 19:36:40
+
+Date: 2011-04-01 00:00:00, Sent data: [[2900, 2400, 2700, 6900, 300], [3000, 2400, 2700, 7000, 500], [2900, 2000, 2500, 7300, 100]], block number: 92
+[9] processing time (nanoseconds): 52291800
+
+Date: 2011-04-02 00:00:00, Sent data: [[3000, 2500, 2800, 6900, 300], [3200, 2500, 2800, 7000, 400], [3100, 2000, 2600, 7000, 100]], block number: 93
+[9] processing time (nanoseconds): 50818100
+
+Date: 2011-04-03 00:00:00, Sent data: [[3100, 2500, 2800, 7000, 300], [3200, 2600, 2900, 7100, 500], [3200, 2400, 2800, 7300, 100]], block number: 94
+[9] processing time (nanoseconds): 59498200
+
+Date: 2011-04-04 00:00:00, Sent data: [[3000, 2500, 2800, 7100, 300], [3100, 2500, 2800, 7100, 600], [3100, 2300, 2700, 7000, 200]], block number: 95
+[9] processing time (nanoseconds): 53092000
+
+Date: 2011-04-05 00:00:00, Sent data: [[3100, 2400, 2700, 6500, 300], [3000, 2500, 2700, 6600, 600], [3100, 2100, 2600, 6700, 200]], block number: 96
+[9] processing time (nanoseconds): 43920000
+
+Date: 2011-04-06 00:00:00, Sent data: [[3100, 2400, 2700, 6600, 300], [2900, 2400, 2600, 7200, 500], [3100, 2100, 2600, 6900, 100]], block number: 97
+[9] processing time (nanoseconds): 54542200
+
+Date: 2011-04-07 00:00:00, Sent data: [[2900, 2400, 2600, 6900, 300], [3100, 2400, 2800, 7400, 900], [2900, 2000, 2400, 5200, 100]], block number: 98
+[9] processing time (nanoseconds): 50026800
+
+Date: 2011-04-08 00:00:00, Sent data: [[3200, 2300, 2800, 6400, 300], [3200, 2500, 2800, 6700, 500], [3200, 2100, 2600, 6800, 200]], block number: 99
+[9] processing time (nanoseconds): 64050500
+
+Date: 2011-04-09 00:00:00, Sent data: [[2800, 2400, 2600, 7600, 200], [2800, 2400, 2600, 7600, 300], [2700, 2100, 2400, 8300, 100]], block number: 100
+[9] processing time (nanoseconds): 47568100
+
+Date: 2011-04-10 00:00:00, Sent data: [[3100, 2500, 2800, 6500, 300], [3200, 2500, 2800, 6600, 700], [3300, 2100, 2700, 6600, 100]], block number: 101
+[9] processing time (nanoseconds): 56180400
+
+Date: 2011-04-11 00:00:00, Sent data: [[3200, 2500, 2800, 6200, 300], [3200, 2500, 2800, 7200, 400], [3300, 2100, 2700, 6900, 100]], block number: 102
+[9] processing time (nanoseconds): 52314300
+
+Date: 2011-04-12 00:00:00, Sent data: [[3100, 2500, 2800, 6000, 400], [3300, 2500, 2900, 6600, 500], [3300, 2200, 2800, 5600, 100]], block number: 103
+[9] processing time (nanoseconds): 45586600
+
+Date: 2011-04-13 00:00:00, Sent data: [[3300, 2500, 2900, 6000, 300], [3300, 2500, 2900, 6200, 600], [3200, 2000, 2600, 6300, 0]], block number: 104
+[9] processing time (nanoseconds): 55089200
+
+Date: 2011-04-14 00:00:00, Sent data: [[3200, 2400, 2800, 6300, 300], [3000, 2500, 2800, 6800, 700], [3300, 2000, 2600, 6300, 100]], block number: 105
+[9] processing time (nanoseconds): 46872200
+
+Date: 2011-04-15 00:00:00, Sent data: [[3300, 2500, 2900, 6200, 400], [3200, 2500, 2900, 6400, 600], [3200, 2100, 2700, 6500, 100]], block number: 106
+[9] processing time (nanoseconds): 62619200
+
+Date: 2011-04-16 00:00:00, Sent data: [[3400, 2600, 3000, 6700, 300], [3300, 2500, 2900, 7400, 300], [3500, 2300, 2900, 6300, 100]], block number: 107
+[9] processing time (nanoseconds): 75525300
+
+Date: 2011-04-17 00:00:00, Sent data: [[3300, 2600, 2900, 7300, 300], [3400, 2600, 3000, 7400, 300], [3100, 2600, 2800, 6800, 100]], block number: 108
+[9] processing time (nanoseconds): 58487200
+
+Date: 2011-04-18 00:00:00, Sent data: [[3200, 2600, 2900, 7200, 400], [3300, 2700, 3000, 7400, 400], [3100, 2600, 2800, 6600, 100]], block number: 109
+[9] processing time (nanoseconds): 53840200
+
+Date: 2011-04-19 00:00:00, Sent data: [[3200, 2600, 2900, 7000, 300], [3300, 2700, 3000, 7400, 300], [3400, 2400, 2900, 6700, 100]], block number: 110
+[9] processing time (nanoseconds): 48420000
+
+Date: 2011-04-20 00:00:00, Sent data: [[3100, 2700, 2900, 6900, 300], [3000, 2700, 2800, 7300, 600], [3200, 2500, 2800, 7500, 100]], block number: 111
+[9] processing time (nanoseconds): 55488300
+
+Date: 2011-04-21 00:00:00, Sent data: [[3200, 2600, 2900, 6600, 300], [3300, 2600, 2900, 6900, 600], [3200, 2200, 2700, 6900, 100]], block number: 112
+[9] processing time (nanoseconds): 49835900
+
+Date: 2011-04-22 00:00:00, Sent data: [[3300, 2600, 2900, 6900, 400], [3400, 2600, 3000, 6500, 500], [3300, 2300, 2800, 6900, 100]], block number: 113
+[9] processing time (nanoseconds): 60550700
+
+Date: 2011-04-23 00:00:00, Sent data: [[3300, 2600, 2900, 6600, 400], [3300, 2600, 3000, 6800, 400], [3300, 2200, 2700, 6700, 200]], block number: 114
+[9] processing time (nanoseconds): 53848600
+
+Date: 2011-04-24 00:00:00, Sent data: [[3300, 2600, 2900, 6100, 400], [3200, 2600, 2900, 6600, 500], [3400, 2100, 2800, 6500, 100]], block number: 115
+[9] processing time (nanoseconds): 49402300
+
+Date: 2011-04-25 00:00:00, Sent data: [[3200, 2700, 3000, 6700, 300], [3400, 2600, 3000, 7300, 400], [3300, 2500, 2900, 6700, 100]], block number: 116
+[9] processing time (nanoseconds): 59343100
+
+Date: 2011-04-26 00:00:00, Sent data: [[3500, 2700, 3100, 6700, 300], [3500, 2700, 3100, 7500, 400], [3600, 2500, 3000, 6600, 100]], block number: 117
+[9] processing time (nanoseconds): 58374300
+
+Date: 2011-04-27 00:00:00, Sent data: [[3500, 2800, 3100, 7200, 300], [3500, 2700, 3100, 7600, 200], [3400, 2600, 3000, 6800, 200]], block number: 118
+[9] processing time (nanoseconds): 42828300
+
+Date: 2011-04-28 00:00:00, Sent data: [[3500, 2800, 3100, 6600, 300], [3500, 2800, 3100, 7300, 500], [3400, 2300, 2800, 6800, 100]], block number: 119
+[9] processing time (nanoseconds): 54444500
+
+Date: 2011-04-29 00:00:00, Sent data: [[3400, 2700, 3000, 6700, 300], [3500, 2700, 3100, 7000, 500], [3500, 2500, 3000, 7300, 100]], block number: 120
+[9] processing time (nanoseconds): 55022800
+
+Date: 2011-04-30 00:00:00, Sent data: [[3300, 2700, 3000, 6800, 300], [3300, 2700, 3000, 7300, 500], [3200, 2300, 2800, 7500, 100]], block number: 121
+[9] processing time (nanoseconds): 47049800
+Time it takes to read data from blockchain (nanoseconds): 1630 days, 11:40:00
+cv_res test_score: [0.94117647 0.94117647 0.94117647 1.         0.8        1.
+ 0.94117647 0.94117647 1.         1.        ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 904 days, 6:13:20
+
+Date: 2011-05-01 00:00:00, Sent data: [[3400, 2800, 3100, 6300, 300], [3500, 2800, 3200, 6800, 400], [3500, 2500, 3000, 6400, 100]], block number: 122
+[9] processing time (nanoseconds): 54742800
+
+Date: 2011-05-02 00:00:00, Sent data: [[3600, 2800, 3200, 6100, 400], [3500, 2800, 3200, 4100, 500], [3600, 2400, 3000, 6400, 100]], block number: 123
+[9] processing time (nanoseconds): 54415700
+
+Date: 2011-05-03 00:00:00, Sent data: [[3300, 2800, 3100, 6800, 300], [3500, 2800, 3200, 6900, 400], [3500, 2500, 3000, 7500, 100]], block number: 124
+[9] processing time (nanoseconds): 49125300
+
+Date: 2011-05-04 00:00:00, Sent data: [[3400, 2800, 3100, 6500, 300], [3500, 2800, 3200, 7100, 500], [3600, 2500, 3100, 6800, 100]], block number: 125
+[9] processing time (nanoseconds): 61107100
+
+Date: 2011-05-05 00:00:00, Sent data: [[3500, 2800, 3100, 7200, 300], [3500, 2800, 3100, 7400, 300], [3500, 2500, 3000, 7300, 100]], block number: 126
+[9] processing time (nanoseconds): 56194800
+
+Date: 2011-05-06 00:00:00, Sent data: [[3400, 2700, 3100, 7200, 300], [3500, 2700, 3100, 7000, 300], [3500, 2600, 3000, 7000, 200]], block number: 127
+[9] processing time (nanoseconds): 51598700
+
+Date: 2011-05-07 00:00:00, Sent data: [[3300, 2300, 2800, 8000, 300], [3300, 2500, 2900, 8200, 200], [3500, 2400, 3000, 7600, 100]], block number: 128
+[9] processing time (nanoseconds): 52213100
+
+Date: 2011-05-08 00:00:00, Sent data: [[2900, 2300, 2600, 8700, 400], [2800, 2300, 2500, 8800, 700], [2700, 2300, 2500, 9300, 200]], block number: 129
+[9] processing time (nanoseconds): 160963900
+
+Date: 2011-05-09 00:00:00, Sent data: [[2800, 2300, 2600, 7700, 500], [3000, 2400, 2700, 7600, 600], [2700, 2200, 2500, 5000, 300]], block number: 130
+[9] processing time (nanoseconds): 62717600
+
+Date: 2011-05-10 00:00:00, Sent data: [[3100, 2700, 2900, 8300, 400], [3200, 2500, 2900, 8600, 300], [3200, 2500, 2800, 8400, 100]], block number: 131
+[9] processing time (nanoseconds): 47870600
+
+Date: 2011-05-11 00:00:00, Sent data: [[3100, 2700, 2900, 7900, 300], [3400, 2700, 3100, 7900, 300], [3300, 2500, 2900, 7700, 100]], block number: 132
+[9] processing time (nanoseconds): 46248400
+
+Date: 2011-05-12 00:00:00, Sent data: [[3200, 2800, 3000, 8100, 300], [3300, 2700, 3000, 7900, 200], [3300, 2400, 2900, 8400, 100]], block number: 133
+[9] processing time (nanoseconds): 49857300
+
+Date: 2011-05-13 00:00:00, Sent data: [[3500, 2700, 3100, 7000, 300], [3500, 2700, 3100, 7300, 300], [3400, 2400, 2900, 7500, 100]], block number: 134
+[9] processing time (nanoseconds): 49791200
+
+Date: 2011-05-14 00:00:00, Sent data: [[3500, 2700, 3100, 6900, 300], [3600, 2800, 3200, 7000, 400], [3400, 2400, 2900, 7600, 100]], block number: 135
+[9] processing time (nanoseconds): 43958500
+
+Date: 2011-05-15 00:00:00, Sent data: [[3500, 2700, 3100, 6600, 300], [3600, 2800, 3200, 6400, 500], [3600, 2400, 3000, 6700, 100]], block number: 136
+[9] processing time (nanoseconds): 51019800
+
+Date: 2011-05-16 00:00:00, Sent data: [[3500, 2900, 3200, 7300, 300], [3600, 2800, 3200, 6800, 300], [3600, 2600, 3100, 6900, 100]], block number: 137
+[9] processing time (nanoseconds): 49541900
+
+Date: 2011-05-17 00:00:00, Sent data: [[3500, 2800, 3100, 7100, 400], [3600, 2800, 3200, 7200, 300], [3500, 2500, 3000, 4600, 100]], block number: 138
+[9] processing time (nanoseconds): 42057500
+
+Date: 2011-05-18 00:00:00, Sent data: [[3300, 2600, 3000, 7300, 300], [3700, 2500, 3100, 7800, 200], [3500, 2400, 3000, 7300, 100]], block number: 139
+[9] processing time (nanoseconds): 44316000
+
+Date: 2011-05-19 00:00:00, Sent data: [[3500, 2800, 3100, 7100, 300], [3500, 2800, 3100, 7400, 300], [3600, 2500, 3000, 7700, 100]], block number: 140
+[9] processing time (nanoseconds): 45988200
+
+Date: 2011-05-20 00:00:00, Sent data: [[3400, 2700, 3000, 6800, 400], [3600, 2800, 3200, 6900, 200], [3300, 2500, 2900, 5700, 100]], block number: 141
+[9] processing time (nanoseconds): 40799600
+
+Date: 2011-05-21 00:00:00, Sent data: [[3300, 2800, 3000, 7600, 200], [3400, 2800, 3100, 7600, 200], [3300, 2500, 2900, 8300, 100]], block number: 142
+[9] processing time (nanoseconds): 42948900
+
+Date: 2011-05-22 00:00:00, Sent data: [[3400, 2600, 3000, 7300, 300], [3600, 2500, 3000, 8200, 200], [3400, 2500, 2900, 8800, 100]], block number: 143
+[9] processing time (nanoseconds): 44764200
+
+Date: 2011-05-23 00:00:00, Sent data: [[3400, 2600, 3000, 7600, 300], [3400, 2500, 2900, 8300, 300], [3300, 2400, 2800, 8700, 100]], block number: 144
+[9] processing time (nanoseconds): 50118200
+
+Date: 2011-05-24 00:00:00, Sent data: [[3300, 2400, 2900, 8300, 200], [3400, 2600, 3000, 8500, 300], [3200, 2400, 2800, 9200, 100]], block number: 145
+[9] processing time (nanoseconds): 49409100
+
+Date: 2011-05-25 00:00:00, Sent data: [[3100, 2600, 2800, 8100, 200], [3300, 2700, 3000, 8200, 300], [3200, 2400, 2800, 8600, 100]], block number: 146
+[9] processing time (nanoseconds): 48943300
+
+Date: 2011-05-26 00:00:00, Sent data: [[3200, 2700, 3000, 8100, 400], [3400, 2900, 3100, 7600, 400], [3300, 2500, 2900, 8500, 100]], block number: 147
+[9] processing time (nanoseconds): 40536500
+
+Date: 2011-05-27 00:00:00, Sent data: [[3100, 2600, 2900, 8100, 500], [3300, 2700, 3000, 8000, 500], [3100, 2600, 2900, 8600, 200]], block number: 148
+[9] processing time (nanoseconds): 44225700
+
+Date: 2011-05-28 00:00:00, Sent data: [[2900, 2500, 2700, 8900, 300], [3400, 2600, 3000, 9100, 300], [2800, 2400, 2600, 9700, 100]], block number: 149
+[9] processing time (nanoseconds): 47807200
+
+Date: 2011-05-29 00:00:00, Sent data: [[3000, 2500, 2800, 8900, 200], [3000, 2600, 2800, 9100, 200], [3100, 2400, 2700, 9500, 100]], block number: 150
+[9] processing time (nanoseconds): 48871500
+
+Date: 2011-05-30 00:00:00, Sent data: [[3200, 2700, 3000, 8100, 300], [3100, 2700, 2900, 8800, 300], [3100, 2500, 2800, 9100, 100]], block number: 151
+[9] processing time (nanoseconds): 51073500
+
+Date: 2011-05-31 00:00:00, Sent data: [[3200, 2800, 3000, 8000, 400], [3300, 2800, 3000, 7800, 300], [3300, 2500, 2900, 7900, 100]], block number: 152
+[9] processing time (nanoseconds): 41933700
+Time it takes to read data from blockchain (nanoseconds): 1861 days, 21:50:00
+cv_res test_score: [0.82352941 0.94736842 1.         0.94117647 0.94117647 1.
+ 0.94117647 1.         1.         1.        ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 723 days, 11:03:20
+
+Date: 2011-06-01 00:00:00, Sent data: [[3300, 2800, 3000, 7700, 300], [3400, 2700, 3100, 7500, 300], [3400, 2500, 3000, 7900, 100]], block number: 153
+[9] processing time (nanoseconds): 40310800
+
+Date: 2011-06-02 00:00:00, Sent data: [[3500, 2800, 3200, 7500, 400], [3500, 2800, 3200, 7700, 200], [3400, 2500, 3000, 7600, 100]], block number: 154
+[9] processing time (nanoseconds): 41796600
+
+Date: 2011-06-03 00:00:00, Sent data: [[3400, 2700, 3000, 7400, 200], [3600, 2700, 3200, 8000, 200], [3200, 2500, 2900, 8400, 100]], block number: 155
+[9] processing time (nanoseconds): 47952100
+
+Date: 2011-06-04 00:00:00, Sent data: [[3200, 2800, 3000, 7500, 300], [3400, 2700, 3000, 8300, 400], [3300, 2600, 3000, 7900, 100]], block number: 156
+[9] processing time (nanoseconds): 48706000
+
+Date: 2011-06-05 00:00:00, Sent data: [[3600, 2800, 3200, 6200, 300], [3500, 2800, 3100, 7100, 500], [3600, 2500, 3000, 7300, 100]], block number: 157
+[9] processing time (nanoseconds): 51499500
+
+Date: 2011-06-06 00:00:00, Sent data: [[3500, 2800, 3100, 6500, 300], [3500, 2800, 3100, 7200, 400], [3500, 2500, 3000, 7200, 100]], block number: 158
+[9] processing time (nanoseconds): 41566000
+
+Date: 2011-06-07 00:00:00, Sent data: [[3400, 2400, 2900, 6800, 300], [3500, 2700, 3100, 7300, 300], [3400, 2500, 2900, 7600, 100]], block number: 159
+[9] processing time (nanoseconds): 44474900
+
+Date: 2011-06-08 00:00:00, Sent data: [[2600, 2400, 2500, 9100, 400], [2700, 2400, 2500, 9600, 700], [2500, 2400, 2500, 9700, 200]], block number: 160
+[9] processing time (nanoseconds): 46803900
+
+Date: 2011-06-09 00:00:00, Sent data: [[2800, 2500, 2700, 8300, 400], [2700, 2500, 2600, 9300, 400], [2700, 2500, 2600, 9200, 100]], block number: 161
+[9] processing time (nanoseconds): 46533600
+
+Date: 2011-06-10 00:00:00, Sent data: [[3200, 2700, 2900, 7600, 300], [3000, 2600, 2800, 9100, 300], [3200, 2500, 2800, 7800, 100]], block number: 162
+[9] processing time (nanoseconds): 48878400
+
+Date: 2011-06-11 00:00:00, Sent data: [[3200, 2700, 3000, 7200, 300], [3100, 2600, 2800, 8400, 300], [3200, 2400, 2800, 8200, 100]], block number: 163
+[9] processing time (nanoseconds): 48801300
+
+Date: 2011-06-12 00:00:00, Sent data: [[3200, 2700, 3000, 7300, 300], [3400, 2700, 3000, 7700, 500], [3400, 2500, 2900, 7600, 100]], block number: 164
+[9] processing time (nanoseconds): 50801500
+
+Date: 2011-06-13 00:00:00, Sent data: [[3400, 2800, 3100, 7200, 300], [3300, 2700, 3000, 7900, 400], [3400, 2500, 3000, 7500, 100]], block number: 165
+[9] processing time (nanoseconds): 41860600
+
+Date: 2011-06-14 00:00:00, Sent data: [[3300, 2800, 3000, 7000, 500], [3200, 2800, 3000, 8000, 300], [3200, 2500, 2800, 7700, 100]], block number: 166
+[9] processing time (nanoseconds): 46538700
+
+Date: 2011-06-15 00:00:00, Sent data: [[3300, 2700, 3000, 6900, 300], [3300, 2800, 3000, 7500, 400], [3500, 2600, 3000, 7100, 100]], block number: 167
+[9] processing time (nanoseconds): 50170700
+
+Date: 2011-06-16 00:00:00, Sent data: [[3500, 2800, 3100, 6800, 400], [3400, 2700, 3100, 7800, 500], [3500, 2500, 3000, 7400, 200]], block number: 168
+[9] processing time (nanoseconds): 40365600
+
+Date: 2011-06-17 00:00:00, Sent data: [[3500, 2600, 3000, 6900, 300], [3400, 2700, 3000, 7500, 300], [3400, 2500, 2900, 7600, 200]], block number: 169
+[9] processing time (nanoseconds): 49900900
+
+Date: 2011-06-18 00:00:00, Sent data: [[3300, 2400, 2800, 8000, 300], [3200, 2400, 2800, 8000, 200], [3100, 2300, 2700, 8900, 100]], block number: 170
+[9] processing time (nanoseconds): 47611600
+
+Date: 2011-06-19 00:00:00, Sent data: [[2700, 2400, 2500, 9400, 500], [2600, 2400, 2500, 9700, 300], [2500, 2300, 2400, 9700, 200]], block number: 171
+[9] processing time (nanoseconds): 45211500
+
+Date: 2011-06-20 00:00:00, Sent data: [[2700, 2400, 2500, 8700, 300], [2700, 2500, 2600, 9500, 200], [2700, 2500, 2600, 9600, 100]], block number: 172
+[9] processing time (nanoseconds): 52765300
+
+Date: 2011-06-21 00:00:00, Sent data: [[3100, 2400, 2800, 8600, 300], [3000, 2500, 2800, 9000, 300], [3100, 2400, 2700, 9400, 100]], block number: 173
+[9] processing time (nanoseconds): 43958200
+
+Date: 2011-06-22 00:00:00, Sent data: [[3000, 2400, 2700, 8400, 300], [3100, 2400, 2700, 9000, 400], [3200, 2400, 2800, 8000, 100]], block number: 174
+[9] processing time (nanoseconds): 51800000
+
+Date: 2011-06-23 00:00:00, Sent data: [[2700, 2300, 2500, 9200, 600], [2700, 2400, 2500, 9600, 500], [2700, 2400, 2500, 9800, 200]], block number: 175
+[9] processing time (nanoseconds): 50166600
+
+Date: 2011-06-24 00:00:00, Sent data: [[2700, 2300, 2500, 9100, 500], [2600, 2400, 2500, 9400, 500], [2600, 2300, 2400, 9600, 200]], block number: 176
+[9] processing time (nanoseconds): 41616400
+
+Date: 2011-06-25 00:00:00, Sent data: [[2800, 2300, 2500, 8600, 300], [2800, 2400, 2600, 9200, 200], [2600, 2200, 2400, 9800, 100]], block number: 177
+[9] processing time (nanoseconds): 43547000
+
+Date: 2011-06-26 00:00:00, Sent data: [[3000, 2500, 2800, 7800, 300], [3100, 2400, 2800, 8200, 200], [3000, 2400, 2700, 8700, 100]], block number: 178
+[9] processing time (nanoseconds): 47263100
+
+Date: 2011-06-27 00:00:00, Sent data: [[3100, 2600, 2900, 7900, 300], [3200, 2600, 2900, 8200, 200], [3200, 2400, 2800, 8200, 100]], block number: 179
+[9] processing time (nanoseconds): 51587200
+
+Date: 2011-06-28 00:00:00, Sent data: [[3200, 2700, 3000, 7200, 300], [3400, 2700, 3000, 8000, 200], [3000, 2500, 2800, 7700, 200]], block number: 180
+[9] processing time (nanoseconds): 49842700
+
+Date: 2011-06-29 00:00:00, Sent data: [[3100, 2600, 2900, 7600, 300], [3300, 2700, 3000, 7800, 200], [3100, 2400, 2700, 8200, 100]], block number: 181
+[9] processing time (nanoseconds): 40991600
+
+Date: 2011-06-30 00:00:00, Sent data: [[3200, 2600, 2900, 8100, 300], [3400, 2600, 3000, 8400, 300], [3200, 2400, 2800, 8700, 200]], block number: 182
+[9] processing time (nanoseconds): 43971200
+Time it takes to read data from blockchain (nanoseconds): 1668 days, 4:01:40
+cv_res test_score: [0.94117647 0.94117647 1.         0.94117647 1.         0.94117647
+ 0.94117647 1.         1.         0.875     ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 842 days, 11:35:00
+
+Date: 2011-07-01 00:00:00, Sent data: [[3200, 2600, 2900, 7500, 300], [3300, 2700, 3000, 7800, 200], [3200, 2400, 2800, 8400, 100]], block number: 183
+[9] processing time (nanoseconds): 47555400
+
+Date: 2011-07-02 00:00:00, Sent data: [[3200, 2600, 2900, 7100, 300], [3300, 2700, 3000, 7200, 300], [3200, 2300, 2800, 8200, 100]], block number: 184
+[9] processing time (nanoseconds): 51359300
+
+Date: 2011-07-03 00:00:00, Sent data: [[3200, 2700, 2900, 7400, 300], [3400, 2700, 3000, 7600, 300], [3200, 2300, 2800, 8200, 100]], block number: 185
+[9] processing time (nanoseconds): 40592200
+
+Date: 2011-07-04 00:00:00, Sent data: [[3000, 2500, 2700, 7800, 200], [3100, 2600, 2800, 8200, 100], [3000, 2400, 2700, 8900, 100]], block number: 186
+[9] processing time (nanoseconds): 49204200
+
+Date: 2011-07-05 00:00:00, Sent data: [[3100, 2500, 2800, 8200, 300], [3100, 2500, 2800, 8700, 300], [3000, 2400, 2700, 9100, 100]], block number: 187
+[9] processing time (nanoseconds): 40850200
+
+Date: 2011-07-06 00:00:00, Sent data: [[3000, 2500, 2700, 8200, 300], [3200, 2500, 2800, 8300, 400], [3100, 2500, 2800, 8800, 100]], block number: 188
+[9] processing time (nanoseconds): 42382600
+
+Date: 2011-07-07 00:00:00, Sent data: [[2900, 2500, 2700, 9000, 400], [3000, 2500, 2700, 8900, 300], [3000, 2400, 2700, 9200, 100]], block number: 189
+[9] processing time (nanoseconds): 43586400
+
+Date: 2011-07-08 00:00:00, Sent data: [[3000, 2400, 2700, 8800, 300], [3000, 2400, 2700, 9000, 200], [2900, 2400, 2700, 9300, 100]], block number: 190
+[9] processing time (nanoseconds): 47088000
+
+Date: 2011-07-09 00:00:00, Sent data: [[2800, 2400, 2600, 8900, 300], [2800, 2400, 2600, 9200, 300], [2800, 2300, 2600, 9500, 100]], block number: 191
+[9] processing time (nanoseconds): 46505400
+
+Date: 2011-07-10 00:00:00, Sent data: [[2700, 2300, 2500, 9000, 300], [2600, 2400, 2500, 9400, 200], [2700, 2300, 2500, 9100, 100]], block number: 192
+[9] processing time (nanoseconds): 51414800
+
+Date: 2011-07-11 00:00:00, Sent data: [[2800, 2400, 2600, 8700, 300], [2700, 2400, 2500, 9100, 200], [2700, 2300, 2500, 9300, 100]], block number: 193
+[9] processing time (nanoseconds): 48069600
+
+Date: 2011-07-12 00:00:00, Sent data: [[3100, 2500, 2800, 7700, 300], [3200, 2600, 2900, 8100, 300], [2900, 2500, 2700, 8200, 100]], block number: 194
+[9] processing time (nanoseconds): 48649500
+
+Date: 2011-07-13 00:00:00, Sent data: [[3100, 2500, 2800, 8000, 300], [3200, 2600, 2900, 8200, 200], [3200, 2400, 2800, 8400, 100]], block number: 195
+[9] processing time (nanoseconds): 40611900
+
+Date: 2011-07-14 00:00:00, Sent data: [[3200, 2600, 2900, 7600, 300], [3200, 2600, 2900, 7900, 300], [3200, 2400, 2800, 7800, 100]], block number: 196
+[9] processing time (nanoseconds): 44571700
+
+Date: 2011-07-15 00:00:00, Sent data: [[3200, 2700, 2900, 7700, 300], [3300, 2600, 2900, 7900, 300], [3200, 2500, 2800, 7100, 100]], block number: 197
+[9] processing time (nanoseconds): 46435700
+
+Date: 2011-07-16 00:00:00, Sent data: [[3200, 2700, 3000, 7600, 400], [3300, 2800, 3000, 7700, 500], [3300, 2700, 3000, 7400, 200]], block number: 198
+[9] processing time (nanoseconds): 46375400
+
+Date: 2011-07-17 00:00:00, Sent data: [[3200, 2800, 3000, 7600, 500], [3300, 2800, 3000, 7500, 700], [3200, 2700, 2900, 7800, 200]], block number: 199
+[9] processing time (nanoseconds): 47312400
+
+Date: 2011-07-18 00:00:00, Sent data: [[3200, 2800, 3000, 7600, 500], [3300, 2800, 3000, 7900, 400], [3200, 2700, 2900, 7600, 300]], block number: 200
+[9] processing time (nanoseconds): 51660300
+
+Date: 2011-07-19 00:00:00, Sent data: [[3200, 2800, 3000, 7600, 700], [3300, 2800, 3000, 7900, 500], [3000, 2800, 2900, 7800, 300]], block number: 201
+[9] processing time (nanoseconds): 49879400
+
+Date: 2011-07-20 00:00:00, Sent data: [[3200, 2800, 3000, 7600, 400], [3300, 2800, 3000, 7800, 400], [3300, 2600, 2900, 8100, 100]], block number: 202
+[9] processing time (nanoseconds): 41334700
+
+Date: 2011-07-21 00:00:00, Sent data: [[3200, 2700, 2900, 7700, 400], [3300, 2700, 3000, 7800, 300], [3300, 2400, 2800, 8200, 100]], block number: 203
+[9] processing time (nanoseconds): 47101000
+
+Date: 2011-07-22 00:00:00, Sent data: [[3100, 2500, 2800, 8000, 200], [3400, 2700, 3100, 7900, 300], [3200, 2400, 2800, 8500, 100]], block number: 204
+[9] processing time (nanoseconds): 49269700
+
+Date: 2011-07-23 00:00:00, Sent data: [[3200, 2600, 2900, 8200, 300], [3400, 2700, 3000, 7800, 300], [3200, 2400, 2800, 9000, 100]], block number: 205
+[9] processing time (nanoseconds): 47780500
+
+Date: 2011-07-24 00:00:00, Sent data: [[3300, 2600, 2900, 8400, 300], [3400, 2600, 3000, 8300, 200], [3200, 2400, 2800, 9000, 100]], block number: 206
+[9] processing time (nanoseconds): 48987400
+
+Date: 2011-07-25 00:00:00, Sent data: [[3000, 2600, 2800, 8000, 300], [2900, 2700, 2800, 8200, 400], [2900, 2500, 2700, 8800, 100]], block number: 207
+[9] processing time (nanoseconds): 38646800
+
+Date: 2011-07-26 00:00:00, Sent data: [[2800, 2400, 2600, 9400, 400], [2700, 2500, 2600, 9300, 400], [2600, 2400, 2500, 9800, 100]], block number: 208
+[9] processing time (nanoseconds): 51837100
+
+Date: 2011-07-27 00:00:00, Sent data: [[2700, 2500, 2600, 9300, 300], [2700, 2500, 2600, 9600, 200], [2800, 2400, 2600, 9400, 200]], block number: 209
+[9] processing time (nanoseconds): 46709700
+
+Date: 2011-07-28 00:00:00, Sent data: [[3000, 2500, 2700, 8800, 300], [2900, 2500, 2700, 9500, 200], [2900, 2500, 2700, 9500, 200]], block number: 210
+[9] processing time (nanoseconds): 48093900
+
+Date: 2011-07-29 00:00:00, Sent data: [[3000, 2400, 2700, 8700, 400], [3100, 2500, 2800, 8700, 400], [2900, 2400, 2700, 9100, 200]], block number: 211
+[9] processing time (nanoseconds): 48524200
+
+Date: 2011-07-30 00:00:00, Sent data: [[2700, 2300, 2500, 8800, 300], [2800, 2400, 2600, 9500, 300], [2700, 2300, 2500, 9400, 100]], block number: 212
+[9] processing time (nanoseconds): 47667600
+
+Date: 2011-07-31 00:00:00, Sent data: [[2700, 2400, 2500, 9300, 300], [2700, 2400, 2500, 9600, 200], [2500, 2300, 2400, 9800, 200]], block number: 213
+[9] processing time (nanoseconds): 49238800
+Time it takes to read data from blockchain (nanoseconds): 1810 days, 2:06:40
+cv_res test_score: [0.94736842 1.         1.         0.875      0.875      1.
+ 0.875      1.         1.         1.        ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None, None]
+Time it takes to train classifier (nanoseconds): 695 days, 12:16:40
+
+Date: 2011-08-01 00:00:00, Sent data: [[2900, 2400, 2700, 9000, 300], [3000, 2500, 2700, 9600, 400], [2900, 2500, 2700, 9500, 300]], block number: 214
+[9] processing time (nanoseconds): 44413200
+
+Date: 2011-08-02 00:00:00, Sent data: [[2700, 2500, 2600, 9100, 400], [2700, 2500, 2600, 9600, 400], [2700, 2500, 2600, 9900, 200]], block number: 215
+[9] processing time (nanoseconds): 45288200
+
+Date: 2011-08-03 00:00:00, Sent data: [[2800, 2400, 2600, 8800, 300], [2800, 2500, 2600, 9400, 200], [2800, 2300, 2600, 9400, 100]], block number: 216
+[9] processing time (nanoseconds): 43772400
+
+Date: 2011-08-04 00:00:00, Sent data: [[3200, 2700, 2900, 8300, 300], [3100, 2600, 2900, 8500, 200], [3200, 2500, 2900, 8400, 100]], block number: 217
+[9] processing time (nanoseconds): 46937600
+
+Date: 2011-08-05 00:00:00, Sent data: [[3000, 2500, 2700, 8600, 400], [3000, 2500, 2700, 8900, 400], [3000, 2400, 2700, 9100, 200]], block number: 218
+[9] processing time (nanoseconds): 50287100
+
+Date: 2011-08-06 00:00:00, Sent data: [[2900, 2300, 2600, 8700, 500], [3000, 2400, 2700, 8800, 500], [2800, 2300, 2600, 9300, 300]], block number: 219
+[9] processing time (nanoseconds): 47343500
+
+Date: 2011-08-07 00:00:00, Sent data: [[3000, 2400, 2700, 8400, 400], [3000, 2500, 2800, 8600, 300], [3000, 2200, 2600, 9000, 200]], block number: 220
+[9] processing time (nanoseconds): 49034900
+
+Date: 2011-08-08 00:00:00, Sent data: [[3100, 2700, 2900, 8400, 300], [3100, 2600, 2900, 8700, 300], [3000, 2500, 2700, 8800, 100]], block number: 221
+[9] processing time (nanoseconds): 42206500
+
+Date: 2011-08-09 00:00:00, Sent data: [[3100, 2700, 2900, 7900, 300], [3200, 2700, 2900, 8700, 300], [3200, 2400, 2800, 8500, 100]], block number: 222
+[9] processing time (nanoseconds): 40945300
+
+Date: 2011-08-10 00:00:00, Sent data: [[3100, 2500, 2800, 8000, 200], [3300, 2700, 3000, 8300, 300], [3300, 2400, 2800, 8200, 100]], block number: 223
+[9] processing time (nanoseconds): 40217200
+
+Date: 2011-08-11 00:00:00, Sent data: [[3100, 2500, 2800, 7900, 300], [3400, 2700, 3000, 8100, 200], [3100, 2400, 2700, 8700, 100]], block number: 224
+[9] processing time (nanoseconds): 49648800
+
+Date: 2011-08-12 00:00:00, Sent data: [[3300, 2700, 3000, 7600, 300], [3500, 2800, 3100, 7500, 400], [3300, 2400, 2800, 8200, 100]], block number: 225
+[9] processing time (nanoseconds): 49409300
+
+Date: 2011-08-13 00:00:00, Sent data: [[3300, 2700, 3000, 7700, 200], [3200, 2800, 3000, 7600, 200], [3200, 2400, 2800, 7900, 100]], block number: 226
+[9] processing time (nanoseconds): 49840100
+
+Date: 2011-08-14 00:00:00, Sent data: [[3200, 2400, 2800, 7800, 300], [3300, 2500, 2900, 7900, 300], [3100, 2400, 2800, 8800, 100]], block number: 227
+[9] processing time (nanoseconds): 41665000
+
+Date: 2011-08-15 00:00:00, Sent data: [[3200, 2600, 2900, 8100, 300], [3200, 2500, 2900, 8900, 200], [3100, 2300, 2700, 8800, 100]], block number: 228
+[9] processing time (nanoseconds): 47784500
+
+Date: 2011-08-16 00:00:00, Sent data: [[3200, 2600, 2900, 7800, 300], [3400, 2600, 3000, 8100, 200], [3100, 2400, 2800, 8900, 100]], block number: 229
+[9] processing time (nanoseconds): 47153800
+
+Date: 2011-08-17 00:00:00, Sent data: [[3200, 2600, 2900, 8000, 300], [3300, 2600, 3000, 8000, 300], [3300, 2400, 2800, 8800, 100]], block number: 230
+[9] processing time (nanoseconds): 50138000
+
+Date: 2011-08-18 00:00:00, Sent data: [[3100, 2700, 2900, 7600, 300], [3200, 2600, 2900, 8100, 200], [3100, 2300, 2700, 8600, 100]], block number: 231
+[9] processing time (nanoseconds): 48408500
+
+Date: 2011-08-19 00:00:00, Sent data: [[3000, 2600, 2800, 8100, 200], [2800, 2600, 2700, 8200, 200], [3000, 2400, 2700, 8900, 100]], block number: 232
+[9] processing time (nanoseconds): 38274500
+
+Date: 2011-08-20 00:00:00, Sent data: [[3000, 2600, 2800, 8400, 200], [3200, 2700, 2900, 8500, 200], [3000, 2300, 2700, 9200, 100]], block number: 233
+[9] processing time (nanoseconds): 42553800
+
+Date: 2011-08-21 00:00:00, Sent data: [[3100, 2500, 2800, 8600, 200], [3200, 2500, 2800, 9000, 200], [3100, 2400, 2800, 9400, 100]], block number: 234
+[9] processing time (nanoseconds): 38867000
+
+Date: 2011-08-22 00:00:00, Sent data: [[3100, 2600, 2900, 7900, 400], [3100, 2600, 2800, 8700, 300], [3100, 2200, 2600, 9000, 100]], block number: 235
+[9] processing time (nanoseconds): 43203200
+
+Date: 2011-08-23 00:00:00, Sent data: [[3000, 2600, 2800, 8200, 400], [3100, 2700, 2900, 8400, 300], [3100, 2500, 2800, 8900, 100]], block number: 236
+[9] processing time (nanoseconds): 46437800
+
+Date: 2011-08-24 00:00:00, Sent data: [[3000, 2700, 2900, 8100, 300], [3100, 2700, 2900, 8500, 300], [3100, 2400, 2800, 9000, 100]], block number: 237
+[9] processing time (nanoseconds): 48216100
+
+Date: 2011-08-25 00:00:00, Sent data: [[3000, 2700, 2800, 7800, 400], [2900, 2700, 2800, 8400, 400], [2900, 2600, 2700, 9400, 100]], block number: 238
+[9] processing time (nanoseconds): 50035100
+
+Date: 2011-08-26 00:00:00, Sent data: [[3000, 2500, 2700, 7900, 500], [2900, 2500, 2700, 8600, 500], [3000, 2400, 2700, 8600, 300]], block number: 239
+[9] processing time (nanoseconds): 52259800
+
+Date: 2011-08-27 00:00:00, Sent data: [[2800, 2400, 2600, 8500, 600], [2700, 2500, 2600, 9400, 500], [2800, 2400, 2600, 8000, 200]], block number: 240
+[9] processing time (nanoseconds): 44157600
+
+Date: 2011-08-28 00:00:00, Sent data: [[3000, 2400, 2700, 8400, 600], [3000, 2500, 2800, 8800, 600], [3000, 2400, 2700, 9700, 200]], block number: 241
+[9] processing time (nanoseconds): 43934000
+
+Date: 2011-08-29 00:00:00, Sent data: [[3100, 2700, 2900, 8300, 400], [3100, 2700, 2900, 8700, 500], [3000, 2500, 2700, 9200, 200]], block number: 242
+[9] processing time (nanoseconds): 52003800
+
+Date: 2011-08-30 00:00:00, Sent data: [[3000, 2700, 2900, 8400, 500], [3100, 2700, 2900, 8400, 500], [3100, 2500, 2800, 8700, 200]], block number: 243
+[9] processing time (nanoseconds): 48782800
+
+Date: 2011-08-31 00:00:00, Sent data: [[3000, 2400, 2700, 8700, 400], [3000, 2300, 2700, 9200, 300], [2900, 2400, 2700, 9400, 100]], block number: 244
+[9] processing time (nanoseconds): 41595800
+Time it takes to read data from blockchain (nanoseconds): 1690 days, 4:58:20
+cv_res test_score: [1.         1.         1.         0.94117647 0.875      0.94117647
+ 1.         0.875      1.         0.94117647]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None, None]
+Time it takes to train classifier (nanoseconds): 734 days, 19:03:20
+
+Date: 2011-09-01 00:00:00, Sent data: [[2800, 2500, 2600, 8800, 400], [2800, 2400, 2600, 9400, 300], [2800, 2400, 2600, 9600, 100]], block number: 245
+[9] processing time (nanoseconds): 48615600
+
+Date: 2011-09-02 00:00:00, Sent data: [[3000, 2500, 2700, 8800, 200], [3000, 2600, 2800, 9400, 300], [3200, 2500, 2800, 9400, 300]], block number: 246
+[9] processing time (nanoseconds): 49985600
+
+Date: 2011-09-03 00:00:00, Sent data: [[3100, 2500, 2800, 8200, 400], [3100, 2700, 2900, 8700, 400], [3100, 2400, 2800, 8800, 100]], block number: 247
+[9] processing time (nanoseconds): 46761200
+
+Date: 2011-09-04 00:00:00, Sent data: [[3100, 2500, 2800, 8500, 300], [3100, 2600, 2900, 8600, 300], [3100, 2400, 2800, 9200, 100]], block number: 248
+[9] processing time (nanoseconds): 47352500
+
+Date: 2011-09-05 00:00:00, Sent data: [[3100, 2600, 2800, 7700, 400], [3100, 2600, 2900, 8300, 400], [3100, 2400, 2700, 9100, 100]], block number: 249
+[9] processing time (nanoseconds): 47800000
+
+Date: 2011-09-06 00:00:00, Sent data: [[3100, 2600, 2800, 8000, 400], [3200, 2600, 2900, 8500, 200], [2800, 2500, 2700, 8800, 100]], block number: 250
+[9] processing time (nanoseconds): 49787100
+
+Date: 2011-09-07 00:00:00, Sent data: [[3000, 2600, 2800, 8300, 200], [3000, 2500, 2800, 8800, 300], [3100, 2400, 2700, 8900, 100]], block number: 251
+[9] processing time (nanoseconds): 38512900
+
+Date: 2011-09-08 00:00:00, Sent data: [[3100, 2700, 2900, 8100, 300], [3100, 2600, 2900, 8700, 200], [3200, 2400, 2800, 8400, 100]], block number: 252
+[9] processing time (nanoseconds): 51248200
+
+Date: 2011-09-09 00:00:00, Sent data: [[3000, 2400, 2700, 8900, 300], [3200, 2500, 2900, 8100, 300], [3100, 2300, 2700, 9600, 100]], block number: 253
+[9] processing time (nanoseconds): 47302000
+
+Date: 2011-09-10 00:00:00, Sent data: [[3100, 2500, 2800, 8200, 200], [3100, 2400, 2700, 8400, 200], [3000, 2300, 2700, 9400, 100]], block number: 254
+[9] processing time (nanoseconds): 49235400
+
+Date: 2011-09-11 00:00:00, Sent data: [[3100, 2500, 2800, 8000, 400], [3200, 2600, 2900, 8100, 300], [3200, 2400, 2800, 8800, 100]], block number: 255
+[9] processing time (nanoseconds): 40646700
+
+Date: 2011-09-12 00:00:00, Sent data: [[3000, 2500, 2800, 7600, 200], [3100, 2600, 2800, 8200, 400], [3200, 2300, 2800, 8600, 100]], block number: 256
+[9] processing time (nanoseconds): 40476500
+
+Date: 2011-09-13 00:00:00, Sent data: [[3100, 2600, 2900, 7600, 300], [3200, 2700, 2900, 8100, 200], [3100, 2400, 2700, 8600, 100]], block number: 257
+[9] processing time (nanoseconds): 41161500
+
+Date: 2011-09-14 00:00:00, Sent data: [[3100, 2700, 2900, 7800, 400], [3100, 2800, 3000, 7900, 400], [3200, 2400, 2800, 8500, 100]], block number: 258
+[9] processing time (nanoseconds): 42677900
+
+Date: 2011-09-15 00:00:00, Sent data: [[3100, 2500, 2800, 7900, 500], [3200, 2400, 2800, 8000, 400], [3200, 2500, 2900, 8600, 200]], block number: 259
+[9] processing time (nanoseconds): 44219100
+
+Date: 2011-09-16 00:00:00, Sent data: [[3100, 2600, 2900, 7900, 400], [3200, 2400, 2800, 8000, 300], [3100, 2500, 2800, 8900, 200]], block number: 260
+[9] processing time (nanoseconds): 51654300
+
+Date: 2011-09-17 00:00:00, Sent data: [[3000, 2600, 2800, 8200, 400], [3100, 2500, 2800, 8300, 300], [3100, 2400, 2800, 9400, 200]], block number: 261
+[9] processing time (nanoseconds): 49829600
+
+Date: 2011-09-18 00:00:00, Sent data: [[3100, 2600, 2800, 8100, 400], [3100, 2500, 2800, 8500, 400], [3000, 2400, 2700, 8400, 100]], block number: 262
+[9] processing time (nanoseconds): 41276000
+
+Date: 2011-09-19 00:00:00, Sent data: [[3000, 2600, 2800, 7900, 300], [3200, 2500, 2800, 8900, 300], [3100, 2500, 2800, 8800, 100]], block number: 263
+[9] processing time (nanoseconds): 44014900
+
+Date: 2011-09-20 00:00:00, Sent data: [[3100, 2700, 2900, 7700, 400], [3100, 2600, 2800, 8200, 200], [3000, 2400, 2700, 8800, 200]], block number: 264
+[9] processing time (nanoseconds): 44962000
+
+Date: 2011-09-21 00:00:00, Sent data: [[3100, 2700, 2900, 8000, 400], [3100, 2600, 2900, 8100, 300], [2900, 2600, 2800, 8600, 100]], block number: 265
+[9] processing time (nanoseconds): 47349000
+
+Date: 2011-09-22 00:00:00, Sent data: [[3000, 2700, 2800, 7800, 300], [3100, 2700, 2900, 7900, 400], [3100, 2500, 2800, 8800, 100]], block number: 266
+[9] processing time (nanoseconds): 47979500
+
+Date: 2011-09-23 00:00:00, Sent data: [[3100, 2500, 2800, 8000, 400], [3200, 2500, 2800, 8000, 300], [3200, 2400, 2800, 8800, 200]], block number: 267
+[9] processing time (nanoseconds): 47355800
+
+Date: 2011-09-24 00:00:00, Sent data: [[2900, 2600, 2700, 7900, 300], [2900, 2500, 2700, 8600, 200], [2800, 2400, 2600, 8700, 100]], block number: 268
+[9] processing time (nanoseconds): 49896800
+
+Date: 2011-09-25 00:00:00, Sent data: [[3200, 2600, 2900, 7400, 300], [3200, 2600, 2900, 8500, 200], [3200, 2400, 2800, 8100, 100]], block number: 269
+[9] processing time (nanoseconds): 48057100
+
+Date: 2011-09-26 00:00:00, Sent data: [[2800, 2600, 2700, 8600, 600], [2700, 2400, 2600, 9300, 700], [2700, 2400, 2500, 9700, 300]], block number: 270
+[9] processing time (nanoseconds): 47722100
+
+Date: 2011-09-27 00:00:00, Sent data: [[2700, 2400, 2500, 9000, 1000], [2600, 2400, 2500, 9500, 500], [2600, 2300, 2500, 9900, 400]], block number: 271
+[9] processing time (nanoseconds): 47050700
+
+Date: 2011-09-28 00:00:00, Sent data: [[3000, 2600, 2800, 8100, 400], [2900, 2500, 2700, 8500, 300], [2800, 2400, 2600, 8800, 100]], block number: 272
+[9] processing time (nanoseconds): 48665200
+
+Date: 2011-09-29 00:00:00, Sent data: [[3200, 2600, 2900, 7600, 300], [3200, 2600, 2900, 7900, 300], [3200, 2400, 2800, 8600, 100]], block number: 273
+[9] processing time (nanoseconds): 43632700
+
+Date: 2011-09-30 00:00:00, Sent data: [[3100, 2600, 2800, 8000, 400], [3200, 2700, 3000, 8200, 500], [3200, 2400, 2800, 8500, 200]], block number: 274
+[9] processing time (nanoseconds): 46634300
+Time it takes to read data from blockchain (nanoseconds): 1644 days, 20:16:40
+cv_res test_score: [1.         1.         1.         0.94117647 1.         0.94117647
+ 0.94117647 0.94117647 1.         0.8       ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None, None]
+Time it takes to train classifier (nanoseconds): 731 days, 19:21:40
+
+Date: 2011-10-01 00:00:00, Sent data: [[2900, 2400, 2600, 8400, 600], [3000, 2500, 2700, 9000, 600], [2900, 2400, 2600, 9500, 200]], block number: 275
+[9] processing time (nanoseconds): 44157900
+
+Date: 2011-10-02 00:00:00, Sent data: [[3000, 2500, 2700, 8800, 400], [3200, 2500, 2800, 8800, 300], [3100, 2400, 2700, 9200, 100]], block number: 276
+[9] processing time (nanoseconds): 44366300
+
+Date: 2011-10-03 00:00:00, Sent data: [[3000, 2600, 2800, 8000, 200], [3200, 2400, 2800, 8300, 300], [3100, 2300, 2700, 9400, 100]], block number: 277
+[9] processing time (nanoseconds): 48751800
+
+Date: 2011-10-04 00:00:00, Sent data: [[3100, 2600, 2800, 8400, 300], [3200, 2400, 2800, 8000, 200], [3100, 2300, 2700, 9800, 100]], block number: 278
+[9] processing time (nanoseconds): 50093900
+
+Date: 2011-10-05 00:00:00, Sent data: [[3100, 2600, 2800, 7600, 200], [3200, 2600, 2900, 8300, 200], [3100, 2300, 2700, 9400, 100]], block number: 279
+[9] processing time (nanoseconds): 38602000
+
+Date: 2011-10-06 00:00:00, Sent data: [[3200, 2600, 2900, 7600, 300], [3200, 2600, 2900, 8200, 200], [3200, 2300, 2800, 8400, 100]], block number: 280
+[9] processing time (nanoseconds): 41117100
+
+Date: 2011-10-07 00:00:00, Sent data: [[3100, 2400, 2800, 8100, 300], [3100, 2400, 2700, 8300, 200], [3200, 2400, 2800, 8500, 100]], block number: 281
+[9] processing time (nanoseconds): 41888900
+
+Date: 2011-10-08 00:00:00, Sent data: [[2900, 2400, 2600, 9100, 200], [2700, 2500, 2600, 9100, 300], [2600, 2400, 2500, 9600, 100]], block number: 282
+[9] processing time (nanoseconds): 47446800
+
+Date: 2011-10-09 00:00:00, Sent data: [[2900, 2500, 2700, 9200, 200], [2800, 2500, 2600, 8900, 200], [2900, 2300, 2600, 9600, 100]], block number: 283
+[9] processing time (nanoseconds): 47606400
+
+Date: 2011-10-10 00:00:00, Sent data: [[3200, 2600, 2900, 7800, 300], [3300, 2400, 2900, 8200, 300], [3200, 2300, 2800, 8300, 200]], block number: 284
+[9] processing time (nanoseconds): 46220400
+
+Date: 2011-10-11 00:00:00, Sent data: [[3100, 2500, 2800, 7600, 300], [3100, 2500, 2800, 8300, 300], [3000, 2400, 2700, 9100, 100]], block number: 285
+[9] processing time (nanoseconds): 50342700
+
+Date: 2011-10-12 00:00:00, Sent data: [[3200, 2400, 2800, 8100, 200], [3100, 2400, 2800, 8800, 400], [3100, 2200, 2700, 8600, 200]], block number: 286
+[9] processing time (nanoseconds): 46839600
+
+Date: 2011-10-13 00:00:00, Sent data: [[2900, 2500, 2700, 8800, 200], [2800, 2500, 2600, 9200, 200], [2800, 2400, 2600, 9700, 100]], block number: 287
+[9] processing time (nanoseconds): 48189700
+
+Date: 2011-10-14 00:00:00, Sent data: [[3000, 2600, 2800, 8000, 300], [3100, 2500, 2800, 8600, 200], [3000, 2400, 2700, 8800, 100]], block number: 288
+[9] processing time (nanoseconds): 47993200
+
+Date: 2011-10-15 00:00:00, Sent data: [[3100, 2700, 2900, 7900, 300], [3200, 2600, 2900, 8300, 200], [3200, 2400, 2800, 9000, 100]], block number: 289
+[9] processing time (nanoseconds): 48477000
+
+Date: 2011-10-16 00:00:00, Sent data: [[3200, 2700, 2900, 7600, 300], [3400, 2700, 3000, 8200, 200], [3200, 2400, 2800, 8000, 100]], block number: 290
+[9] processing time (nanoseconds): 41764000
+
+Date: 2011-10-17 00:00:00, Sent data: [[3300, 2600, 2900, 7300, 200], [3400, 2600, 3000, 7700, 300], [3200, 2200, 2700, 8300, 100]], block number: 291
+[9] processing time (nanoseconds): 41734500
+
+Date: 2011-10-18 00:00:00, Sent data: [[3100, 2600, 2800, 8200, 300], [3400, 2500, 2900, 7900, 300], [3100, 2300, 2700, 9100, 100]], block number: 292
+[9] processing time (nanoseconds): 42436300
+
+Date: 2011-10-19 00:00:00, Sent data: [[3100, 2700, 2900, 8000, 200], [3300, 2600, 2900, 7700, 300], [3200, 2400, 2800, 8800, 100]], block number: 293
+[9] processing time (nanoseconds): 47293400
+
+Date: 2011-10-20 00:00:00, Sent data: [[3100, 2500, 2800, 7600, 200], [3400, 2600, 3000, 8000, 300], [3200, 2300, 2700, 8600, 100]], block number: 294
+[9] processing time (nanoseconds): 46587300
+
+Date: 2011-10-21 00:00:00, Sent data: [[3100, 2500, 2800, 7900, 200], [3200, 2600, 2900, 8100, 200], [3100, 2300, 2700, 8800, 200]], block number: 295
+[9] processing time (nanoseconds): 47017900
+
+Date: 2011-10-22 00:00:00, Sent data: [[3200, 2600, 2900, 7800, 200], [3300, 2700, 3000, 7900, 300], [3200, 2300, 2700, 9300, 100]], block number: 296
+[9] processing time (nanoseconds): 39611700
+
+Date: 2011-10-23 00:00:00, Sent data: [[3100, 2600, 2800, 8000, 200], [3300, 2500, 2900, 8100, 200], [3100, 2300, 2700, 8800, 100]], block number: 297
+[9] processing time (nanoseconds): 47498500
+
+Date: 2011-10-24 00:00:00, Sent data: [[3200, 2600, 2900, 7600, 200], [3300, 2500, 2900, 7800, 300], [3200, 2200, 2700, 8900, 100]], block number: 298
+[9] processing time (nanoseconds): 47868000
+
+Date: 2011-10-25 00:00:00, Sent data: [[3300, 2600, 2900, 7100, 200], [3400, 2500, 3000, 7400, 300], [3400, 2300, 2900, 7900, 100]], block number: 299
+[9] processing time (nanoseconds): 50307700
+
+Date: 2011-10-26 00:00:00, Sent data: [[3400, 2700, 3000, 6200, 300], [3400, 2600, 3000, 6800, 300], [3400, 2500, 2900, 7000, 200]], block number: 300
+[9] processing time (nanoseconds): 40415100
+
+Date: 2011-10-27 00:00:00, Sent data: [[3200, 2700, 3000, 7000, 400], [3200, 2600, 2900, 7000, 200], [3200, 2200, 2700, 7600, 100]], block number: 301
+[9] processing time (nanoseconds): 43876500
+
+Date: 2011-10-28 00:00:00, Sent data: [[3400, 2700, 3000, 7000, 200], [3300, 2600, 3000, 6800, 200], [3300, 2200, 2800, 7700, 100]], block number: 302
+[9] processing time (nanoseconds): 46350700
+
+Date: 2011-10-29 00:00:00, Sent data: [[3400, 2700, 3000, 6500, 300], [3500, 2700, 3100, 7100, 200], [3400, 2200, 2800, 7700, 100]], block number: 303
+[9] processing time (nanoseconds): 47302500
+
+Date: 2011-10-30 00:00:00, Sent data: [[3100, 2600, 2800, 6900, 300], [3200, 2600, 2900, 7400, 300], [3200, 2300, 2700, 7800, 100]], block number: 304
+[9] processing time (nanoseconds): 48382300
+
+Date: 2011-10-31 00:00:00, Sent data: [[3200, 2700, 2900, 6600, 400], [3300, 2500, 2900, 7300, 300], [3200, 2500, 2900, 7400, 100]], block number: 305
+[9] processing time (nanoseconds): 47247300
+Time it takes to read data from blockchain (nanoseconds): 1803 days, 11:45:00
+cv_res test_score: [1.         0.88888889 1.         0.875      1.         1.
+ 0.94117647 1.         1.         0.94117647]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None, None]
+Time it takes to train classifier (nanoseconds): 724 days, 0:11:40
+
+Date: 2011-11-01 00:00:00, Sent data: [[3300, 2600, 2900, 7000, 400], [3300, 2500, 2900, 7500, 300], [3200, 2400, 2800, 8200, 100]], block number: 306
+[9] processing time (nanoseconds): 42749100
+
+Date: 2011-11-02 00:00:00, Sent data: [[2900, 2500, 2700, 8100, 200], [3100, 2500, 2800, 8400, 300], [3200, 2300, 2800, 9100, 100]], block number: 307
+[9] processing time (nanoseconds): 39488000
+
+Date: 2011-11-03 00:00:00, Sent data: [[2900, 2300, 2600, 8800, 200], [2900, 2300, 2600, 8900, 300], [3000, 2200, 2600, 8700, 100]], block number: 308
+[9] processing time (nanoseconds): 43966200
+
+Date: 2011-11-04 00:00:00, Sent data: [[2700, 2500, 2600, 7800, 200], [2700, 2400, 2500, 9300, 200], [2700, 2200, 2400, 9800, 100]], block number: 309
+[9] processing time (nanoseconds): 45350600
+
+Date: 2011-11-05 00:00:00, Sent data: [[2900, 2400, 2600, 9000, 200], [3000, 2500, 2700, 9100, 300], [3100, 2300, 2700, 9200, 200]], block number: 310
+[9] processing time (nanoseconds): 46159900
+
+Date: 2011-11-06 00:00:00, Sent data: [[2900, 2500, 2700, 8700, 200], [2900, 2500, 2700, 9000, 100], [2800, 2300, 2600, 9100, 100]], block number: 311
+[9] processing time (nanoseconds): 49825000
+
+Date: 2011-11-07 00:00:00, Sent data: [[3200, 2600, 2900, 8000, 300], [3200, 2500, 2800, 8200, 200], [3400, 2500, 2900, 7700, 100]], block number: 312
+[9] processing time (nanoseconds): 47657500
+
+Date: 2011-11-08 00:00:00, Sent data: [[3300, 2700, 3000, 8100, 300], [3200, 2600, 2900, 8000, 200], [3300, 2500, 2900, 7600, 100]], block number: 313
+[9] processing time (nanoseconds): 49028100
+
+Date: 2011-11-09 00:00:00, Sent data: [[3100, 2700, 2900, 7700, 300], [3200, 2600, 2900, 7700, 300], [3200, 2400, 2800, 7400, 100]], block number: 314
+[9] processing time (nanoseconds): 44436200
+
+Date: 2011-11-10 00:00:00, Sent data: [[3200, 2700, 2900, 7400, 300], [3200, 2600, 2900, 8000, 300], [3200, 2400, 2800, 7300, 100]], block number: 315
+[9] processing time (nanoseconds): 45019200
+
+Date: 2011-11-11 00:00:00, Sent data: [[3200, 2600, 2900, 7500, 200], [3300, 2600, 2900, 8200, 200], [3400, 2400, 2900, 7300, 100]], block number: 316
+[9] processing time (nanoseconds): 47471300
+
+Date: 2011-11-12 00:00:00, Sent data: [[3100, 2600, 2900, 7300, 200], [3300, 2700, 3000, 7700, 400], [3200, 2300, 2700, 7700, 100]], block number: 317
+[9] processing time (nanoseconds): 48716200
+
+Date: 2011-11-13 00:00:00, Sent data: [[3300, 2200, 2700, 6800, 200], [3300, 2700, 3000, 7300, 300], [3200, 2300, 2800, 7700, 100]], block number: 318
+[9] processing time (nanoseconds): 39720400
+
+Date: 2011-11-14 00:00:00, Sent data: [[3100, 2500, 2800, 7600, 200], [3200, 2400, 2800, 8200, 300], [3100, 2300, 2700, 9000, 100]], block number: 319
+[9] processing time (nanoseconds): 54214600
+
+Date: 2011-11-15 00:00:00, Sent data: [[2700, 2300, 2500, 9200, 300], [2600, 2300, 2500, 9500, 400], [2600, 2200, 2400, 9600, 100]], block number: 320
+[9] processing time (nanoseconds): 39830900
+
+Date: 2011-11-16 00:00:00, Sent data: [[3200, 2500, 2800, 7600, 200], [3100, 2500, 2800, 8200, 400], [3300, 2300, 2800, 8200, 100]], block number: 321
+[9] processing time (nanoseconds): 41617700
+
+Date: 2011-11-17 00:00:00, Sent data: [[3100, 2600, 2800, 7800, 300], [3300, 2600, 2900, 8100, 300], [3200, 2300, 2800, 8400, 200]], block number: 322
+[9] processing time (nanoseconds): 46581800
+
+Date: 2011-11-18 00:00:00, Sent data: [[3300, 2600, 3000, 7100, 300], [3200, 2600, 2900, 8000, 300], [3200, 2300, 2800, 8300, 100]], block number: 323
+[9] processing time (nanoseconds): 47592500
+
+Date: 2011-11-19 00:00:00, Sent data: [[3200, 2600, 2900, 7200, 200], [3300, 2700, 3000, 8000, 400], [3300, 2300, 2800, 8500, 100]], block number: 324
+[9] processing time (nanoseconds): 49668100
+
+Date: 2011-11-20 00:00:00, Sent data: [[3300, 2700, 3000, 6400, 200], [3300, 2600, 3000, 7800, 300], [3400, 2200, 2800, 8000, 100]], block number: 325
+[9] processing time (nanoseconds): 46120200
+
+Date: 2011-11-21 00:00:00, Sent data: [[3300, 2400, 2800, 7000, 400], [3400, 2400, 2900, 6900, 500], [3300, 2300, 2800, 7000, 200]], block number: 326
+[9] processing time (nanoseconds): 48901400
+
+Date: 2011-11-22 00:00:00, Sent data: [[2800, 2500, 2600, 8400, 300], [2800, 2500, 2600, 8700, 400], [2800, 2300, 2600, 8400, 100]], block number: 327
+[9] processing time (nanoseconds): 51311600
+
+Date: 2011-11-23 00:00:00, Sent data: [[3000, 2600, 2800, 7700, 300], [3000, 2500, 2700, 7800, 400], [3100, 2300, 2700, 8700, 100]], block number: 328
+[9] processing time (nanoseconds): 42453600
+
+Date: 2011-11-24 00:00:00, Sent data: [[3100, 2700, 2900, 7800, 300], [3200, 2400, 2800, 7400, 400], [3200, 2400, 2800, 7600, 200]], block number: 329
+[9] processing time (nanoseconds): 39261000
+
+Date: 2011-11-25 00:00:00, Sent data: [[3300, 2600, 2900, 6900, 400], [3100, 2400, 2800, 7500, 300], [3100, 2300, 2700, 7600, 100]], block number: 330
+[9] processing time (nanoseconds): 49872800
+
+Date: 2011-11-26 00:00:00, Sent data: [[3400, 2600, 3000, 6400, 300], [3100, 2600, 2900, 7200, 400], [3300, 2400, 2900, 7400, 200]], block number: 331
+[9] processing time (nanoseconds): 48080700
+
+Date: 2011-11-27 00:00:00, Sent data: [[3000, 2600, 2800, 6800, 300], [3100, 2600, 2800, 7900, 300], [3000, 2200, 2600, 7800, 100]], block number: 332
+[9] processing time (nanoseconds): 48254200
+
+Date: 2011-11-28 00:00:00, Sent data: [[3200, 2600, 2900, 7100, 200], [3200, 2500, 2800, 7600, 300], [3200, 2300, 2800, 7400, 100]], block number: 333
+[9] processing time (nanoseconds): 47623100
+
+Date: 2011-11-29 00:00:00, Sent data: [[3100, 2600, 2900, 7500, 200], [3300, 2500, 2900, 7700, 300], [3200, 2300, 2800, 7700, 100]], block number: 334
+[9] processing time (nanoseconds): 38062700
+
+Date: 2011-11-30 00:00:00, Sent data: [[3000, 2700, 2800, 7500, 200], [3200, 2600, 2900, 7800, 300], [3300, 2300, 2800, 8800, 100]], block number: 335
+[9] processing time (nanoseconds): 41662300
+Time it takes to read data from blockchain (nanoseconds): 1728 days, 7:33:20
+cv_res test_score: [0.94117647 0.8        1.         1.         0.94117647 1.
+ 1.         1.         1.         0.94117647]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), None]
+Time it takes to train classifier (nanoseconds): 710 days, 17:31:40
+
+Date: 2011-12-01 00:00:00, Sent data: [[3100, 2600, 2800, 8200, 200], [2800, 2500, 2700, 8800, 200], [3100, 2300, 2700, 9200, 100]], block number: 336
+[9] processing time (nanoseconds): 41908400
+
+Date: 2011-12-02 00:00:00, Sent data: [[3200, 2400, 2800, 7300, 300], [3200, 2600, 2900, 8600, 300], [3100, 2300, 2700, 8900, 200]], block number: 337
+[9] processing time (nanoseconds): 43536000
+
+Date: 2011-12-03 00:00:00, Sent data: [[3100, 2600, 2800, 7700, 200], [3200, 2700, 2900, 7800, 300], [3100, 2400, 2800, 8700, 100]], block number: 338
+[9] processing time (nanoseconds): 43220300
+
+Date: 2011-12-04 00:00:00, Sent data: [[2900, 2300, 2600, 8700, 200], [2800, 2400, 2600, 9000, 300], [2600, 2200, 2400, 9700, 100]], block number: 339
+[9] processing time (nanoseconds): 47120400
+
+Date: 2011-12-05 00:00:00, Sent data: [[2800, 2300, 2600, 9000, 100], [2900, 2400, 2600, 8800, 200], [3000, 2200, 2600, 9000, 100]], block number: 340
+[9] processing time (nanoseconds): 47465300
+
+Date: 2011-12-06 00:00:00, Sent data: [[3000, 2300, 2600, 8100, 200], [3000, 2300, 2600, 8500, 300], [3000, 2200, 2600, 8500, 100]], block number: 341
+[9] processing time (nanoseconds): 48136300
+
+Date: 2011-12-07 00:00:00, Sent data: [[2900, 2600, 2700, 8000, 200], [2900, 2500, 2700, 8300, 300], [3000, 2300, 2700, 8700, 100]], block number: 342
+[9] processing time (nanoseconds): 51712700
+
+Date: 2011-12-08 00:00:00, Sent data: [[3000, 2500, 2800, 7900, 200], [3000, 2400, 2700, 8700, 300], [3100, 2300, 2700, 7900, 100]], block number: 343
+[9] processing time (nanoseconds): 38557900
+
+Date: 2011-12-09 00:00:00, Sent data: [[2600, 2400, 2500, 9200, 100], [2500, 2400, 2500, 9600, 200], [2500, 2200, 2400, 9600, 100]], block number: 344
+[9] processing time (nanoseconds): 39016600
+
+Date: 2011-12-10 00:00:00, Sent data: [[2800, 2400, 2600, 9000, 200], [2800, 2300, 2600, 8900, 200], [2900, 2300, 2600, 9400, 100]], block number: 345
+[9] processing time (nanoseconds): 42321000
+
+Date: 2011-12-11 00:00:00, Sent data: [[2900, 2600, 2700, 8400, 100], [2900, 2600, 2700, 8800, 200], [2900, 2300, 2600, 9200, 100]], block number: 346
+[9] processing time (nanoseconds): 43983200
+
+Date: 2011-12-12 00:00:00, Sent data: [[3300, 2600, 2900, 7200, 200], [3200, 2700, 2900, 7900, 300], [3200, 2300, 2800, 8900, 100]], block number: 347
+[9] processing time (nanoseconds): 46758200
+
+Date: 2011-12-13 00:00:00, Sent data: [[3100, 2500, 2800, 7500, 200], [3200, 2500, 2900, 7800, 300], [3200, 2300, 2800, 8100, 100]], block number: 348
+[9] processing time (nanoseconds): 52049900
+
+Date: 2011-12-14 00:00:00, Sent data: [[3100, 2600, 2800, 7600, 300], [3000, 2500, 2800, 8600, 200], [3100, 2300, 2700, 8800, 100]], block number: 349
+[9] processing time (nanoseconds): 45802900
+
+Date: 2011-12-15 00:00:00, Sent data: [[2900, 2500, 2700, 8000, 300], [2800, 2600, 2700, 8200, 200], [3100, 2400, 2700, 8100, 100]], block number: 350
+[9] processing time (nanoseconds): 48377800
+
+Date: 2011-12-16 00:00:00, Sent data: [[3100, 2500, 2800, 6600, 300], [3100, 2500, 2800, 7100, 300], [3200, 2200, 2700, 7600, 200]], block number: 351
+[9] processing time (nanoseconds): 52321900
+
+Date: 2011-12-17 00:00:00, Sent data: [[3100, 2300, 2700, 7800, 300], [2800, 2400, 2600, 8700, 300], [2900, 2300, 2600, 8700, 100]], block number: 352
+[9] processing time (nanoseconds): 46496100
+
+Date: 2011-12-18 00:00:00, Sent data: [[3100, 2300, 2700, 8200, 200], [2600, 2400, 2500, 9000, 200], [2800, 2300, 2500, 9500, 100]], block number: 353
+[9] processing time (nanoseconds): 44054900
+
+Date: 2011-12-19 00:00:00, Sent data: [[3000, 2500, 2700, 7900, 200], [3100, 2600, 2800, 8300, 200], [3200, 2200, 2700, 8500, 100]], block number: 354
+[9] processing time (nanoseconds): 46769200
+
+Date: 2011-12-20 00:00:00, Sent data: [[3000, 2600, 2800, 7900, 200], [3000, 2600, 2800, 8300, 200], [3100, 2300, 2700, 9000, 100]], block number: 355
+[9] processing time (nanoseconds): 47564600
+
+Date: 2011-12-21 00:00:00, Sent data: [[2900, 2400, 2700, 8300, 200], [3100, 2500, 2800, 8300, 200], [3100, 2200, 2700, 9600, 100]], block number: 356
+[9] processing time (nanoseconds): 47300300
+
+Date: 2011-12-22 00:00:00, Sent data: [[3000, 2400, 2700, 7800, 200], [3100, 2600, 2800, 8300, 300], [3000, 2200, 2600, 8500, 100]], block number: 357
+[9] processing time (nanoseconds): 48527400
+
+Date: 2011-12-23 00:00:00, Sent data: [[3100, 2600, 2800, 7100, 200], [3100, 2500, 2800, 7800, 300], [3200, 2400, 2800, 7900, 100]], block number: 358
+[9] processing time (nanoseconds): 47904200
+
+Date: 2011-12-24 00:00:00, Sent data: [[2900, 2500, 2700, 6800, 300], [2900, 2500, 2700, 7600, 400], [2900, 2300, 2600, 7700, 200]], block number: 359
+[9] processing time (nanoseconds): 47288900
+
+Date: 2011-12-25 00:00:00, Sent data: [[2900, 2500, 2700, 6400, 300], [2800, 2400, 2600, 7400, 400], [2800, 2200, 2500, 7700, 100]], block number: 360
+[9] processing time (nanoseconds): 49789300
+
+Date: 2011-12-26 00:00:00, Sent data: [[2900, 2500, 2700, 6800, 300], [2800, 2500, 2700, 7400, 400], [3000, 2200, 2600, 7300, 100]], block number: 361
+[9] processing time (nanoseconds): 46999000
+
+Date: 2011-12-27 00:00:00, Sent data: [[3000, 2500, 2700, 6800, 300], [3000, 2300, 2600, 7800, 300], [2900, 2200, 2600, 7800, 200]], block number: 362
+[9] processing time (nanoseconds): 46589100
+
+Date: 2011-12-28 00:00:00, Sent data: [[2900, 2500, 2700, 8100, 200], [3000, 2500, 2700, 8100, 200], [3100, 2200, 2600, 8500, 100]], block number: 363
+[9] processing time (nanoseconds): 48263400
+
+Date: 2011-12-29 00:00:00, Sent data: [[3100, 2500, 2800, 7500, 200], [3000, 2500, 2800, 7800, 400], [3200, 2100, 2600, 8100, 100]], block number: 364
+[9] processing time (nanoseconds): 48019900
+
+Date: 2011-12-30 00:00:00, Sent data: [[3100, 2500, 2800, 7400, 200], [3100, 2500, 2800, 7600, 400], [3100, 2200, 2700, 9000, 100]], block number: 365
+[9] processing time (nanoseconds): 50648100
+
+Date: 2011-12-31 00:00:00, Sent data: [[3000, 2500, 2700, 7300, 200], [3000, 2500, 2700, 7600, 300], [3100, 2100, 2600, 8300, 100]], block number: 366
+[9] processing time (nanoseconds): 40737200
+Time it takes to read data from blockchain (nanoseconds): 1818 days, 3:03:20
+cv_res test_score: [0.94736842 1.         1.         1.         1.         1.
+ 1.         0.94117647 0.8        0.875     ]
+models: [OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06), OneClassSVM(nu=0.06)]
+Time it takes to train classifier (nanoseconds): 760 days, 22:18:20
+[9] models memory size (bytes): 91184
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-01 00:00:00, Sent data: [[2900, 2500, 2700, 7300, 200], [3000, 2500, 2700, 7700, 300], [3100, 2100, 2600, 8500, 100]], block number: 367
+[9] processing time (nanoseconds): 45571800
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-02 00:00:00, Sent data: [[2900, 2500, 2700, 7800, 200], [3000, 2400, 2700, 7800, 200], [3000, 2200, 2600, 8200, 100]], block number: 368
+[9] processing time (nanoseconds): 51988300
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-03 00:00:00, Sent data: [[2900, 2400, 2600, 7800, 200], [2900, 2400, 2700, 8400, 200], [3000, 2300, 2700, 8800, 100]], block number: 369
+[9] processing time (nanoseconds): 53471200
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-04 00:00:00, Sent data: [[2900, 2500, 2700, 7900, 200], [2900, 2500, 2700, 8500, 300], [3000, 2200, 2600, 8200, 100]], block number: 370
+[9] processing time (nanoseconds): 45031000
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-05 00:00:00, Sent data: [[3000, 2500, 2700, 6700, 200], [3100, 2500, 2800, 7200, 400], [3100, 2100, 2600, 8200, 100]], block number: 371
+[9] processing time (nanoseconds): 49248700
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-06 00:00:00, Sent data: [[2900, 2600, 2700, 7400, 200], [3100, 2400, 2700, 7700, 300], [3100, 2300, 2700, 8100, 100]], block number: 372
+[9] processing time (nanoseconds): 51107700
+
+[9] tp
+[9] tp
+[9] tp
+Date: 2012-01-07 00:00:00, Sent data: [[2900, 2500, 2700, 7600, 200], [3000, 2500, 2700, 8000, 200], [3000, 2100, 2500, 8700, 100]], block number: 373
+[9] processing time (nanoseconds): 41918300
+
+[9] tp
+[9] fn
+[9] fn
+Date: 2012-01-08 00:00:00, Sent data: [[2500, 2300, 2400, 8600, 200]], block number: 374
+[9] processing time (nanoseconds): 42196600
+
+[9] tp
+Date: 2012-01-09 00:00:00, Sent data: [[3200, 2500, 2800, 6800, 200]], block number: 375
+[9] processing time (nanoseconds): 39626600
+
+[9] tp
+Date: 2012-01-10 00:00:00, Sent data: [[3000, 2600, 2800, 7600, 200]], block number: 376
+[9] processing time (nanoseconds): 39899100
+
+[9] fn
+[9] processing time (nanoseconds): 5577600
+Ending program since there are no sensors left in the cluster.
+Number of retraining: 0
+program ends after 0:00:29.707489.
