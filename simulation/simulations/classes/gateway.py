@@ -240,7 +240,7 @@ class Gateway:
         training_data = self.web3.read_data_from_blockchain(
             previous_month, year)
         print('Time it takes to read data from blockchain (nanoseconds): {}'.format(
-            seconds=time_ns() - read_data_start_time))
+            time_ns() - read_data_start_time))
 
         # Remove all data entries from banned sensors and get only the data part.
         training_data = [
@@ -254,7 +254,7 @@ class Gateway:
         train_start_time = time_ns()
         self.classifier.train(training_data, previous_month)
         print('Time it takes to train classifier (nanoseconds): {}'.format(
-            seconds=time_ns() - train_start_time))
+            time_ns() - train_start_time))
 
         if self.classifier.is_complete_models():
             print('[{}] models memory size (bytes): {}'.format(
