@@ -1,6 +1,9 @@
-# Usage: ./run.sh <ip_addr> <http_port> <sys_type> [<itp>]
+# Usage: ./run.sh <ip_addr> <http_port> <sys_type> [<itp>] [<threshold>] <username>
 # 
+# itp := initial trust points
+# threshold := decision threshold
 # Note: only include itp when sys_type == 'with-srp'
+#       only include threshold when sys_type == 'with-srp' or sys_type == 'without-srp'
 
 current_dir=${PWD##*/}
 
@@ -11,9 +14,9 @@ fi
 
 ip_addr="$1"
 http_port="$2"
+sys_type="$3"
 
 
-x=1
 for i in {001..100}
 do
      x=$((10#$i))
@@ -54,19 +57,22 @@ do
      contract_address=`python3.10 ./geth/scripts/deploy-contract.py $http_port` &&
      echo "[$x] Finished deploying contract into the blockchain."
 
-     sys_type="$3"
-
      if [ "$sys_type" == "with-srp" ]; then
           itp="$4"
+          threshold="$5"
+          username="$6"
           echo "[$x] Running test suite for '$sys_type-itp-$itp' system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $x > "./simulations/logs/with-srp-$itp/test-case-$i-logs.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $itp $x $threshold > "./simulations/logs/$username/with-srp-itp-$itp-thresh-$threshold/test-case-$i-logs.txt"
      elif [ "$sys_type" == "without-srp" ]; then
+          threshold="$4"
+          username="$5"
           echo "[$x] Running test suite for '$sys_type' system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $x > "./simulations/logs/without-srp/test-case-$i-logs.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $x $threshold > "./simulations/logs/$username/without-srp-thresh-$threshold/test-case-$i-logs.txt"
 
      elif [ "$sys_type" == "without-mndp" ]; then
+          username="$3"
           echo "[$x] Running test suite for '$sys_type' system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $x > "./simulations/logs/without-mndp/test-case-$i-logs.txt"
+          python3.10 ./simulations/run-test-suite.py $sys_type $x > "./simulations/logs/$username/without-mndp/test-case-$i-logs.txt"
      else
           echo "Error: Invalid system type!"
           exit 1
@@ -82,7 +88,27 @@ do
 
      echo "[$x] Test done!"
      python3.10 ./simulations/utils/ring.py
-
-     x=$((x + 1))
 done
+
+echo "Finished running all tests!"
+
+if [ $sys_type == "with-srp" ]; then
+     itp="$4"
+     threshold="$5"
+     username="$6"
+     python3.10 ./simulations/compute-metrics.py "$sys_type-itp-$itp-thresh-$threshold" $username > ./simulations/computed-metrics/$username/$sys_type-itp-$itp-thresh-$threshold.txt
+elif [ $sys_type == "without-srp" ]; then
+     threshold="$4"
+     username="$5"
+     python3.10 ./simulations/compute-metrics.py "$sys_type-itp-$itp" $username > ./simulations/computed-metrics/$username/$sys_type-itp-$itp.txt
+elif [ $sys_type == "without-mndp" ]; then
+     username="$3"
+     python3.10 ./simulations/compute-metrics.py "$sys_type" $username > ./simulations/computed-metrics/$username/$sys_type.txt
+else
+     echo "Error: Invalid system type!"
+     exit 1
+fi
+
+echo "Finished computing metrics!"
+echo "End bash script."
 

@@ -27,20 +27,22 @@ def main():
             http_port = int(argv[2])
             contract_addr = argv[3]
             itp = int(argv[4])
+            decision_threshold = float(argv[6])
 
             i = str(argv[5])
             test_case = test_suite[i]
 
-            run_with_srp(http_port, contract_addr, itp, test_case, i)
+            run_with_srp(http_port, contract_addr, itp, test_case, i, decision_threshold)
 
         case 'without-srp':
             http_port = int(argv[2])
             contract_addr = argv[3]
+            decision_threshold = float(argv[5])
 
             i = str(argv[4])
             test_case = test_suite[i]
 
-            run_without_srp(http_port, contract_addr, test_case, i)
+            run_without_srp(http_port, contract_addr, test_case, i, decision_threshold)
 
         case 'without-mndp':
             i = str(argv[2])
@@ -62,27 +64,27 @@ def get_malicious_data():
     pass
 
 
-def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case, i: str):
-    gateway = get_gateway(http_port, contract_addr, itp, i)
-    gateway.run(test_case)
+def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case, i: str, decision_threshold: float):
+    gateway = get_gateway(http_port, contract_addr, itp, i, test_case, decision_threshold)
+    gateway.run()
 
 
-def run_without_srp(http_port: int, contract_addr: str, test_case, i: str):
-    gateway = get_gateway(http_port, contract_addr, None, i)
-    gateway.run(test_case)
+def run_without_srp(http_port: int, contract_addr: str, test_case, i: str, decision_threshold: float):
+    gateway = get_gateway(http_port, contract_addr, None, i, test_case, decision_threshold)
+    gateway.run()
 
 
 def run_without_mndp(test_case, i: str):
     pass
 
 
-def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str):
+def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str, test_case, decision_threshold: float):
     sensor1 = Sensor('Port Area Sensor', 'Port Area')
     sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
     sensor3 = Sensor('Science Garden Sensor', 'Science Garden')
     sensors = [sensor1, sensor2, sensor3]
 
-    classifier = Classifier()
+    classifier = Classifier(decision_threshold)
     web3 = Web3Client(http_port, contract_addr)
     srp = None if itp is None else SensorRetentionPolicy(itp)
 
@@ -92,7 +94,8 @@ def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str):
         srp.register_sensor(sensor3.id)
 
     gateway = Gateway('Metro Manila Cluster', srp, classifier,
-                      sensors, web3, START_DATE, END_DATE, i)
+                      sensors, web3, START_DATE, END_DATE, i, test_case)
+    print('decision threshold: {}'.format(gateway.classifier.decision_threshold))
 
     return gateway
 
