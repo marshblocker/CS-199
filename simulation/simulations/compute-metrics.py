@@ -18,7 +18,10 @@ SENSORS_COUNT = 3
 
 
 def main():
+    global TESTS_COUNT
+    
     log_files = os.listdir(LOGS_PATH)
+    TESTS_COUNT = len(log_files)
 
     system_mem_size_ave = 0.0
     system_processing_time_ave = 0.0
@@ -66,10 +69,10 @@ def main():
                     sum(test_detection_times) / len(test_detection_times), 2)
                 system_detection_time_ave += test_detection_time_ave
 
-            tp_total += len(re.findall(r'\[\d+\] \[tp\]: .*', content))
-            tn_total += len(re.findall(r'\[\d+\] \[tn\]: .*', content))
-            fp_total += len(re.findall(r'\[\d+\] \[fp\]: .*', content))
-            fn_total += len(re.findall(r'\[\d+\] \[fn\]: .*', content))
+            tp_total += len(re.findall(r'\[\d+\] tp: .*', content))
+            tn_total += len(re.findall(r'\[\d+\] tn: .*', content))
+            fp_total += len(re.findall(r'\[\d+\] fp: .*', content))
+            fn_total += len(re.findall(r'\[\d+\] fn: .*', content))
 
     print('{} metrics result:'.format(argv[1]))
 
