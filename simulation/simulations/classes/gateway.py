@@ -111,7 +111,7 @@ class Gateway:
             LOG('processing time', duration, self.i, 'nanoseconds')
 
             self.date += timedelta(days=1)
-            if self.date.day == 1 and self.date != self.start_date and len(self.sensors):
+            if self.date.day == 1 and self.date != self.start_date and len(self.sensors) and self.is_retraining:
                 self.train_new_classifier()
 
         if self.date > self.end_date:
