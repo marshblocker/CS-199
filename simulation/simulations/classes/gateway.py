@@ -26,7 +26,8 @@ class Gateway:
             web3: Web3Client,
             start_date: datetime,
             end_date: datetime,
-            i: str) -> None:
+            i: str,
+            test_case) -> None:
         self.id = gateway_id
         self.srp = srp
         self.classifier = classifier
@@ -41,8 +42,7 @@ class Gateway:
         self.is_retraining = False
         self.i = i      # Test case number
 
-    def run(self, test_case) -> None:
-        retraining_event_counter = 0
+        self.test_case = test_case
         while self.date <= self.end_date and len(self.sensors):
             LOG('Date', self.date)
             messages = [sensor.transmit_data_entry(
@@ -117,11 +117,11 @@ class Gateway:
         self.log_modified_fscore_components()
         LOG('Number of retraining', self.retraining_event_counter)
 
-    def sensor_is_malicious_today(self, sensor_id, test_case):
-        if test_case[sensor_id]['atk_date'] != 'None':
-            atk_drtn = int(test_case[sensor_id]['atk_drtn'])
+    def sensor_is_malicious_today(self, sensor_id):
+        if self.test_case[sensor_id]['atk_date'] != 'None':
+            atk_drtn = int(self.test_case[sensor_id]['atk_drtn'])
             atk_date_start = datetime.strptime(
-                test_case[sensor_id]['atk_date'], '%b %d, %Y')
+                self.test_case[sensor_id]['atk_date'], '%b %d, %Y')
             atk_date_end = atk_date_start + timedelta(days=atk_drtn-1)
 
             if self.date == atk_date_start:
@@ -269,9 +269,9 @@ class Gateway:
 
         return end_date
 
-    def log_detection_time(self, newly_banned_sensors, test_case):
+    def log_detection_time(self, newly_banned_sensors, is_hacked: bool):
         for sensor in newly_banned_sensors:
-            attack_descrip = test_case[sensor]
+            attack_date = self.test_case[sensor]['atk_date']
 
             if attack_descrip['atk_date'] == 'None':
                 continue
