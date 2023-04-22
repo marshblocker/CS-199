@@ -9,4 +9,4 @@
 - [ ] without-srp, threshold -0.5 (`./run.sh <ip_addr> <http_port> "without-srp" "-0.5" <username>`)
 - [ ] without-srp, threshold 0.0 (`./run.sh <ip_addr> <http_port> "without-srp" "0.0" <username>`)
 
-`<username>` is any string identifier e.g. `kenneth`. Make sure the directories where the logs and computed metrics will be stored are created before running `run.sh` (see the directories in `./simulation/simulations/logs/kenneth`). After running the tests, check the logs in `./simulation/simulations/logs/<username>` directory and the computed metrics in `./simulation/simulations/computed-metrics/<username>` directory.
+`<username>` is any string identifier e.g. `kenneth`. Make sure the directories where the logs and computed metrics will be stored are created before running `run.sh` (see the directories in `./simulation/simulations/logs/kenneth` to see how the directories are named). After running the tests, check the logs in `./simulation/simulations/logs/<username>` directory and the computed metrics in `./simulation/simulations/computed-metrics/<username>` directory.
