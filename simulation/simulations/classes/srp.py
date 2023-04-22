@@ -22,14 +22,6 @@ class SensorRetentionPolicy:
         self.initial_trust_points = initial_trust_points
         self.max_trust_points = MAX_TRUST_POINTS
 
-        # TODO: Implement this.
-        # number of times theta condition must be met during the last 10 evaluations
-        # before going into manual investigation
-        # self.phi = phi
-
-        # self.consec_eval = 0
-        # self.consec_manual_inves = 0
-
     def register_sensor(self, sensor_id: str) -> None:
         self.sensors_stats[sensor_id] = {
             "consecutive_clean": 0,
