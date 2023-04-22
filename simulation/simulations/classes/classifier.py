@@ -15,7 +15,6 @@ class Classifier:
 
         # OCSVM params
         self.nu = 0.06
-        self.K = 10  # number of folds in K-cross validation
 
         # LOF params
         self.n_neighbors=20
@@ -23,7 +22,8 @@ class Classifier:
 
     def train(self, data: np.ndarray, month: int):
         model = OneClassSVM(nu=self.nu)
-        kf = KFold(n_splits=K, shuffle=True)
+        model = model.fit(data)
+        self.models[month-1] = model
 
         LOG('models', self.models)
 
@@ -51,5 +51,5 @@ class Classifier:
         for i in range(len(self.models)):
             if self.models[i] != None:
                 total_models += 1
-        
+
         return total_models == 12
