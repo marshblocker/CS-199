@@ -8,6 +8,7 @@ import pandas as pd
 from classes.classifier import Classifier
 from classes.sensor import Sensor
 from classes.srp import SensorRetentionPolicy, SRPEvalResult
+from classes.utils import LOG, LOG_DUR
 from classes.web3client import Web3Client
 from pympler import asizeof
 
@@ -43,10 +44,10 @@ class Gateway:
     def run(self, test_case) -> None:
         retraining_event_counter = 0
         while self.date <= self.end_date and len(self.sensors):
-            print('')
+            LOG('Date', self.date)
             messages = [sensor.transmit_data_entry(
                 self.date) for sensor in self.sensors]
-            start_time = time_ns()
+            processing_start = time_ns()
 
             # Only inject malicious data when the sensors are not retraining
             if not self.is_retraining:
@@ -61,9 +62,8 @@ class Gateway:
                 if self.srp is not None:
                     newly_banned_sensors, evaluation_result = self.srp.evaluate_sensors(
                         classification_result, self.date)
-                    print('newly banned sensors: {}'.format(
-                        newly_banned_sensors))
-                    print('evaluation result: {}'.format(evaluation_result))
+                    LOG('newly banned sensors', newly_banned_sensors)
+                    LOG('evaluation result', evaluation_result)
 
                     self.log_detection_time(newly_banned_sensors, test_case)
 
@@ -101,8 +101,8 @@ class Gateway:
                     messages)
                 self.store_data_to_blockchain(sensor_ids, data_entries, date)
 
-            print('[{}] processing time (nanoseconds): {}'.format(
-                self.i, time_ns() - start_time))
+            duration = time_ns() - processing_start
+            LOG('processing time', duration, self.i, 'nanoseconds')
 
             self.date += timedelta(days=1)
             if self.date.day == 1 and self.date != self.start_date and len(self.sensors):
@@ -114,7 +114,8 @@ class Gateway:
         if not len(self.sensors):
             print('Ending program since there are no sensors left in the cluster.')
 
-        print('Number of retraining: {}'.format(retraining_event_counter))
+        self.log_modified_fscore_components()
+        LOG('Number of retraining', self.retraining_event_counter)
 
     def sensor_is_malicious_today(self, sensor_id, test_case):
         if test_case[sensor_id]['atk_date'] != 'None':
@@ -137,7 +138,7 @@ class Gateway:
                 malicious_data: pd.Series = sensor.malicious_data.query(
                     f'YEAR == {self.date.year} and MONTH == {self.date.month} and DAY == {self.date.day}'
                 ).squeeze().astype(int)
-                print('malicious_data: {}'.format(malicious_data))
+                LOG('malicious_data', malicious_data)
 
                 for i in range(len(messages)):
                     if messages[i]['sender'] == sensor.id:
@@ -162,19 +163,19 @@ class Gateway:
                 if self.sensor_is_malicious_today(sensor_id, test_case):
                     label[i] = -1
 
+        LOG('data_entries', data_entries)
+        LOG('label', label)
+
         classification_result = self.classifier.classify(
             data_entries, self.date.month)
         classification_result = list(zip(classification_result, label))
 
         for res, label in classification_result:
-            if res == 1 and label == 1:
-                print('[{}] tp'.format(self.i))
-            elif res == -1 and label == -1:
-                print('[{}] tn'.format(self.i))
-            elif res == 1 and label == -1:
-                print('[{}] fp'.format(self.i))
-            elif res == -1 and label == 1:
-                print('[{}] fn'.format(self.i))
+            match (res, label):
+                case (1,  1): LOG('tp', 1)
+                case (-1, -1): LOG('tn', 1)
+                case (1, -1): LOG('fp', 1)
+                case (-1,  1): LOG('fn', 1)
 
         classification_result = dict(zip(sensor_ids, classification_result))
 
@@ -239,8 +240,7 @@ class Gateway:
         read_data_start_time = time_ns()
         training_data = self.web3.read_data_from_blockchain(
             previous_month, year)
-        print('Time it takes to read data from blockchain (nanoseconds): {}'.format(
-            time_ns() - read_data_start_time))
+        LOG_DUR('read data from blockchain', read_data_start_time)
 
         # Remove all data entries from banned sensors and get only the data part.
         training_data = [
@@ -253,12 +253,11 @@ class Gateway:
 
         train_start_time = time_ns()
         self.classifier.train(training_data, previous_month)
-        print('Time it takes to train classifier (nanoseconds): {}'.format(
-            time_ns() - train_start_time))
+        LOG_DUR('train classifier', train_start_time)
 
         if self.classifier.is_complete_models():
-            print('[{}] models memory size (bytes): {}'.format(
-                self.i, asizeof.asizeof(self.classifier.models)))
+            models_size = asizeof.asizeof(self.classifier.models)
+            LOG('models memory size', models_size, self.i, 'bytes')
 
     def compute_first_batch_training_end_date(self) -> datetime:
         # This returns the first day of the month a year after the start of
@@ -290,5 +289,18 @@ class Gateway:
                         self.date - self.first_batch_training_end_date).days
                 else:
                     detection_time = (self.date - attack_date).days
-                print('[{}] detection time (days): {}'.format(
-                    self.i, detection_time))
+
+                LOG('detection time', detection_time, self.i, 'days')
+
+    def log_modified_fscore_components(self):
+        for sensor in self.sensors:
+            if self.test_case[sensor.id]['atk_date'] == 'None':
+                LOG('tp', sensor.id, self.i)
+            else:
+                LOG('fp', sensor.id, self.i)
+
+        for sensor in self.banned_sensors:
+            if self.test_case[sensor]['atk_date'] == 'None':
+                LOG('fn', sensor, self.i)
+            else:
+                LOG('tn', sensor, self.i)

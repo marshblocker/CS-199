@@ -2,6 +2,7 @@ from copy import deepcopy
 from datetime import datetime
 from enum import Enum, auto
 
+from classes.utils import LOG
 MAX_TRUST_POINTS = 30
 M = 5
 
@@ -46,23 +47,23 @@ class SensorRetentionPolicy:
             classif_result[sensor_id][0] = classif_result[sensor_id][0] == -1
             classif_result[sensor_id][1] = classif_result[sensor_id][1] == -1
 
-        print('classif_result: {}'.format(classif_result))
+        LOG('classif_result', classif_result)
 
         self.curr_date = curr_date
         malicious_amount = sum(
             [res[0] for res in list(classif_result.values())])
 
-        print('K: {}, malicious_amount: {}, theta: {}'.format(
-            self.K, malicious_amount, self.theta))
+        LOG('(K, malicious_amount, theta)',
+            (self.K, malicious_amount, self.theta))
+
         if malicious_amount >= self.theta:
-            result = self._do_manual_investigation(classif_result)
-            print('sensor stats: {}'.format(self.sensors_stats))
+            LOG('sensor stats', self.sensors_stats)
             return result
         else:
             classif_result = {
                 sensor_id: classif_result[sensor_id][0] for sensor_id in classif_result}
             result = self._update_trust_points(classif_result)
-            print('sensor stats: {}'.format(self.sensors_stats))
+            LOG('sensor stats', self.sensors_stats)
             return result
 
     def _do_manual_investigation(self, classification_result):
