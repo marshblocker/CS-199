@@ -1,12 +1,15 @@
 import numpy as np
-from sklearn.model_selection import KFold, cross_validate
+from sklearn.linear_model import SGDOneClassSVM
+from sklearn.neighbors import LocalOutlierFactor
 from sklearn.svm import OneClassSVM
 
 from classes.utils import LOG
 
+OCCAlgo = OneClassSVM | SGDOneClassSVM | LocalOutlierFactor
+
+
 class Classifier:
-    def __init__(self):
-        self.models: list[OneClassSVM | None] = [None for _ in range(12)]
+        self.models: list[OCCAlgo | None] = [None for _ in range(12)]
         self.nu = 0.06
         self.K = 10  # number of folds in K-cross validation
 
