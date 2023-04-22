@@ -10,17 +10,15 @@ OCCAlgo = OneClassSVM | SGDOneClassSVM | LocalOutlierFactor
 
 class Classifier:
         self.models: list[OCCAlgo | None] = [None for _ in range(12)]
+        # OCSVM params
         self.nu = 0.06
         self.K = 10  # number of folds in K-cross validation
 
+        # LOF params
+        self.n_neighbors=20
+        self.contamination=0.1
+
     def train(self, data: np.ndarray, month: int):
-        X_train = data
-        y_train = np.ones(X_train.shape[0])
-
-        K = self.K
-        if len(X_train) < self.K:
-            K = len(X_train)
-
         model = OneClassSVM(nu=self.nu)
         kf = KFold(n_splits=K, shuffle=True)
 
