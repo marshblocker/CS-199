@@ -16,6 +16,7 @@ http_port="$2"
 x=1
 for i in {001..100}
 do
+     x=$((10#$i))
      rm -rf ./geth/keystore ./geth/geth ./geth/genesis.json &&
      echo "[$x] Finished removing geth artifacts from previous run."
 
