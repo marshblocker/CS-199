@@ -137,10 +137,10 @@ class Gateway:
         return False
 
     # For simulation only.
-    def inject_malicious_data(self, messages, test_case):
+    def inject_malicious_data(self, messages):
         for sensor in self.sensors:
             # Insert malicious data if the sensor should be malicious today
-            if self.sensor_is_malicious_today(sensor.id, test_case):
+            if self.sensor_is_malicious_today(sensor.id):
                 malicious_data: pd.Series = sensor.malicious_data.query(
                     f'YEAR == {self.date.year} and MONTH == {self.date.month} and DAY == {self.date.day}'
                 ).squeeze().astype(int)
@@ -152,7 +152,7 @@ class Gateway:
                         break
 
     # Get data_entries in messages and classify them. Returns { id: (result, label), ... }
-    def classify_data(self, messages, test_case):
+    def classify_data(self, messages):
         sensor_ids = [message['sender'] for message in messages]
 
         data_entries = [message['data'] for message in messages]
@@ -166,7 +166,7 @@ class Gateway:
         # Only update items in label to -1 when the sensors are not retraining
         if not self.is_retraining:
             for i, sensor_id in enumerate(sensor_ids):
-                if self.sensor_is_malicious_today(sensor_id, test_case):
+                if self.sensor_is_malicious_today(sensor_id):
                     label[i] = -1
 
         LOG('data_entries', data_entries)
