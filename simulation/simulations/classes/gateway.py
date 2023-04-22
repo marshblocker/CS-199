@@ -37,11 +37,12 @@ class Gateway:
         self.start_date = start_date
         self.end_date = end_date
         self.date = start_date
-        self.first_batch_training_end_date = \
-            self.compute_first_batch_training_end_date()
-        self.is_retraining = False
-        self.i = i      # Test case number
 
+        # This may refer to the end date of the first batch training or
+        # succeeding retraining.
+        self.retraining_end_date = \
+            self.compute_retraining_end_date()
+        self.retraining_event_counter = 0
         self.test_case = test_case
         while self.date <= self.end_date and len(self.sensors):
             LOG('Date', self.date)
@@ -200,7 +201,7 @@ class Gateway:
         self.date = self.start_date
 
         # Set first batch training end date to 1 year after start date.
-        self.first_batch_training_end_date = self.compute_first_batch_training_end_date()
+        self.retraining_end_date = self.compute_retraining_end_date()
 
     def handle_no_srp(self, classification_result):
         malicious_sensors = []
@@ -259,9 +260,9 @@ class Gateway:
             models_size = asizeof.asizeof(self.classifier.models)
             LOG('models memory size', models_size, self.i, 'bytes')
 
-    def compute_first_batch_training_end_date(self) -> datetime:
+    def compute_retraining_end_date(self) -> datetime:
         # This returns the first day of the month a year after the start of
-        # first batch training.
+        # retraining.
         year = self.date.year if self.date.month == 1 else self.date.year + 1
         month = 12 if self.date.month == 1 else self.date.month - 1
         day = monthrange(year, month)[1]
@@ -276,20 +277,17 @@ class Gateway:
             if attack_descrip['atk_date'] == 'None':
                 continue
 
-            attack_date = datetime.strptime(
-                attack_descrip['atk_date'], '%b %d, %Y')
-            if self.date > attack_date:
-                if attack_date <= self.first_batch_training_end_date:
+                if attack_date <= self.retraining_end_date:
                     # When an attack is scheduled during a retraining,
                     # detection time becomes: date of detection - date of end of retraining
                     # since we suppress the attacked sensor from sending malicious
                     # data during the retraining, hence the MNDP can only detect
                     # malicious data after the retraining.
                     detection_time = (
-                        self.date - self.first_batch_training_end_date).days
+                        self.date - self.retraining_end_date).days
                 else:
                     detection_time = (self.date - attack_date).days
-
+                        self.date - self.retraining_end_date).days
                 LOG('detection time', detection_time, self.i, 'days')
 
     def log_modified_fscore_components(self):
