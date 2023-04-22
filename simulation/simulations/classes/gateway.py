@@ -1,7 +1,7 @@
 from calendar import monthrange
 from datetime import datetime, timedelta
-from typing import Optional
 from time import time_ns
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -42,23 +42,32 @@ class Gateway:
         # succeeding retraining.
         self.retraining_end_date = \
             self.compute_retraining_end_date()
+
+        self.is_retraining = True
         self.retraining_event_counter = 0
+
+        # Test case number
+        self.i = i
         self.test_case = test_case
+
+    def run(self) -> None:
         while self.date <= self.end_date and len(self.sensors):
+            if self.is_finished_retraining() and self.is_retraining:
+                self.is_retraining = False
+
             LOG('Date', self.date)
+
             messages = [sensor.transmit_data_entry(
                 self.date) for sensor in self.sensors]
             processing_start = time_ns()
 
             # Only inject malicious data when the sensors are not retraining
             if not self.is_retraining:
-                self.inject_malicious_data(messages, test_case)
+                self.inject_malicious_data(messages)
 
             classification_result = []
-            if self.date > self.first_batch_training_end_date:
-                self.is_retraining = False
-
-                classification_result = self.classify_data(messages, test_case)
+            if self.is_finished_retraining():
+                classification_result = self.classify_data(messages)
 
                 if self.srp is not None:
                     newly_banned_sensors, evaluation_result = self.srp.evaluate_sensors(
@@ -66,7 +75,8 @@ class Gateway:
                     LOG('newly banned sensors', newly_banned_sensors)
                     LOG('evaluation result', evaluation_result)
 
-                    self.log_detection_time(newly_banned_sensors, test_case)
+                    is_hacked = evaluation_result == SRPEvalResult.HackedSensors
+                    self.log_detection_time(newly_banned_sensors, is_hacked)
 
                     match evaluation_result:
                         case SRPEvalResult.Normal | SRPEvalResult.HackedSensors:
@@ -275,13 +285,18 @@ class Gateway:
 
         return end_date
 
+    def is_finished_retraining(self) -> bool:
+        return self.date > self.retraining_end_date
+
     def log_detection_time(self, newly_banned_sensors, is_hacked: bool):
         for sensor in newly_banned_sensors:
             attack_date = self.test_case[sensor]['atk_date']
 
-            if attack_descrip['atk_date'] == 'None':
+            if attack_date == 'None':
                 continue
 
+            attack_date = datetime.strptime(attack_date, '%b %d, %Y')
+            if self.date > attack_date or is_hacked:
                 if attack_date <= self.retraining_end_date:
                     # When an attack is scheduled during a retraining,
                     # detection time becomes: date of detection - date of end of retraining
@@ -292,7 +307,7 @@ class Gateway:
                         self.date - self.retraining_end_date).days
                 else:
                     detection_time = (self.date - attack_date).days
-                        self.date - self.retraining_end_date).days
+
                 LOG('detection time', detection_time, self.i, 'days')
 
     def log_modified_fscore_components(self):
