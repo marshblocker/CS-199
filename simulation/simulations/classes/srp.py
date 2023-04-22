@@ -3,6 +3,8 @@ from datetime import datetime
 from enum import Enum, auto
 
 from classes.utils import LOG
+
+MIN_SENSORS_FOR_MANUAL_INVESTIGATION = 2
 MAX_TRUST_POINTS = 30
 M = 5
 
@@ -57,6 +59,8 @@ class SensorRetentionPolicy:
             (self.K, malicious_amount, self.theta))
 
         if malicious_amount >= self.theta:
+            result = self._do_manual_investigation(
+                classif_result, malicious_amount)
             LOG('sensor stats', self.sensors_stats)
             return result
         else:
@@ -66,7 +70,7 @@ class SensorRetentionPolicy:
             LOG('sensor stats', self.sensors_stats)
             return result
 
-    def _do_manual_investigation(self, classification_result):
+    def _do_manual_investigation(self, classification_result, malicious_amount):
         # For simulation purposes, if a classification result is correct, then
         # the result of the manual investigation is hack, otherwise its
         # legitimate reading shift
@@ -83,9 +87,16 @@ class SensorRetentionPolicy:
                 self._is_not_malicious_action(sensor_id)
 
             return (hacked_sensors, SRPEvalResult.HackedSensors)
-        else:
+        elif malicious_amount >= MIN_SENSORS_FOR_MANUAL_INVESTIGATION:
             # There is a legitimate reading shift.
             return ([], SRPEvalResult.LegitimateReadingShift)
+        else:
+            # Cannot do legitimate reading shift when there is only one sensor,
+            # so just update the only sensor's trust points.
+            classif_result = {
+                sensor_id: classification_result[sensor_id][0] for sensor_id in classification_result}
+            result = self._update_trust_points(classif_result)
+            return result
 
     # Returns a list of hacked sensors. If the list is empty, then
     # no sensors were hacked so the decision must be legitimate
