@@ -96,15 +96,16 @@ def main():
 
     system_modified_fscore = compute_modified_fscore(
         tp_total, tn_total, fp_total, fn_total)
+    print(f'{tp_total=}, {tn_total=}, {fp_total=}, {fn_total=}')
     print_metric_result('modified f-score', system_modified_fscore)
 
 
 def compute_modified_fscore(tp_total, tn_total, fp_total, fn_total):
     base_score = TESTS_COUNT*SENSORS_COUNT
     max_score = 2*base_score
+    shift = tp_total + tn_total - fp_total - fn_total
 
-    modified_fscore = (base_score + tp_total + tn_total -
-                       fp_total - fn_total) / max_score
+    modified_fscore = (base_score + shift) / max_score
     return round(modified_fscore, 2)
 
 
