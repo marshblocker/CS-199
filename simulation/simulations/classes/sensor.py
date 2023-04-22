@@ -23,7 +23,7 @@ class Sensor:
             date: datetime):
         data_entry: pd.Series = self.data.query(
             f'YEAR == {date.year} and MONTH == {date.month} and DAY == {date.day}'
-        ).squeeze().astype(int)
+        ).squeeze().astype(float)
 
         message = {
             'sender': self.id,
