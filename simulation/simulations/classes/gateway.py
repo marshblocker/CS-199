@@ -73,10 +73,15 @@ class Gateway:
                             self.remove_newly_banned_sensors(
                                 newly_banned_sensors)
                         case SRPEvalResult.LegitimateReadingShift:
-                            retraining_event_counter += 1
-                            self.restart_classifier_training()
-                            self.is_retraining = True
-                            continue
+                            # TODO: Finalize this case.
+                            self.retraining_event_counter += 1
+
+                            # NOTE: For now, we will not retrain when there is a
+                            #       legitimate reading shift.
+                            # retraining_event_counter += 1
+                            # self.restart_classifier_training()
+                            # self.is_retraining = True
+                            # continue
                         case _:
                             pass
                 else:
