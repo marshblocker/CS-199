@@ -1,0 +1,5 @@
+with-srp-itp-15-thresh--0.30 metrics result:
+average memory consumption: 27464.0 bytes
+average processing time: 46762803.38 nanoseconds
+average detection time: 29.42 days
+modified f-score: 0.5 
