@@ -52,6 +52,9 @@ class Gateway:
 
     def run(self) -> None:
         while self.date <= self.end_date and len(self.sensors):
+            # To separate logs per date
+            print('')
+            
             if self.is_finished_retraining() and self.is_retraining:
                 self.is_retraining = False
 
