@@ -6,6 +6,7 @@
 #       only include threshold when sys_type == 'with-srp' or sys_type == 'without-srp'
 
 current_dir=${PWD##*/}
+start_time=$(date +%s)
 
 if [ "$current_dir" != "simulation" ]; then
      echo "Error: Current directory must be simulation before running this script!"
@@ -17,7 +18,7 @@ http_port="$2"
 sys_type="$3"
 
 
-for i in {041..100}
+for i in {001..100}
 do
      x=$((10#$i))
      rm -rf ./geth/keystore ./geth/geth ./geth/genesis.json &&
@@ -110,5 +111,8 @@ else
 fi
 
 echo "Finished computing metrics!"
+
+end_time=$(date +%s)
+echo "Duration of execution (seconds): $(($end_time - $start_time))"
 echo "End bash script."
 
