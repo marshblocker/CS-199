@@ -1,5 +1,6 @@
 ## Requirements
 - Python 3.10 (since web3.py (a library used by the Python scripts here) is not compatible with Python 3.11)
+- Run `pip install -r requirements.txt` to install the required Python packages
 
 ## Tests Checklist
 - [ ] with-srp, itp 15, threshold -1.0 (`./run.sh <ip_addr> <http_port> "with-srp" "15" "-0.30" <username>`)
