@@ -124,7 +124,7 @@ class Gateway:
             LOG('processing time', duration, self.i, 'nanoseconds')
 
             self.date += timedelta(days=1)
-            if self.date.day == 1 and self.date != self.start_date and len(self.sensors) and self.is_retraining:
+            if self.is_first_day_of_the_month() and len(self.sensors) and self.is_retraining:
                 self.train_new_classifier()
 
         if self.date > self.end_date:
@@ -217,9 +217,8 @@ class Gateway:
         curr_year = self.date.year
         updated_curr_month = curr_month + 1 if curr_month != 12 else 1
         updated_curr_year = curr_year if curr_month != 12 else curr_year + 1
-        self.start_date = datetime(
+        self.date = datetime(
             updated_curr_year, updated_curr_month, 1)
-        self.date = self.start_date
 
         # Set first batch training end date to 1 year after start date.
         self.retraining_end_date = self.compute_retraining_end_date()
@@ -295,6 +294,10 @@ class Gateway:
 
     def is_finished_retraining(self) -> bool:
         return self.date > self.retraining_end_date
+    
+    def is_first_day_of_the_month(self) -> bool:
+        ''' The start date is not included '''
+        return self.date.day == 1 and self.date != self.start_date
 
     def log_detection_time(self, newly_banned_sensors, is_hacked: bool):
         for sensor in newly_banned_sensors:
