@@ -17,7 +17,7 @@ http_port="$2"
 sys_type="$3"
 
 
-for i in {001..100}
+for i in {041..100}
 do
      x=$((10#$i))
      rm -rf ./geth/keystore ./geth/geth ./geth/genesis.json &&
@@ -87,7 +87,7 @@ do
      echo "[$x] Finished sleeping"
 
      echo "[$x] Test done!"
-     python3.10 ./simulations/utils/ring.py
+     python3.10 ./simulations/utils/ring.py $x
 done
 
 echo "Finished running all tests!"
