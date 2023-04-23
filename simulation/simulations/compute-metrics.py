@@ -12,6 +12,7 @@ LOGS_PATH = os.path.join(DIR_PATH, 'logs', argv[2], argv[1])
 MEM_PATTERN = r'\[\d+\] models memory size \(bytes\): (\d+)'
 PROCESSING_TIME_PATTERN = r'\[\d+\] processing time \(nanoseconds\): (\d+)'
 DETECTION_TIME_PATTERN = r'\[\d+\] detection time \(days\): (\d+)'
+RETRAINING_PATTERN = r'Number of retraining: (\d+)'
 
 TESTS_COUNT = 100
 SENSORS_COUNT = 3
@@ -19,7 +20,7 @@ SENSORS_COUNT = 3
 
 def main():
     global TESTS_COUNT
-    
+
     log_files = os.listdir(LOGS_PATH)
     TESTS_COUNT = len(log_files)
 
@@ -27,6 +28,7 @@ def main():
     system_processing_time_ave = 0.0
     system_detection_time_ave = 0.0
     system_modified_fscore = 0.0
+    system_retraining_ave = 0.0
 
     tp_total = 0
     tn_total = 0
@@ -37,6 +39,7 @@ def main():
     mem_counter = 0
     processing_counter = 0
     detection_counter = 0
+    retraining_counter = 0
 
     for filename in log_files:
         with open(os.path.join(LOGS_PATH, filename), 'r') as f:
@@ -69,6 +72,10 @@ def main():
                     sum(test_detection_times) / len(test_detection_times), 2)
                 system_detection_time_ave += test_detection_time_ave
 
+            retraining_amount = int(re.findall(RETRAINING_PATTERN, content)[0])
+            retraining_counter += 1
+            system_retraining_ave += retraining_amount
+
             tp_total += len(re.findall(r'\[\d+\] tp: .*', content))
             tn_total += len(re.findall(r'\[\d+\] tn: .*', content))
             fp_total += len(re.findall(r'\[\d+\] fp: .*', content))
@@ -99,6 +106,11 @@ def main():
     print(f'{tp_total=}, {tn_total=}, {fp_total=}, {fn_total=}')
     print_metric_result('modified f-score', system_modified_fscore)
 
+    if system_retraining_ave:
+        system_retraining_ave = round(
+            system_retraining_ave / retraining_counter, 2)
+    print_metric_result('average number of retraining', system_retraining_ave)
+
 
 def compute_modified_fscore(tp_total, tn_total, fp_total, fn_total):
     base_score = TESTS_COUNT*SENSORS_COUNT
@@ -111,9 +123,9 @@ def compute_modified_fscore(tp_total, tn_total, fp_total, fn_total):
 
 def print_metric_result(metric_name, result, units=''):
     if result == 0.0:
-        print('No computed result for {} metric.'.format(metric_name))
+        print('No computed result for {} metric.\n'.format(metric_name))
     else:
-        print('{}: {} {}'.format(metric_name, result, units))
+        print('{}: {} {}\n'.format(metric_name, result, units))
 
 
 if __name__ == '__main__':
