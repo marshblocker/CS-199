@@ -1,15 +1,20 @@
+import math
 import os
 import platform
 import winsound
+from sys import argv
 
 
 # Create a cross-platform function that notifies the user that the program is done
 # by creating a sound. Do it for Windows, Linux, and Mac. Run it three times.
 # Use a python stdlib to find the current OS.
 def notify_user():
+    def compute_repeat(x): return math.ceil((x - x % 10) / 10)
+    repeat = compute_repeat(int(argv[1]))
+
     # Windows
     if platform.system() == 'Windows':
-        for _ in range(3):
+        for _ in range(repeat):
             winsound.Beep(1000, 1000)
     # Linux
     elif platform.system() == 'Linux':
@@ -23,5 +28,6 @@ def notify_user():
     else:
         for _ in range(3):
             print('\a')
+
 
 notify_user()
