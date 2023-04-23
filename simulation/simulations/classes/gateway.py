@@ -149,8 +149,8 @@ class Gateway:
             return atk_date_start <= self.date <= atk_date_end
         return False
 
-    # For simulation only.
     def inject_malicious_data(self, messages):
+        ''' For simulation only. '''
         for sensor in self.sensors:
             # Insert malicious data if the sensor should be malicious today
             if self.sensor_is_malicious_today(sensor.id):
@@ -164,8 +164,11 @@ class Gateway:
                         messages[i]['data'] = malicious_data
                         break
 
-    # Get data_entries in messages and classify them. Returns { id: (result, label), ... }
     def classify_data(self, messages):
+        ''' 
+        Get data_entries in messages and classify them. 
+        Returns { id: (result, label), ... } 
+        '''
         sensor_ids = [message['sender'] for message in messages]
 
         data_entries = [message['data'] for message in messages]
@@ -279,8 +282,10 @@ class Gateway:
             LOG('models memory size', models_size, self.i, 'bytes')
 
     def compute_retraining_end_date(self) -> datetime:
-        # This returns the first day of the month a year after the start of
-        # retraining.
+        ''' 
+        This returns the first day of the month a year after the start of
+        retraining. 
+        '''
         year = self.date.year if self.date.month == 1 else self.date.year + 1
         month = 12 if self.date.month == 1 else self.date.month - 1
         day = monthrange(year, month)[1]
