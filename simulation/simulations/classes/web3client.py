@@ -1,6 +1,5 @@
 import json
 import os
-from datetime import datetime
 
 from web3 import Web3
 from web3.middleware.geth_poa import geth_poa_middleware

@@ -1,5 +1,0 @@
-without-srp metrics result:
-average memory consumption: 91160.96 bytes
-average processing time: 0.04837481723 seconds
-No computed result for average detection time metric.
-average f-score: 0.94 

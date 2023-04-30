@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 from time import time
 from sys import argv
 
+from classes.gateway_no_mndp import GatewayNoMNDP
+
 from classes.classifier import Classifier
 from classes.gateway import Gateway
 from classes.sensor import Sensor
@@ -26,12 +28,14 @@ def main():
         case 'with-srp':
             http_port = int(argv[2])
             contract_addr = argv[3]
-            itp = int(argv[4])
+            occ_algo = argv[4]
+            decision_threshold = float(argv[5])
 
-            i = str(argv[5])
+            i = str(argv[6])
             test_case = test_suite[i]
 
-            run_with_srp(http_port, contract_addr, itp, test_case, i)
+            run_with_srp(http_port, contract_addr,
+                         test_case, occ_algo, decision_threshold, i)
 
         case 'without-srp':
             http_port = int(argv[2])
@@ -43,10 +47,10 @@ def main():
             run_without_srp(http_port, contract_addr, test_case, i)
 
         case 'without-mndp':
-            i = str(argv[2])
-            test_case = test_suite[i]
+            http_port = int(argv[2])
+            contract_addr = argv[3]
 
-            run_without_mndp(test_case, i)
+            run_without_mndp(http_port, contract_addr)
 
     print('program ends after {}.'.format(
         timedelta(seconds=time() - start_time)))
@@ -62,29 +66,32 @@ def get_malicious_data():
     pass
 
 
-def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case, i: str):
-    gateway = get_gateway(http_port, contract_addr, itp, i)
-    gateway.run(test_case)
+def run_with_srp(http_port: int, contract_addr: str, test_case, occ_algo: str, decision_threshold: float, i: str):
+    gateway = get_gateway('with-srp', http_port,
+                          contract_addr, i, test_case, decision_threshold, occ_algo)
+    gateway.run()
 
 
 def run_without_srp(http_port: int, contract_addr: str, test_case, i: str):
-    gateway = get_gateway(http_port, contract_addr, None, i)
-    gateway.run(test_case)
+    gateway = get_gateway('without-srp', http_port,
+                          contract_addr, i, test_case)
+    gateway.run()
 
 
-def run_without_mndp(test_case, i: str):
-    pass
+def run_without_mndp(http_port: int, contract_addr: str):
+    gateway = get_gateway_no_mndp(http_port, contract_addr)
+    gateway.run()
 
 
-def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str):
+def get_gateway(sys_type: str, http_port: int, contract_addr: str, i: str, test_case, decision_threshold: float = 0.0, occ_algo: str = ''):
     sensor1 = Sensor('Port Area Sensor', 'Port Area')
     sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
     sensor3 = Sensor('Science Garden Sensor', 'Science Garden')
     sensors = [sensor1, sensor2, sensor3]
 
-    classifier = Classifier()
+    classifier = Classifier(occ_algo, decision_threshold)
     web3 = Web3Client(http_port, contract_addr)
-    srp = None if itp is None else SensorRetentionPolicy(itp)
+    srp = None if sys_type == 'without-srp' else SensorRetentionPolicy()
 
     if type(srp) is SensorRetentionPolicy:
         srp.register_sensor(sensor1.id)
@@ -92,7 +99,23 @@ def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str):
         srp.register_sensor(sensor3.id)
 
     gateway = Gateway('Metro Manila Cluster', srp, classifier,
-                      sensors, web3, START_DATE, END_DATE, i)
+                      sensors, web3, START_DATE, END_DATE, i, test_case)
+    print('decision threshold: {}'.format(
+        gateway.classifier.decision_threshold))
+
+    return gateway
+
+
+def get_gateway_no_mndp(http_port: int, contract_addr: str):
+    sensor1 = Sensor('Port Area Sensor', 'Port Area')
+    sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
+    sensor3 = Sensor('Science Garden Sensor', 'Science Garden')
+    sensors = [sensor1, sensor2, sensor3]
+
+    web3 = Web3Client(http_port, contract_addr)
+
+    gateway = GatewayNoMNDP('Metro Manila Cluster', web3,
+                            sensors, START_DATE, END_DATE)
 
     return gateway
 

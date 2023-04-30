@@ -54,6 +54,9 @@ def get_random_attack_date() -> int:
 
 
 def get_random_attack_period(attack_date: int) -> int:
+    # NOTE: It is possible that the attack period is less than the maximum trust points
+    #       which means the sensor cannot detect the attack if its trust points is
+    #       greater than the attack period.
     random_attack_period = randint(1, TOTAL_DAYS - attack_date - 1)
     return random_attack_period
 
