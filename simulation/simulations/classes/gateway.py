@@ -337,12 +337,15 @@ class Gateway:
                 LOG('fp', sensor.id, self.i)
 
         for sensor in self.banned_sensors:
-            # This occurs when a sensor is removed from the cluster before its
-            # attack date.
-            has_detected_prematurely = (sensor in self.detection_tracker) \
-                and (self.detection_tracker[sensor] < self.test_case[sensor]['atk_date'])
-
-            if self.test_case[sensor]['atk_date'] == 'None' or has_detected_prematurely:
+            if self.test_case[sensor]['atk_date'] == 'None' or self.has_attacked_prematurely(sensor):
                 LOG('fn', sensor, self.i)
             else:
                 LOG('tn', sensor, self.i)
+
+    # This occurs when a sensor is removed from the cluster before its
+    # attack date.
+    def has_attacked_prematurely(self, sensor_id: str) -> bool:
+        attack_date = datetime.strptime(
+            self.test_case[sensor_id]['atk_date'], '%b %d, %Y')
+        return (sensor_id in self.detection_tracker) \
+            and (self.detection_tracker[sensor_id] < attack_date)
