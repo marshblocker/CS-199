@@ -50,11 +50,13 @@ class Gateway:
         self.i = i
         self.test_case = test_case
 
+        self.detection_tracker = {}
+
     def run(self) -> None:
         while self.date <= self.end_date and len(self.sensors):
             # To separate logs per date
             print('')
-            
+
             if self.is_finished_retraining() and self.is_retraining:
                 self.is_retraining = False
 
@@ -77,6 +79,8 @@ class Gateway:
                         classification_result, self.date)
                     LOG('newly banned sensors', newly_banned_sensors)
                     LOG('evaluation result', evaluation_result)
+
+                    self.update_detection_tracker(newly_banned_sensors)
 
                     is_hacked = evaluation_result == SRPEvalResult.HackedSensors
                     self.log_detection_time(newly_banned_sensors, is_hacked)
@@ -292,9 +296,13 @@ class Gateway:
 
         return end_date
 
+    def update_detection_tracker(self, banned_sensors):
+        for sensor_id in banned_sensors:
+            self.detection_tracker[sensor_id] = self.date
+
     def is_finished_retraining(self) -> bool:
         return self.date > self.retraining_end_date
-    
+
     def is_first_day_of_the_month(self) -> bool:
         ''' The start date is not included '''
         return self.date.day == 1 and self.date != self.start_date
@@ -329,7 +337,12 @@ class Gateway:
                 LOG('fp', sensor.id, self.i)
 
         for sensor in self.banned_sensors:
-            if self.test_case[sensor]['atk_date'] == 'None':
+            # This occurs when a sensor is removed from the cluster before its
+            # attack date.
+            has_detected_prematurely = (sensor in self.detection_tracker) \
+                and (self.detection_tracker[sensor] < self.test_case[sensor]['atk_date'])
+
+            if self.test_case[sensor]['atk_date'] == 'None' or has_detected_prematurely:
                 LOG('fn', sensor, self.i)
             else:
                 LOG('tn', sensor, self.i)
