@@ -77,5 +77,4 @@ class Sensor:
     def _get_malicious_data(self):
         df = pd.read_csv(os.path.join(self.MALICIOUS_DATA_PATH,
                          self.id.replace(' ', '-') + '-malicious.csv'))
-        print(df)
         return df
