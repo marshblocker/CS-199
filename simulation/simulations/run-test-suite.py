@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 from time import time
 from sys import argv
 
+from classes.gateway_no_mndp import GatewayNoMNDP
+
 from classes.classifier import Classifier
 from classes.gateway import Gateway
 from classes.sensor import Sensor
@@ -32,7 +34,8 @@ def main():
             i = str(argv[5])
             test_case = test_suite[i]
 
-            run_with_srp(http_port, contract_addr, itp, test_case, i, decision_threshold)
+            run_with_srp(http_port, contract_addr, itp,
+                         test_case, i, decision_threshold)
 
         case 'without-srp':
             http_port = int(argv[2])
@@ -42,13 +45,14 @@ def main():
             i = str(argv[4])
             test_case = test_suite[i]
 
-            run_without_srp(http_port, contract_addr, test_case, i, decision_threshold)
+            run_without_srp(http_port, contract_addr,
+                            test_case, i, decision_threshold)
 
         case 'without-mndp':
-            i = str(argv[2])
-            test_case = test_suite[i]
+            http_port = int(argv[2])
+            contract_addr = argv[3]
 
-            run_without_mndp(test_case, i)
+            run_without_mndp(http_port, contract_addr)
 
     print('program ends after {}.'.format(
         timedelta(seconds=time() - start_time)))
@@ -65,17 +69,20 @@ def get_malicious_data():
 
 
 def run_with_srp(http_port: int, contract_addr: str, itp: int, test_case, i: str, decision_threshold: float):
-    gateway = get_gateway(http_port, contract_addr, itp, i, test_case, decision_threshold)
+    gateway = get_gateway(http_port, contract_addr, itp,
+                          i, test_case, decision_threshold)
     gateway.run()
 
 
 def run_without_srp(http_port: int, contract_addr: str, test_case, i: str, decision_threshold: float):
-    gateway = get_gateway(http_port, contract_addr, None, i, test_case, decision_threshold)
+    gateway = get_gateway(http_port, contract_addr, None,
+                          i, test_case, decision_threshold)
     gateway.run()
 
 
-def run_without_mndp(test_case, i: str):
-    pass
+def run_without_mndp(http_port: int, contract_addr: str):
+    gateway = get_gateway_no_mndp(http_port, contract_addr)
+    gateway.run()
 
 
 def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str, test_case, decision_threshold: float):
@@ -95,7 +102,21 @@ def get_gateway(http_port: int, contract_addr: str, itp: int | None, i: str, tes
 
     gateway = Gateway('Metro Manila Cluster', srp, classifier,
                       sensors, web3, START_DATE, END_DATE, i, test_case)
-    print('decision threshold: {}'.format(gateway.classifier.decision_threshold))
+    print('decision threshold: {}'.format(
+        gateway.classifier.decision_threshold))
+
+    return gateway
+
+
+def get_gateway_no_mndp(http_port: int, contract_addr: str):
+    sensor1 = Sensor('Port Area Sensor', 'Port Area')
+    sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
+    sensor3 = Sensor('Science Garden Sensor', 'Science Garden')
+    sensors = [sensor1, sensor2, sensor3]
+
+    web3 = Web3Client(http_port, contract_addr)
+
+    gateway = GatewayNoMNDP('Metro Manila Cluster', web3, sensors, START_DATE, END_DATE)
 
     return gateway
 
