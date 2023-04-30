@@ -1,6 +1,6 @@
-# Usage python3.10 ./compute-metrics.py <system_variation> <username>
+# Usage: python3.10 ./compute-metrics.py <system_variation> <username>
 #
-# Note: example of system_variation is 'with-srp-itp=15-thresh--0.5' (i.e., itp = 15, threshold = -0.5)
+# Note: example of system_variation is 'with-srp-threshold--0.5'
 
 import os
 import re

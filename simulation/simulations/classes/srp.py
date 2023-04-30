@@ -17,12 +17,12 @@ class SRPEvalResult(Enum):
 
 
 class SensorRetentionPolicy:
-    def __init__(self, initial_trust_points: int):
+    def __init__(self):
         self.K = 0      # number of sensors in the cluster
         self.theta = self.K      # threshold for manual investigation, dependent on K
         self.m = M      # number of consecutive clean data entries to increment a sensor's trust points
         self.sensors_stats = {}
-        self.initial_trust_points = initial_trust_points
+        self.initial_trust_points = 15
         self.max_trust_points = MAX_TRUST_POINTS
 
     def register_sensor(self, sensor_id: str) -> None:

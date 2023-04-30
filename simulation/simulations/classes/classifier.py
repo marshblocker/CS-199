@@ -1,36 +1,57 @@
 import numpy as np
+from sklearn.kernel_approximation import Nystroem
 from sklearn.linear_model import SGDOneClassSVM
 from sklearn.neighbors import LocalOutlierFactor
+from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.svm import OneClassSVM
 
 from classes.utils import LOG
 
-OCCAlgo = OneClassSVM | SGDOneClassSVM | LocalOutlierFactor
+OCCAlgo = OneClassSVM | SGDOneClassSVM | LocalOutlierFactor | Pipeline
 
 
 class Classifier:
-    def __init__(self, decision_threshold=-1.0):
+    def __init__(self, occ_algo: str = 'ocsvm', decision_threshold: float = 0.0):
         self.models: list[OCCAlgo | None] = [None for _ in range(12)]
+        self.occ_algo = occ_algo
         self.decision_threshold = decision_threshold
 
         # OCSVM params
         self.nu = 0.06
 
+        # SGD-OCSVM params
+        self.gamma = 2.0
+        self.random_state = 42
+
         # LOF params
-        self.n_neighbors=20
-        self.contamination=0.1
+        self.n_neighbors = 20
+        self.contamination = 0.1
 
     def train(self, data: np.ndarray, month: int):
-        model = OneClassSVM(nu=self.nu)
-        model = model.fit(data)
-        self.models[month-1] = model
+        match self.occ_algo:
+            case 'ocsvm':
+                model = OneClassSVM(nu=self.nu)
+                model = model.fit(data)
+            case 'sgd-ocsvm':
+                transform = Nystroem(
+                    gamma=self.gamma, random_state=self.random_state, n_components=len(data))
+                model = SGDOneClassSVM(
+                    nu=self.nu, shuffle=True, fit_intercept=True, random_state=self.random_state, tol=1e-4)
+                model = make_pipeline(transform, model).fit(data)
+            case 'lof':
+                model = LocalOutlierFactor(
+                    novelty=True, n_neighbors=self.n_neighbors, contamination=self.contamination)
+                model = model.fit(data)
+            case _:
+                raise Exception('Invalid occ algo')
 
+        self.models[month-1] = model
         LOG('models', self.models)
 
     def classify(self, data: np.ndarray, month: int) -> np.ndarray:
         model = self.models[month-1]
 
-        assert type(model) is OneClassSVM
+        assert model != None
         decisions = model.decision_function(data)
         classification_res = self.decide(decisions)
 
