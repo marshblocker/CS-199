@@ -72,9 +72,11 @@ def main():
                     sum(test_detection_times) / len(test_detection_times), 2)
                 system_detection_time_ave += test_detection_time_ave
 
-            retraining_amount = int(re.findall(RETRAINING_PATTERN, content)[0])
-            retraining_counter += 1
-            system_retraining_ave += retraining_amount
+            retraining_amount = re.findall(RETRAINING_PATTERN, content)
+            if len(retraining_amount):
+                retraining_amount = int(retraining_amount[0])
+                retraining_counter += 1
+                system_retraining_ave += retraining_amount
 
             tp_total += len(re.findall(r'\[\d+\] tp: .*', content))
             tn_total += len(re.findall(r'\[\d+\] tn: .*', content))
