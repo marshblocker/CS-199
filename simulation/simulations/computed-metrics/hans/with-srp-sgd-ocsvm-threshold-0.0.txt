@@ -1,0 +1,12 @@
+with-srp-sgd-ocsvm-threshold-0.0 metrics result:
+average memory consumption: 883864.0 bytes
+
+average processing time: 20468796.26 nanoseconds
+
+average detection time: 119.57 days
+
+tp_total=99, tn_total=144, fp_total=16, fn_total=41
+modified f-score: 0.81 
+
+average number of retraining: 354.53 
+

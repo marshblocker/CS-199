@@ -1,0 +1,12 @@
+with-srp-lof-threshold--0.15 metrics result:
+average memory consumption: 268480.0 bytes
+
+average processing time: 21281779.27 nanoseconds
+
+average detection time: 12.7 days
+
+tp_total=40, tn_total=119, fp_total=0, fn_total=141
+modified f-score: 0.53 
+
+average number of retraining: 34.42 
+
