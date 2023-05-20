@@ -83,7 +83,7 @@ def run_without_mndp(http_port: int, contract_addr: str):
     gateway.run()
 
 
-def get_gateway(sys_type: str, http_port: int, contract_addr: str, i: str, test_case, decision_threshold: float = 0.0, occ_algo: str = ''):
+def get_gateway(sys_type: str, http_port: int, contract_addr: str, i: str, test_case, decision_threshold: float = 0.0, occ_algo: str = 'ocsvm'):
     sensor1 = Sensor('Port Area Sensor', 'Port Area')
     sensor2 = Sensor('Sangley Point Sensor', 'Sangley Point')
     sensor3 = Sensor('Science Garden Sensor', 'Science Garden')

@@ -1,4 +1,3 @@
-from calendar import monthrange
 from datetime import datetime, timedelta
 from time import time_ns
 from typing import Optional
@@ -7,7 +6,7 @@ import numpy as np
 import pandas as pd
 from classes.classifier import Classifier
 from classes.sensor import Sensor
-from classes.srp import SensorRetentionPolicy, SRPEvalResult
+from classes.srp import SensorRetentionPolicy
 from classes.utils import LOG, LOG_DUR
 from classes.web3client import Web3Client
 from pympler import asizeof
@@ -38,14 +37,6 @@ class Gateway:
         self.end_date = end_date
         self.date = start_date
 
-        # This may refer to the end date of the first batch training or
-        # succeeding retraining.
-        self.retraining_end_date = \
-            self.compute_retraining_end_date()
-
-        self.is_retraining = True
-        self.retraining_event_counter = 0
-
         # Test case number
         self.i = i
         self.test_case = test_case
@@ -56,51 +47,24 @@ class Gateway:
         while self.date <= self.end_date and len(self.sensors):
             # To separate logs per date
             print('')
-
-            if self.is_finished_retraining() and self.is_retraining:
-                self.is_retraining = False
-
             LOG('Date', self.date)
 
-            messages = [sensor.transmit_data_entry(
-                self.date) for sensor in self.sensors]
+            messages = [sensor.transmit_data_entry(self.date) for sensor in self.sensors]
             processing_start = time_ns()
 
-            # Only inject malicious data when the sensors are not retraining
-            if not self.is_retraining:
-                self.inject_malicious_data(messages)
+            self.inject_malicious_data(messages)
 
-            classification_result = []
-            if self.is_finished_retraining():
+            classification_result = {}
+            if not self.in_training_phase():
                 classification_result = self.classify_data(messages)
 
                 if self.srp is not None:
-                    newly_banned_sensors, evaluation_result = self.srp.evaluate_sensors(
-                        classification_result, self.date)
+                    newly_banned_sensors = self.srp.evaluate_sensors(classification_result)
                     LOG('newly banned sensors', newly_banned_sensors)
-                    LOG('evaluation result', evaluation_result)
 
                     self.update_detection_tracker(newly_banned_sensors)
-
-                    is_hacked = evaluation_result == SRPEvalResult.HackedSensors
-                    self.log_detection_time(newly_banned_sensors, is_hacked)
-
-                    match evaluation_result:
-                        case SRPEvalResult.Normal | SRPEvalResult.HackedSensors:
-                            self.remove_newly_banned_sensors(
-                                newly_banned_sensors)
-                        case SRPEvalResult.LegitimateReadingShift:
-                            # TODO: Finalize this case.
-                            self.retraining_event_counter += 1
-
-                            # NOTE: For now, we will not retrain when there is a
-                            #       legitimate reading shift.
-                            # retraining_event_counter += 1
-                            # self.restart_classifier_training()
-                            # self.is_retraining = True
-                            # continue
-                        case _:
-                            pass
+                    self.log_detection_time(newly_banned_sensors)
+                    self.remove_newly_banned_sensors(newly_banned_sensors)
                 else:
                     self.handle_no_srp(classification_result)
 
@@ -120,15 +84,17 @@ class Gateway:
                 ]
 
             if len(messages):
-                sensor_ids, data_entries, date = self.extract_from_messages(
-                    messages)
+                sensor_ids, data_entries, date = self.extract_from_messages(messages)
                 self.store_data_to_blockchain(sensor_ids, data_entries, date)
 
-            duration = time_ns() - processing_start
-            LOG('processing time', duration, self.i, 'nanoseconds')
+            # Only log processing time when we simultaneously stored three data entries
+            # in the blockchain. This behavior is similar to noMNDP.
+            if len(messages) == 3:
+                duration = time_ns() - processing_start
+                LOG('processing time', duration, self.i, 'nanoseconds')
 
             self.date += timedelta(days=1)
-            if self.is_first_day_of_the_month() and len(self.sensors) and self.is_retraining:
+            if self.time_to_train() and len(self.sensors):
                 self.train_new_classifier()
 
         if self.date > self.end_date:
@@ -138,7 +104,6 @@ class Gateway:
             print('Ending program since there are no sensors left in the cluster.')
 
         self.log_modified_fscore_components()
-        LOG('Number of retraining', self.retraining_event_counter)
 
     def sensor_is_malicious_today(self, sensor_id):
         if self.test_case[sensor_id]['atk_date'] != 'None':
@@ -183,17 +148,14 @@ class Gateway:
 
         label = np.full(data_entries.shape[0], 1)
 
-        # Only update items in label to -1 when the sensors are not retraining
-        if not self.is_retraining:
-            for i, sensor_id in enumerate(sensor_ids):
-                if self.sensor_is_malicious_today(sensor_id):
-                    label[i] = -1
+        for i, sensor_id in enumerate(sensor_ids):
+            if self.sensor_is_malicious_today(sensor_id):
+                label[i] = -1
 
         LOG('data_entries', data_entries)
         LOG('label', label)
 
-        classification_result = self.classifier.classify(
-            data_entries, self.date.month)
+        classification_result = self.classifier.classify(data_entries, self.date.month)
         classification_result = list(zip(classification_result, label))
 
         for res, label in classification_result:
@@ -211,21 +173,6 @@ class Gateway:
         self.banned_sensors += newly_banned_sensors
         self.sensors = [
             sensor for sensor in self.sensors if sensor.id not in self.banned_sensors]
-
-    def restart_classifier_training(self):
-        # Clear classifiers
-        self.classifier.models = [None for _ in range(12)]
-
-        # Set start date and current date to first day of next month
-        curr_month = self.date.month
-        curr_year = self.date.year
-        updated_curr_month = curr_month + 1 if curr_month != 12 else 1
-        updated_curr_year = curr_year if curr_month != 12 else curr_year + 1
-        self.date = datetime(
-            updated_curr_year, updated_curr_month, 1)
-
-        # Set first batch training end date to 1 year after start date.
-        self.retraining_end_date = self.compute_retraining_end_date()
 
     def handle_no_srp(self, classification_result):
         malicious_sensors = []
@@ -284,30 +231,24 @@ class Gateway:
             models_size = asizeof.asizeof(self.classifier.models)
             LOG('models memory size', models_size, self.i, 'bytes')
 
-    def compute_retraining_end_date(self) -> datetime:
-        ''' 
-        This returns the first day of the month a year after the start of
-        retraining. 
-        '''
-        year = self.date.year if self.date.month == 1 else self.date.year + 1
-        month = 12 if self.date.month == 1 else self.date.month - 1
-        day = monthrange(year, month)[1]
-        end_date = datetime(year, month, day)
-
-        return end_date
-
     def update_detection_tracker(self, banned_sensors):
         for sensor_id in banned_sensors:
             self.detection_tracker[sensor_id] = self.date
 
-    def is_finished_retraining(self) -> bool:
-        return self.date > self.retraining_end_date
+    def time_to_train(self) -> bool:
+        ''' 
+        This returns True every first day of the month (except January) of the 
+        first year and January of the second year
+        '''
+        return (self.date.day == 1 \
+            and self.date.year == self.start_date.year \
+            and self.date != self.start_date) \
+            or (self.date == datetime(self.start_date.year + 1, 1, 1))
 
-    def is_first_day_of_the_month(self) -> bool:
-        ''' The start date is not included '''
-        return self.date.day == 1 and self.date != self.start_date
+    def in_training_phase(self):
+        return self.date.year == self.start_date.year
 
-    def log_detection_time(self, newly_banned_sensors, is_hacked: bool):
+    def log_detection_time(self, newly_banned_sensors):
         for sensor in newly_banned_sensors:
             attack_date = self.test_case[sensor]['atk_date']
 
@@ -315,18 +256,8 @@ class Gateway:
                 continue
 
             attack_date = datetime.strptime(attack_date, '%b %d, %Y')
-            if self.date > attack_date or is_hacked:
-                if attack_date <= self.retraining_end_date:
-                    # When an attack is scheduled during a retraining,
-                    # detection time becomes: date of detection - date of end of retraining
-                    # since we suppress the attacked sensor from sending malicious
-                    # data during the retraining, hence the MNDP can only detect
-                    # malicious data after the retraining.
-                    detection_time = (
-                        self.date - self.retraining_end_date).days
-                else:
-                    detection_time = (self.date - attack_date).days
-
+            if self.date > attack_date:
+                detection_time = (self.date - attack_date).days
                 LOG('detection time', detection_time, self.i, 'days')
 
     def log_modified_fscore_components(self):
@@ -342,9 +273,11 @@ class Gateway:
             else:
                 LOG('tn', sensor, self.i)
 
-    # This occurs when a sensor is removed from the cluster before its
-    # attack date.
     def has_attacked_prematurely(self, sensor_id: str) -> bool:
+        '''
+        This occurs when a sensor is removed from the cluster before its
+        attack date.
+        '''
         attack_date = datetime.strptime(
             self.test_case[sensor_id]['atk_date'], '%b %d, %Y')
         return (sensor_id in self.detection_tracker) \
