@@ -44,13 +44,13 @@ class GatewayNoMNDP:
 
             duration = time_ns() - processing_start
             self.avg_processing_time += duration
-            LOG('processing time', duration, '', 'nanoseconds')
+            LOG('processing time', duration, '1', 'nanoseconds')
 
             self.date += timedelta(days=1)
 
         if self.date > self.end_date:
             self.avg_processing_time /= float(self.total_days)
-            LOG('average processing time', self.avg_processing_time, '', 'nanoseconds')
+            LOG('average processing time', self.avg_processing_time, '1', 'nanoseconds')
             print('Ending program since there are no data left to process.')
 
     def extract_from_messages(self, messages):
