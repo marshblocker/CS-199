@@ -5,6 +5,7 @@ from enum import Enum, auto
 from classes.utils import LOG
 
 MIN_SENSORS_FOR_MANUAL_INVESTIGATION = 2
+INITIAL_TRUST_POINTS = 15
 MAX_TRUST_POINTS = 30
 M = 5
 
@@ -19,10 +20,9 @@ class SRPEvalResult(Enum):
 class SensorRetentionPolicy:
     def __init__(self):
         self.K = 0      # number of sensors in the cluster
-        self.theta = self.K      # threshold for manual investigation, dependent on K
         self.m = M      # number of consecutive clean data entries to increment a sensor's trust points
         self.sensors_stats = {}
-        self.initial_trust_points = 15
+        self.initial_trust_points = INITIAL_TRUST_POINTS
         self.max_trust_points = MAX_TRUST_POINTS
 
     def register_sensor(self, sensor_id: str) -> None:
@@ -31,14 +31,12 @@ class SensorRetentionPolicy:
             "trust_points": self.initial_trust_points
         }
         self.K += 1
-        self.theta = self.K
 
     def unregister_sensor(self, sensor_id: str) -> None:
         self.sensors_stats.pop(sensor_id)
         self.K -= 1
-        self.theta = self.K
 
-    def evaluate_sensors(self, classification_result, curr_date: datetime):
+    def evaluate_sensors(self, classification_result):
         # We need to deepcopy this to not mutate the original object
         classif_result = deepcopy(classification_result)
         classif_result = {sensor_id: [classif_result[sensor_id][0],
@@ -51,65 +49,13 @@ class SensorRetentionPolicy:
 
         LOG('classif_result', classif_result)
 
-        self.curr_date = curr_date
-        malicious_amount = sum(
-            [res[0] for res in list(classif_result.values())])
+        # Discard ground truth 
+        classif_result = { sensor_id: classif_result[sensor_id][0] for sensor_id in classif_result }
 
-        LOG('(K, malicious_amount, theta)',
-            (self.K, malicious_amount, self.theta))
+        removed_sensors = self._update_trust_points(classif_result)
+        LOG('sensor stats', self.sensors_stats)
 
-        if malicious_amount >= self.theta:
-            result = self._do_manual_investigation(
-                classif_result, malicious_amount)
-            LOG('sensor stats', self.sensors_stats)
-            return result
-        else:
-            classif_result = {
-                sensor_id: classif_result[sensor_id][0] for sensor_id in classif_result}
-            result = self._update_trust_points(classif_result)
-            LOG('sensor stats', self.sensors_stats)
-            return result
-
-    def _do_manual_investigation(self, classification_result, malicious_amount):
-        # For simulation purposes, if a classification result is correct, then
-        # the result of the manual investigation is hack, otherwise its
-        # legitimate reading shift
-        hacked_sensors = self._get_hacked_sensors(classification_result)
-
-        if hacked_sensors:
-            # Remove hacked sensor in list of monitored sensors.
-            # The removed sensor will also be removed in self.sensor_stats.
-            for sensor_id in hacked_sensors:
-                self.unregister_sensor(sensor_id)
-
-            # Possibly increase trust points of non-hacked sensors.
-            for sensor_id in self.sensors_stats:
-                self._is_not_malicious_action(sensor_id)
-
-            return (hacked_sensors, SRPEvalResult.HackedSensors)
-        elif malicious_amount >= MIN_SENSORS_FOR_MANUAL_INVESTIGATION:
-            # There is a legitimate reading shift.
-            return ([], SRPEvalResult.LegitimateReadingShift)
-        else:
-            # Cannot do legitimate reading shift when there is only one sensor,
-            # so just update the only sensor's trust points.
-            classif_result = {
-                sensor_id: classification_result[sensor_id][0] for sensor_id in classification_result}
-            result = self._update_trust_points(classif_result)
-            return result
-
-    # Returns a list of hacked sensors. If the list is empty, then
-    # no sensors were hacked so the decision must be legitimate
-    # reading shift.
-    def _get_hacked_sensors(self, classification_result):
-        hacked_sensors = []
-        for sensor_id in classification_result:
-            result = classification_result[sensor_id][0]
-            label = classification_result[sensor_id][1]
-            if result and label:
-                hacked_sensors.append(sensor_id)
-
-        return hacked_sensors
+        return removed_sensors
 
     def _update_trust_points(self, classification_result):
         removed_sensors = []
@@ -119,7 +65,7 @@ class SensorRetentionPolicy:
             else:
                 self._is_not_malicious_action(sensor_id)
 
-        return (removed_sensors, SRPEvalResult.Normal)
+        return removed_sensors
 
     def _is_malicious_action(self, sensor_id, removed_sensors):
         self.sensors_stats[sensor_id]['consecutive_clean'] = 0

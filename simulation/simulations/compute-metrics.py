@@ -103,10 +103,14 @@ def main():
     print_metric_result('average detection time',
                         system_detection_time_ave, 'days')
 
-    system_modified_fscore = compute_modified_fscore(
-        tp_total, tn_total, fp_total, fn_total)
-    print(f'{tp_total=}, {tn_total=}, {fp_total=}, {fn_total=}')
-    print_metric_result('modified f-score', system_modified_fscore)
+    if tp_total + tn_total + fp_total + fn_total != 0:
+        system_modified_fscore = compute_modified_fscore(
+            tp_total, tn_total, fp_total, fn_total)
+        print(f'{tp_total=}, {tn_total=}, {fp_total=}, {fn_total=}')
+        print_metric_result('modified f-score', system_modified_fscore)
+    else:
+        print('No computed result for modified f-score metric.\n')
+
 
     if system_retraining_ave:
         system_retraining_ave = round(
