@@ -28,7 +28,7 @@ do
      geth --verbosity 1 account new --password ./geth/password.txt --datadir ./geth > /dev/null &&
      echo "[$x] Finished creating new account."
 
-     account_address=`python3.10 ./geth/scripts/build-genesis.py` &&
+     account_address=`python ./geth/scripts/build-genesis.py` &&
      echo "[$x] Finished creating genesis.json."
 
      geth --verbosity 1 init --datadir geth ./geth/genesis.json > /dev/null &&
@@ -56,7 +56,7 @@ do
      sleep $s
      echo "[$x] Finished sleeping."
 
-     contract_address=`python3.10 ./geth/scripts/deploy-contract.py $http_port` &&
+     contract_address=`python ./geth/scripts/deploy-contract.py $http_port` &&
      echo "[$x] Finished deploying contract into the blockchain."
 
      if [ "$sys_type" == "with-srp" ]; then
@@ -64,15 +64,15 @@ do
           threshold="$5"
           username="$6"
           echo "[$x] Running test suite for '$sys_type-$occ_algo-threshold-$threshold' system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $occ_algo $threshold $x > "./simulations/logs/$username/with-srp-$occ_algo-threshold-$threshold/test-case-$i-logs.txt"
+          python ./simulations/run-test-suite.py $sys_type $http_port $contract_address $occ_algo $threshold $x > "./simulations/logs/$username/with-srp-$occ_algo-threshold-$threshold/test-case-$i-logs.txt"
      elif [ "$sys_type" == "without-srp" ]; then
           username="$4"
           echo "[$x] Running test suite for '$sys_type' system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address $x > "./simulations/logs/$username/without-srp/test-case-$i-logs.txt"
+          python ./simulations/run-test-suite.py $sys_type $http_port $contract_address $x > "./simulations/logs/$username/without-srp/test-case-$i-logs.txt"
      elif [ "$sys_type" == "without-mndp" ]; then
           username="$4"
           echo "[$x] Running test suite for '$sys_type' system variation..."
-          python3.10 ./simulations/run-test-suite.py $sys_type $http_port $contract_address > "./simulations/logs/$username/without-mndp/without-mndp-logs-$i.txt"
+          python ./simulations/run-test-suite.py $sys_type $http_port $contract_address > "./simulations/logs/$username/without-mndp/without-mndp-logs-$i.txt"
      else
           echo "Error: Invalid system type!"
           exit 1
@@ -87,7 +87,7 @@ do
      echo "[$x] Finished sleeping"
 
      echo "[$x] Test done!"
-     python3.10 ./simulations/utils/ring.py $x
+     python ./simulations/utils/ring.py $x
 done
 
 echo "Finished running all tests!"
@@ -96,13 +96,13 @@ if [ $sys_type == "with-srp" ]; then
      occ_algo="$4"
      threshold="$5"
      username="$6"
-     python3.10 ./simulations/compute-metrics.py "$sys_type-$occ_algo-threshold-$threshold" $username > ./simulations/computed-metrics/$username/$sys_type-$occ_algo-threshold-$threshold.txt
+     python ./simulations/compute-metrics.py "$sys_type-$occ_algo-threshold-$threshold" $username > ./simulations/computed-metrics/$username/$sys_type-$occ_algo-threshold-$threshold.txt
 elif [ $sys_type == "without-srp" ]; then
      username="$4"
-     python3.10 ./simulations/compute-metrics.py "$sys_type" $username > ./simulations/computed-metrics/$username/$sys_type.txt
+     python ./simulations/compute-metrics.py "$sys_type" $username > ./simulations/computed-metrics/$username/$sys_type.txt
 elif [ $sys_type == "without-mndp" ]; then
      username="$4"
-     python3.10 ./simulations/compute-metrics.py "$sys_type" $username > ./simulations/computed-metrics/$username/$sys_type.txt
+     python ./simulations/compute-metrics.py "$sys_type" $username > ./simulations/computed-metrics/$username/$sys_type.txt
 else
      echo "Error: Invalid system type!"
      exit 1

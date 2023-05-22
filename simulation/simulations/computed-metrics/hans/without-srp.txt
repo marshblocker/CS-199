@@ -1,12 +1,12 @@
 without-srp metrics result:
-No computed result for average memory consumption metric.
+average memory consumption: 27464.0 bytes
 
-average processing time: 24189479.16 nanoseconds
+average processing time: 22548341.79 nanoseconds
 
 No computed result for average detection time metric.
 
-tp_total=0, tn_total=0, fp_total=0, fn_total=0
-modified f-score: 0.5 
+tp_total=0, tn_total=180, fp_total=0, fn_total=120
+modified f-score: 0.6 
 
 No computed result for average number of retraining metric.
 

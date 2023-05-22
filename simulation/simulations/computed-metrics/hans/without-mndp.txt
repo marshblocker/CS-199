@@ -1,12 +1,11 @@
 without-mndp metrics result:
 No computed result for average memory consumption metric.
 
-No computed result for average processing time metric.
+average processing time: 22081547.07 nanoseconds
 
 No computed result for average detection time metric.
 
-tp_total=0, tn_total=0, fp_total=0, fn_total=0
-modified f-score: 0.5 
+No computed result for modified f-score metric.
 
 No computed result for average number of retraining metric.
 

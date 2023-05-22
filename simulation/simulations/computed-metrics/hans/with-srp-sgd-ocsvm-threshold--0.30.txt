@@ -1,7 +1,7 @@
 with-srp-sgd-ocsvm-threshold--0.30 metrics result:
 average memory consumption: 883864.0 bytes
 
-average processing time: 29272033.76 nanoseconds
+average processing time: 24532716.11 nanoseconds
 
 No computed result for average detection time metric.
 
